@@ -1,8 +1,8 @@
 /*
-    TODO: Line 68:6, it says checkVehicle is not defined and will not go to the checkinterior run, necessary for the key. -ALREADY FIXED- Needed investigateVehicle var instead.
-	TODO: FIX THE LOGIC TO PREVENT YOU FROM SAYING 'YES' BEFORE YOU EVEN CHECK FOR THE TIRE IRON. 
-    TODO: YOU CAN TRICK THE LOGIC INTO PICKING UP THE TIRE IRON AGAIN IF YOU DO IT AFTER GETTING OUT IN trunk_open. -ALREADY FIXED-
+	"SCREAM FOR HELP" Game Logic
 */
+
+// TODO: Use this function to prevent players from spamming commands.
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -42,6 +42,7 @@ function playerInput(value) {
 		}
 }
 
+// Automatically appends 'Press Enter to Continue' in the absence of a choice array
 function chooseOption(opt) {
 	if(dialogue[currentLocation].options[opt] !== undefined) {
 		currentOption = dialogue[currentLocation].options[opt];
@@ -51,26 +52,9 @@ function chooseOption(opt) {
 		if(dialogue[currentLocation].options["y"] == undefined) {
 			$('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b>");
 		}
-	/*
-	if(dialogue.checkdoll.suboptions[opt] !== undefined) {
-		console.log("Sub-option called.")
-		currentOption = dialogue[currentLocation].suboptions[opt];
-		clear()
-		$('#game-text').append(dialogue.checkdoll.suboptions[opt]);
-	} else {
-		console.log("Sub-option is undefined. Moving on...")
-	}
 
-	if(dialogue.checkdoll.choice[opt] !== undefined) {
-		console.log("Choice called.")
-		currentOption = dialogue.checkdoll.choice[opt];
-		clear()
-		$('#game-text').append(dialogue.checkdoll.choice[opt]);
-	} else {
-		console.log("Choice is undefined. Moving on...")
-	} 
-	*/
-	// Logic for inventory
+// Logic for Tire Iron
+// TODO: FIX THE LOGIC TO PREVENT YOU FROM SAYING 'YES' BEFORE YOU EVEN CHECK FOR THE TIRE IRON. 
 
 	if(currentOption == "You picked up the tire iron.") {
 		invTireIron = 1;
@@ -85,12 +69,13 @@ function chooseOption(opt) {
 			dialogue.introhandle.options["b"] = "You already investigated the trunk.";
 	}
 
+// Change to 'checkvehicle' if it hasn't been checked already
 	if(currentOption == dialogue.trunk_out.options["b"]) {
 		if(investigateVehicle != 1) {
 			currentLocation = "checkvehicle";
 		}
 	}
-
+// Access the vehicle if you have the tire iron
 	if(currentOption == dialogue.checkvehicle.options["a"]) {
 		if(invTireIron == 1) {
 			dialogue.checkvehicle.options["a"] = "<p>Clutching the tire iron in your white-knuckled fist, you strike the window once. The tire iron bounces off with little more than a loud pop. You strike it \
@@ -101,7 +86,9 @@ function chooseOption(opt) {
 			$('#game-text').append(dialogue[currentLocation].description);
 		}
 	}
+
 	// General Catch-All for The Few Tire Iron Instances
+	// TODO: Consider consolidating this into the above logic
 	if(currentOption == "You picked up the tire iron.") {
 		invTireIron = 1;
 		investigateTrunk = 1;
@@ -121,6 +108,7 @@ function chooseOption(opt) {
 		currentLocation = locations[locationInt];	
 	}
 
+
 	// Creepy Doll Interaction
 	if(currentOption == dialogue.tripped_up.options["b"] && investigateDoll == 0) {
 		currentLocation = "checkdoll";
@@ -130,6 +118,7 @@ function chooseOption(opt) {
 	} else if(investigateDoll == 1) {
 		dialogue.checkdoll.options["b"] = "You already investigated the doll.";
 		}
+
 
 	// Coin Interaction
 	if(currentOption == dialogue.tripped_up.options["c"] && investigateCoin == 0) {
@@ -273,8 +262,8 @@ function chooseOption(opt) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re \
 		being followed.</p><p>Fortune favors you on this night. The creature seems to have not been interested in a hunt.</p>");
-		currentLocation = "at_house";
-		console.log("Your currentLocation changed to 'at_house'.");
+		currentLocation = "house_bporch";
+		console.log("Your currentLocation changed to 'house_bporch'.");
 		currentOption = dialogue[currentLocation].options[opt];
 		console.log("Returning to currentLocation.options.");
 	} else if(currentOption == dialogue.lonewolf.options["b"] && drinkRiver == 0 && invTireIron == 1) {
@@ -283,8 +272,8 @@ function chooseOption(opt) {
 		followed.</p><p>The creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p><p>Just missed!</p> \
 		<p>It is enough to jar you and you stumble to the ground, but not before grabbing hold of the tire iron. When the creature lunges at you, you swing wildly and manage to strike the creature. <i>Thud!</i> \
 		The creature yelps and runs off.</p><p>Fortune favors you on this night. The creature doesn’t seem to be interested in pursuing you further.</p>");
-		currentLocation = "at_house";
-		console.log("Your currentLocation changed to 'at_house'.");
+		currentLocation = "house_bporch";
+		console.log("Your currentLocation changed to 'house_bporch'.");
 		currentOption = dialogue[currentLocation].options[opt];
 		console.log("Returning to currentLocation.options.");
 	} else if(currentOption == dialogue.lonewolf.options["b"] && drinkRiver == 0 && invTireIron == 0) {
@@ -302,8 +291,8 @@ function chooseOption(opt) {
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can intimidate this beast. You just have to convince him that you aren’t one to be trifled with.</p> \
 		<p>With the tire iron in hand, you start to holler and growl and swing wildly at the trees and the ground. You’re able to strike some things with enough ferocity to ring out in spite of their \
 		dullness. That, and a combination of the hollering and growling is enough – it would seem – to make the creature turn and carry on, seemingly disinterested.</p>");
-		currentLocation = "at_house";
-		console.log("Your currentLocation changed to 'at_house'.");
+		currentLocation = "house_bporch";
+		console.log("Your currentLocation changed to 'house_bporch'.");
 		currentOption = dialogue[currentLocation].options[opt];
 		console.log("Returning to currentLocation.options.");
 	} else if(currentOption == dialogue.lonewolf.options["c"] && drinkRiver == 1 || invTalisman == 1) {
@@ -312,8 +301,8 @@ function chooseOption(opt) {
 		followed.</p><p>The creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p><p>Just missed!</p> \
 		<p>It is enough to jar you and you stumble to the ground, but not before grabbing hold of a fistful of dirt. When the creature lunges at you, you toss the dirt with purpose and deadly precision. The \
 		creature seems to scoff at you just before running off.</p><p>Fortune favors you on this night. The creature doesn’t seem to be interested in pursuing you further.</p>");
-		currentLocation = "at_house";
-		console.log("Your currentLocation changed to 'at_house'.");
+		currentLocation = "house_bporch";
+		console.log("Your currentLocation changed to 'house_bporch'.");
 		currentOption = dialogue[currentLocation].options[opt];
 		console.log("Returning to currentLocation.options.");
 	} else if(currentOption == dialogue.lonewolf.options["c"] && drinkRiver == 0 && invTireIron == 0) {
@@ -328,6 +317,116 @@ function chooseOption(opt) {
 		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
 		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 }
+
+// House - Back Porch
+
+	if(currentOption == dialogue.house_bporch.options["b"] && invKey == 1) {
+		clear()
+		$('#game-text').append("<p>You remember the key you picked up from the car and realize that both the deadbolt and the key have the same logo, so what is there to lose? You tear the key off your neck \
+		with a firm yank and immediately slide it into the lock.</p> \
+		<p><i>(So far, so good.)</i></p> \
+		<p>You turn the key, but it doesn’t quite seem to want to go. You remember, though, how finicky old locks can be; so, you start to wiggle and rock and twist the key. Finally, it breaks loose and you \
+		hear and feel the deadbolt recede into itself.</p> \
+		<p>The back door is unlocked. You open it and step inside.</p> \
+		<p>“</i>Hello?</i> Is anybody home?” you call out to the darkness.</p> \
+		<p>Only silence bounces back from the dark recesses of the abode.</p> \
+		<p><i>(I'll never be able to see without light. Maybe I should go check out the shed?)</i></p>");
+		currentLocation = "loose_soil";
+		console.log("Your currentLocation changed to 'house_study'.");
+		currentOption = dialogue[currentLocation].options[opt];
+		console.log("Returning to currentLocation.options.");
+	} else if(currentOption == dialogue.house_bporch.options["b"] && invKey == 0 || invTireIron == 1) {
+		clear()
+		$('#game-text').append("<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center \
+		in such a way that you can simply step off the sound onto the ground below where the grass has become sparse from continued rainfall off the valley of the roof.</p> \
+		<p>As it turns out, the ground was not as solid as it appeared and your foot makes a heavy indention in the softened soil.</p>");
+		currentLocation = "loose_soil";
+		console.log("Your currentLocation changed to 'loose_soil'.");
+		currentOption = dialogue[currentLocation].options[opt];
+		console.log("Returning to currentLocation.options.");
+	} else if(currentOption == dialogue.house_bporch.options["c"]) {
+		// SFH_Count
+		clear()
+}
+
+// Loose Soil/Tight Surprise
+	if(currentOption == dialogue.loose_soil.options["y"] && invTireIron == 1) {
+		clear()
+		$('#game-text').append("<p>You take the bladed end of the tire iron, stab it into the soil, and then wrench it to the side to further break loose the dirt that has had some time to pack.</p> \
+		<p>The amount of effort expended, you hope, will be nothing in comparison to what you find. The moment that thought crosses your mind, the blade of the tire iron strikes something solid that can in \
+		no way be hard soil. No, this is what you were digging for...</p> \
+		<p>You dive in with both hands and wrestle with the item in its shallow grave. Your mind is awash with possibilities… until, at least, you finally pull it free and only a thin layer of dirt keeps what \
+		remains a mystery.</p> \
+		<p>Like a magician pulling back the veil, the rectangular item in your hand mystically transforms into a picture frame. Captured inside were two—</p> \
+		<p><i>...three...</i></p> \
+		<p>older people, standing in an area that could have been near here.</p> \
+		<p>In a flash, the frame tumbles to the ground where its glass cracks from gracelessly landing on the corner. There is a faint tingling in your hand, and the sudden pain building just behind your eyes \
+		is surely not helping matters either. You think to yourself that something was wrong with the picture, that you needed to take another look ... but it's a war of attrition and you're losing. Your body is \
+		unapologetically pulling you around the side of the house.</p><p>Far from the recently unearthed, seemingly otherworldly picture frame.</p>");
+		currentLocation = "house_side";
+		console.log("Your currentLocation changed to 'house_side'.");
+		currentOption = dialogue[currentLocation].options[opt];
+		console.log("Returning to currentLocation.options.");
+}
+
+/*
+	HOUSE FINALE
+	------------
+	Rooms should float in memory and be accessible whenever the player desires to access them.
+*/
+
+// House - Side
+	if(currentOption == dialogue.house_side.options["a"] && (lightsOn == 1 || invFlashlight == 1)) {
+		if(invKey == 1) {
+		clear()
+		$('#game-text').append("<p>Now that you have illumination, sticking the key into the deadbolt is easy part. Just like with the back door, you turn the key and the door is now unlocked.</p> \
+		<p>You walk into the entryway and hope this nightmare in which you're living is soon to come to a close.</p>"); 
+			currentLocation = "house_entryway"
+			console.log("Your currentLocation changed to 'house_entryway'.");
+		}
+	} else if(currentOption == dialogue.house_side.options["a"]) {
+			currentLocation = "house_fporch"
+			console.log("Your currentLocation changed to 'house_fporch'.");
+	} else if(currentOption == dialogue.house_side.options["b"] && (investigateGarage == 1 || invFlashlight == 1)) {
+		clear()
+		$('#game-text').append("<p>You realize the second the thought crosses your mind that you've already gotten everything you need from the garage.</p>");
+	} else if(currentOption == dialogue.house_side.options["c"]) {
+		currentLocation = "house_shed"
+		console.log("Your currentLocation changed to 'house_shed'.");
+}
+
+// Front Door/Door Knocker
+	if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 0 && invFlashlight == 0)) {
+		doorKnocked = 1;
+		investigateFrontdoor = 1;
+		console.log("You knocked on the door.");
+	} else if(currentOption == dialogue.house_fporch.options["y"] && investigateFrontdoor == 1) {
+		$('#game-text').append("<p>You've already investigated the door.</p><p>Without some sort of light source, there isn't any point in going inside.");
+	} else if(currentOption == dialogue.house_fporch.options["n"]) {
+		doorKnocked = 0;
+		investigateFrontdoor = 1;
+		console.log("You did not knock on the door.");
+	} else if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 1 || invFlashlight == 1)) {
+		// Now you can enter the house
+		currentLocation = "house_entryway";
+		console.log("Your currentLocation changed to 'house_entryway'.");
+}
+
+// Garage
+	if(currentOption == dialogue.house_garage.options["y"] && (investigateGarage == 0 && lightsOn == 0)) {
+		invFlashlight = 1;
+		console.log("You picked up the flashlight.")
+		investigateGarage = 1;
+		console.log("You knocked on the door.");
+}
+
+
+// SFH_Count
+/* THIS IS MERELY A PLACEHOLDER
+   FOR A FEATURE I HOLD NEAR AND
+   DEAR, BUT I JUST HAVEN'T HAD
+   THE TIME TO FLESH IT OUT.
+*/
 
 // Default Statement to progress through the storyline
 	if(choice == dialogue[currentLocation].correct) {

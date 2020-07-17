@@ -240,7 +240,7 @@ var dialogue =
 		},
 },
 
-	"at_house": { 
+	"house_bporch": { 
 	description:"<p>You walk for what now feels like to your paranoid mind an eternity. Constantly, you look over your shoulder to see if you’re being followed. Maybe the creature changed its mind—or maybe \
 	it simply went to go get friends. Every change in ambiance, every sudden sound makes your skin crawl.</p> \
 	<p>A new thought passes into your mind. The tree line is thinning. It has to be!</p> \
@@ -263,6 +263,69 @@ var dialogue =
 		and that it will continue to fall on your own shoulders to find your way out of this hellscape.</p>",
 		"b":"<p><i>(I'm gonna do it. I'm gonna make a run for it.)</i></p>",
 		"c":"<p>AHHHHHHH!!!!!!!!</p>",
+		},
+},
+
+	"loose_soil": { 
+	description:"<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center in such a way that \
+	you can simply step off the porch onto the ground below where the grass has become sparse.</p> \
+	<p>As it turns out, the ground was not as solid as it appeared and your foot makes a heavy indention in the softened soil.</p> \
+	<p>Dig at the disturbed ground? (Y/N): ",
+	options:
+	{
+		"y":"<p>It probably isn’t any of your business what is hidden beneath this disturbed soil, but you can’t help thinking it’s freedom in one form or another.</p>",
+		"n":"<p>You’ve seen dirt like this. It’s just from the water draining off the without the aid of gutters. Digging would only serve to inconvenience the landowner, who very well might be your only hope \
+		of getting out of this godforsaken place.</p>",
+		},
+},
+
+	"house_side": { 
+	description:"<p>You walk along the backside of the house until it ends and turns towards the front. The light that lead you here was so bright in the darkness that it completely obscured what now appears to \
+	be a shed cattycorner to the house, albeit some distance off. The house itself is very slim and elongated. It doesn’t take much time for you to cross the side of the house and start to round the front.</p> \
+	<p>The ranch-style house has shrubbery all across the front with each growth bearing a pleasantly round shape, clearly tended by skilled hands.</p> \
+	<p>As much as you want inside, you cannot bring yourself to go through one of the windows. It is better to be a polite trespasser than a rude one. Maybe you won’t even need to go inside. Maybe salvation \
+	will come for you when you least expect it.</p> \
+	<p>Your keen eyes now see the power cable stretching across from the shed to the telephone pole with a light mounted on it.</p> \
+	<p><i>(That</i>must<i>be where the generator is!)</i></p> \
+	<p>A) Investigate the front door.<br>B) Go towards the garage.<br>C) Go towards the shed.",
+	options:
+	{
+		"a":"<p>You walk over to take a closer look at the front door.</p>",
+		"b":"<p>You walk towards the garage.</p>",
+		"c":"<p>You walk towards the shed.</p>",
+		},
+},
+
+	"house_fporch": { 
+	description:"<p>Immediately as you walk up, you are in awe of the way the picturesque front door perfectly frames the face of the house. Its large white door looms over you, with its odious silhouette of \
+	a gruff humanoid face with bared teeth that hold the ring you may use to knock on the door.</p> \
+	<p>Knock on the door? (Y/N): </p>",
+	options:
+	{
+		"y":"<p><i>DOOM! DOOM! DOOM!</i></p> \
+		<p>Each thundering rap against the door reverberates through your knuckles and down your arm as though the very doorknocker itself was supplying low voltage and you were simply completing the circuit.</p> \
+		This angry-looking titan continues to stare at you with its bared teeth. Tales of untold anger are carved into its cold, metallic face, but the real story of what’s beyond is still lost to you. It’s \
+		becoming more apparent to you now that the light you saw inside the house being on earlier was circumstantial and that no one is actually home.</p> \
+		<p>The existential dread hits you like a deluge of river from a broken dam: you are still just as alone as you were before.</p> \
+		<p>Nothing has changed.</p>",
+		"n":"<p>The angry-looking titan doorknocker will not be disturbed by you on this day.</p>",
+		},
+},
+
+	"house_garage": { 
+	description:"<p>You pass bush after bush on your journey to the side of the house. When you turn the corner, your heart stops in your chest.</p> \
+	<p><i>(The garage door is open!)</i></p> \
+	<p>For the first moment this whole night, your heart feels a semblance of hope. Staring into the dark chasm built into the side of this otherwise solid ranch house, you see it is devoid of vehicles.</p> \
+	<p>There’s a fluorescent yellow-colored crank flashlight hanging from a large nail driven into the OSB plywood wall. You don’t see any reason why you shouldn’t take this crank flashlight and use it to \
+	illuminate your way.</p> \
+	<p>Take the flashlight? (Y/N): </p>",
+	options:
+	{
+		"y":"<p>You took the flashlight.</p> \
+	After a good minute or so of cranking, you flip the power switch and a workable beam of light leaps from the handheld torch to light up the boring and devoid husk of a structure that should house vehicles, \
+	or at least crap nobody wants to just trash.</p> \
+	<p>You, however, get to leave with the satisfaction of holding a rechargeable torch in your hand that can also be left to hang around your wrist.</p>",
+		"n":"<p>You choose to forgo taking the illuminated path and to instead trust your keen instincts—the ones which have brought you here.</p>",
 		},
 },
 
