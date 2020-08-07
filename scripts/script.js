@@ -9,10 +9,12 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Simple clear screen
+
+// Simple clear screen function for stylization.
 function clear() {
 	$('#game-text').text("");
 }
+
 
 // Get Player Input
 function playerInput(value) {
@@ -22,20 +24,20 @@ function playerInput(value) {
 					break;
 				case "b":
 					chooseOption("b");
-						break;
+					break;
 				case "c":
 					chooseOption("c");
-						break;
+					break;
 				case "y":
 					chooseOption("y");
-						break;
+					break;
 				case "n":
 					chooseOption("n");
-						break;
+					break;
 				case "":
 					clear()
 					$('#game-text').append(dialogue[currentLocation].description);
-						break;
+					break;
 				case "help":
 					alert("HOW TO PLAY:\n\nPlease press A, B, C, Y, or N when prompted.");
 					break;
@@ -43,6 +45,7 @@ function playerInput(value) {
 					alert("Invalid input. Please try again.")
 		}
 }
+
 
 // Automatically appends 'Press Enter to Continue' in the absence of a choice array
 function chooseOption(opt) {
@@ -52,24 +55,42 @@ function chooseOption(opt) {
 		$('#game-text').append(dialogue[currentLocation].options[opt]);
 	}
 		if(dialogue[currentLocation].options["y"] == undefined) {
-			$('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b>");
+			$('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b></p>");
 		}
+
 
 // Logic for Tire Iron
 // TODO: FIX THE LOGIC TO PREVENT YOU FROM SAYING 'YES' BEFORE YOU EVEN CHECK FOR THE TIRE IRON. 
 
-	if(currentOption == "You picked up the tire iron.") {
+
+// TODO ATTEMPT: This may prevent the tire iron from being picked up erroneously.
+	if(currentOption == dialogue.introhandle.options["b"] && invTireIron == 0) {
+		previousLocation = currentLocation
+		currentLocation = "tireiron";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		$('#game-text').append(dialogue[currentLocation].description);
+	}
+
+
+	if(currentOption == dialogue.tireiron.options["y"] && invTireIron == 0) {
 		invTireIron = 1;
-		console.log("Got the tire iron.")
 		investigateTrunk = 1;
 		dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
-		dialogue.introhandle.options["b"] = "You already investigated the trunk.";
-		} else if(currentOption == "You did not pick up the tire iron.") {
-			invTireIron = 0;
-			investigateTrunk = 1;
-			dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
-			dialogue.introhandle.options["b"] = "You already investigated the trunk.";
+		dialogue.introhandle.options["b"] = "You already investigated the trunk.";		
+		$('#game-text').append("<p>You picked up the tire iron.</p>")
+		currentLocation = previousLocation
+		console.log("Your currentLocation changed to: " + currentLocation);
+	} else if(currentOption == dialogue.tireiron.options["n"]) {
+		invTireIron = 0;
+		investigateTrunk = 1;
+		dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
+		dialogue.introhandle.options["b"] = "You already investigated the trunk.";		
+		$('#game-text').append("<p>You did not pick up the tire iron.</p>")
+		currentLocation = previousLocation
+		console.log("Your currentLocation changed to: " + currentLocation);
 	}
+
 
 // Change to 'checkvehicle' if it hasn't been checked already
 	if(currentOption == dialogue.trunk_out.options["b"]) {
@@ -77,6 +98,8 @@ function chooseOption(opt) {
 			currentLocation = "checkvehicle";
 		}
 	}
+
+
 // Access the vehicle if you have the tire iron
 	if(currentOption == dialogue.checkvehicle.options["a"]) {
 		if(invTireIron == 1) {
@@ -89,20 +112,7 @@ function chooseOption(opt) {
 		}
 	}
 
-	// General Catch-All for The Few Tire Iron Instances
-	// TODO: Consider consolidating this into the above logic
-	if(currentOption == "You picked up the tire iron.") {
-		invTireIron = 1;
-		investigateTrunk = 1;
-		dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
-		dialogue.introhandle.options["b"] = "You already investigated the trunk.";
-	} else if(currentOption == "You did not pick up the tire iron.") {
-		invTireIron = 0;
-		investigateTrunk = 1;
-		dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
-		dialogue.introhandle.options["b"] = "You already investigated the trunk.";
-	}
-	
+
 	// If you go straight for the key...
 	if(currentOption == dialogue.checkinterior.options["c"]) {
 		investigateVehicle = 1;
@@ -337,13 +347,15 @@ function chooseOption(opt) {
 		console.log("Your currentLocation changed to 'house_study'.");
 		currentOption = dialogue[currentLocation].options[opt];
 		console.log("Returning to currentLocation.options.");
-	} else if(currentOption == dialogue.house_bporch.options["b"] && invKey == 0 || invTireIron == 1) {
+	} else if(currentOption == dialogue.house_bporch.options["b"] && (invKey == 0 || invTireIron == 1)) {
 		clear()
 		$('#game-text').append("<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center \
 		in such a way that you can simply step off the sound onto the ground below where the grass has become sparse from continued rainfall off the valley of the roof.</p> \
 		<p>As it turns out, the ground was not as solid as it appeared and your foot makes a heavy indention in the softened soil.</p>");
+//		previousLocation = currentLocation;
 		currentLocation = "loose_soil";
-		console.log("Your currentLocation changed to 'loose_soil'.");
+		console.log("Your currentLocation changed: " + currentLocation);
+//		console.log("PreviousLocation set to: " + previousLocation);
 		currentOption = dialogue[currentLocation].options[opt];
 		console.log("Returning to currentLocation.options.");
 	} else if(currentOption == dialogue.house_bporch.options["c"]) {
@@ -434,7 +446,31 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.house_shed.options["a"] && (invKey == 0 && invHookLine == 0)) {
 		clear()
 		$('#game-text').append("<p>You place your left hand on the table to steady yourself while you stand on the tips of your toes and stretch across the worktable towards the hook. The solitary key on its keyring dangles from the \
-			metal hook on the pegboard. Amidst the various tools, it seems to shine like a beacon of hope in an otherwise dark place.</p>");
+			metal hook on the pegboard. Amidst the various tools, it seems to shine like a beacon of hope in an otherwise dark place.</p> \
+			<p>All at once, your blood runs cold at the feeling of a breath down your neck. The violent shudder in your bones radiates from your core to your extremities. With wide eyes, you try to correct the mistake you already knew \
+			you made, but it’s too late.</p> \
+			<p>The pegboard hook gets knocked upwards, comes loose, and drops to the floor behind the workbench under the weight of the key it was holding.</p> \
+			<p>No matter though, you turn and see no one.</p> \
+			<p>After a gravid moment, you turn back to the fallen keys. You shine the light down the top and sides of the workbench, but there’s just no way you can get your arm or hand in the crevice. Still, you stay crouched, \
+			trying fruitlessly to reach for the key, your neck tingles and you get that god awful sensation again.</p> \
+			<p>You turn to relieve your paranoia, but there’s no relief to be found. An androgynous humanoid creature of average height stands over you. Your mind is suddenly full to bursting of a cacophony of noises ... until the \
+			creature releases you from the torment of this existence with one swift twist of your neck.</p>");
+	} else if(currentOption == dialogue.house_shed.options["a"] && (invKey == 0 && invHookLine == 1)) {
+		clear()
+		$('#game-text').append("<p>You place your left hand on the table to steady yourself while you stand on the tips of your toes and stretch across the worktable towards the hook. The solitary key on its keyring dangles from the \
+			metal hook on the pegboard. Amidst the various tools, it seems to shine like a beacon of hope in an otherwise dark place.</p> \
+			<p>All at once, your blood runs cold at the feeling of a breath down your neck. The violent shudder in your bones radiates from your core to your extremities. With wide eyes, you try to correct the mistake you already knew \
+			you made, but it’s too late.</p> \
+			<p>The pegboard hook gets knocked upwards, comes loose, and drops to the floor behind the workbench under the weight of the key it was holding.</p> \
+			<p>No matter though, you turn and see no one.</p> \
+			<p>After a gravid moment, you turn back to the fallen keys. You shine the light down the top and sides of the workbench, but there’s just no way you can get your arm or hand in the crevice. However, you remember the tacklebox \
+			on the bridge and dig out the fishing hook and line.</p> \
+			<p>You toss the innovative tool of a lazy fisherman in between the workbench and the wall several times with varying degrees of failure; sometimes you get close to it, sometimes you’re as far away as you feel from home right \
+			now. All you know is you’re determined to keep trying, even if it only moves a quarter of an inch at a time.</p> \
+			<p>There’s an eye-opening revelation when you pull and the line goes taut.</p><p><i>(Deep breaths... You've already been disappointed plenty...)</i></p> \
+			<p>Somehow you manage to keep your excitment contained until you pull the key and the hook out from the crevice.</p> \
+			<p><i>\"Yes!\"</i> you exclaim, still in nothing more than a whisper.</p> \
+			<p><i>You got the key.</i></p>");
 	}
 
 // SFH_Count
@@ -465,12 +501,12 @@ function startgame() {
 // Listen for input as soon as document is ready.
 $(document).ready(function(){
 	$(document).keypress(function(key){
-		if(key.which == 13 && $('#user-input').is(':focus')) {
+		if(key.which === 13 && $('#user-input').is(':focus')) {
 			choice = $('#user-input').val().toLowerCase();
 			$('#user-input').val("");
 			playerInput(choice)
 		}
-		else if(key.which == 13) {
+		else if(key.which === 13) {
 			playerInput("")
 		}
 		

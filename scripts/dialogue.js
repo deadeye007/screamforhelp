@@ -27,13 +27,10 @@ var dialogue =
 		"a":"<p>You pull what you believe to be a handle. It is an emergency release latch. The trunk opens up and more darkness pours in. The air is dank, the atmosphere unsettling. But there is no disputing that feeling of no longer \
 		being suffocated, the one which gives you a feeling, like a second wind.</p><br>",
 		"b":"<p>While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along the obstruction. The friction is causing your \
-		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.<br>Pick it up? (Y/N):</p><br>",
+		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.</p>",
 		"c":"<p>You hear precious little, other than your heart throbbing in your left ear. Deep down, you are dying to escape.</p><br>",
-		"y":"You picked up the tire iron.",
-		"n":"<p>You did not pick up the tire iron.</p><br>",
 		},
 	correct: "a",
-
 	},
 
 	"trunk_open": { 
@@ -47,8 +44,6 @@ var dialogue =
 		"b":"YOU SCREAM!!!<br>",
 		"c":"You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over \
 		the frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.<br>",
-		"y":"You picked up the tire iron.",
-		"n":"You did not pick up the tire iron.<br>",
 		},
 	correct: "c",
 },
@@ -64,11 +59,18 @@ var dialogue =
 		"b":"Your sage wisdom implores your to check the vehicle for clues, or perhaps something helpful.<br>",
 		"c":"You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over the \
 		frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.<br>",
-		"y":"You picked up the tire iron.",
-		"n":"You did not pick up the tire iron.<br>",
 		},
 	correct: "a",
 },
+
+	"tireiron": { 
+	description:"<p>Pick up the tire iron? (Y/N)?",
+	options:
+	{
+		"y":"<p>You picked up the tire iron.</p>",
+		"n":"<p>You did not pick up the tire iron.</p><br>",
+		},
+	},
 
 	"checkvehicle": { 
 	description:"<p>You take your time to really walk around the car. While your eyes pan the surrounding area, your hand glides over the door handles and gives each a tug.</p><p><i>(No good. They're all locked.)</i></p> \
@@ -327,7 +329,7 @@ var dialogue =
 	you’d expect any handyman to own.</p> \
 	<p>The one thing to leap at you the most, though, is a key hanging from one of the metal hooks in the pegboard.</p> \
 	<p><i>(That might be the key to the house!)</i></p> \
-	<p>A) Grab the key.<br>B) Investigate the generator.<br>C) Go back out into the side yard.</p>"
+	<p>A) Grab the key.<br>B) Investigate the generator.<br>C) Go back out into the side yard.</p>",
 	options:
 	{
 		"a":"<p></p>",

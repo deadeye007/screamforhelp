@@ -3,6 +3,8 @@ let state = {}
 let locations = ['intro', 'introhandle', 'trunk_open', 'trunk_out', 'tripped_up','at_bridge','on_bridge','lonewolf','at_house','house_bporch','house_side']
 let locationInt = 0
 let currentLocation = locations[locationInt]
+let currentOption = ""
+let previousLocation = ""
 var choice = ""
 
 // Inventory Variables
