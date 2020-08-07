@@ -39,11 +39,11 @@ var dialogue =
 	<p><br>A) Investigate the trunk.<br>B) Scream for help.<br>C) Climb out of the trunk.<br></p>",
 	options:
 	{
-		"a":"While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along the obstruction. The friction is causing your \
-		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.<br>Pick it up? (Y/N):<br>",
-		"b":"YOU SCREAM!!!<br>",
-		"c":"You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over \
-		the frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.<br>",
+		"a":"<p>While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along the obstruction. The friction is causing your \
+		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.</p>",
+		"b":"<p>YOU SCREAM!!!</p>",
+		"c":"<p>You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over \
+		the frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.</p>",
 		},
 	correct: "c",
 },
@@ -247,14 +247,14 @@ var dialogue =
 	least out of the woods—in a literal sense.</p> \
 	<p>Thinking of no better option, you trudge across the creaky boards of the porch to the door and give three loud raps. And then three more.</p> \
 	<p>No answer. No sounds other than the ambiance of the night.</p> \
-	<p>A) Wait on the porch.<br>B) Investigate the house.<br>C) Scream for help.",
+	<p>A) Investigate the house.<br>B) Wait on the porch.<br>C) Scream for help.",
 	options:
 	{
-		"a":"<p><i>(Maybe the owner is alseep. I should wait.)</i></p> \
+		"a":"<p></p>",
+		"b":"<p><i>(Maybe the owner is alseep. I should wait.)</i></p> \
 		<p>So, you wait.</p><p>Your mind is rife with thoughts of things like how you could've gotten here, and even that uneasy feeling you can't quite put your finger on. Is it a feeling of impending doom? \
 		Is it a feeling of nothing in your surroundings adding up? Maybe it's just a feeling of being watched that has you on edge.</p><p>You realize, however, that standing around waiting is ultimately fruitless \
 		and that it will continue to fall on your own shoulders to find your way out of this hellscape.</p>",
-		"b":"<p><i>(I'm gonna do it. I'm gonna make a run for it.)</i></p>",
 		"c":"<p>AHHHHHHH!!!!!!!!</p>",
 		},
 },
@@ -332,9 +332,11 @@ var dialogue =
 	<p>A) Grab the key.<br>B) Investigate the generator.<br>C) Go back out into the side yard.</p>",
 	options:
 	{
-		"a":"<p></p>",
-		"b":"<p></p>",
-		"c":"<p></p>",
+		"a":"<p>Let's have a look at that key.</p>",
+		"b":"<p>Your limited experience with generators convinces you to find and check in the gas tank. It’s easy to find and you are able to unscrew the top and peer down into it with the flashlight. It’s bone dry, which is somewhat \
+		of a relief.</p><p>You look for a gas can and easily spot the large red jerry can in the far corner of the shed. Like any sane person with a healthy fear of the dark, you stride over and grab the can.</p> \
+		<p>You lift. And then you shake...</p>",
+		"c":"<p>You leave the shed.</p>",
 		},
 },
 
