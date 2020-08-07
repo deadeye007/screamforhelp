@@ -1,17 +1,16 @@
 var dialogue =
 {
 	"intro": {
-	description: "<p>Racing through your mind are these fleeting memories of moments past. Oh, how they feel like an eternity ago... Part of you \
-		feels safe and secure in your cozy bed inside your quaint home. The other part of you is convinced you’re in danger. That none of this is real. \
-		That it’s all a dream. So, you simply do what makes the most sense in a situation like this...</p><p>You open your eyes, but there is nothing to \
-		see. You blink, but can see no differentiation between your eyes being open or closed.</p><p><i>(Where ... am I?)</i></p>\
-		<br>A) Try to move<br>B) Check your pockets.<br>C) Scream for help.<br>",
+	description: "<p>Racing through your mind are these fleeting memories of moments past. Oh, how they feel like an eternity ago... Part of you feels safe and secure in your cozy bed inside your quaint home. The other part of you is \
+	convinced you’re in danger. That none of this is real. That it’s all a dream. So, you simply do what makes the most sense in a situation like this...</p><p>You open your eyes, but there is nothing to see. You blink, but can see no \
+	differentiation between your eyes being open or closed.</p><p><i>(Where ... am I?)</i></p>\
+	<br>A) Try to move<br>B) Check your pockets.<br>C) Scream for help.<br>",
 	options: 
 	{
-	"a":"<p>You begin moving your hands along your sides and work towards directly in front of you. At your sides, you feel upholstery (albeit matted and \
-		likely neglected for far too long). In front of you, off to your right-hand side, you feel what may be a handle, while your other hand feels more upholstery.</p>",
-	"b":"<p>Your hands begin the journey of digging through your pockets with your mind already convincing them that they’ll feel a cotton undershirt and \
-	flannel pajama pants. What your hands feel instead is the familiarity of a cotton shirt, followed by the coarseness of denim.</p><p>You do not recall changing.</p> \
+	"a":"<p>You begin moving your hands along your sides and work towards directly in front of you. At your sides, you feel upholstery (albeit matted and likely neglected for far too long). In front of you, off to your right-hand side, \
+	you feel what may be a handle, while your other hand feels more upholstery.</p>",
+	"b":"<p>Your hands begin the journey of digging through your pockets with your mind already convincing them that they’ll feel a cotton undershirt and flannel pajama pants. What your hands feel instead is the familiarity of a cotton \
+	shirt, followed by the coarseness of denim.</p><p>You do not recall changing.</p> \
 	<p>Your hands rifle through the hip pockets, then the back pockets.</p><p><i>Ugh! Nothing!</i></p>",
 	"c":"YOU SCREAM! AAAAAAAAH!!!!!",
 	},
@@ -20,16 +19,15 @@ var dialogue =
 },
 
 	"introhandle": { 
-	description:"<p>You begin moving your hands along your sides and work towards directly in front of you. At your sides, you feel upholstery (albeit matted and \
-		likely neglected for far too long). In front of you, off to your right-hand side, you feel what may be a handle, while your other hand feels more upholstery.</p>\
+	description:"<p>You begin moving your hands along your sides and work towards directly in front of you. At your sides, you feel upholstery (albeit matted and likely neglected for far too long). In front of you, off to your \
+	right-hand side, you feel what may be a handle, while your other hand feels more upholstery.</p>\
 		<p><br>A) Pull the handle<br>B) Investigate further.<br>C) Do nothing and listen.",
 	options:
 	{
-		"a":"<p>You pull what you believe to be a handle. It is an emergency release latch. The trunk opens up and more darkness pours in. The air is dank, the atmosphere unsettling. But \
-		there is no disputing that feeling of no longer being suffocated, the one which gives you a feeling, like a second wind.</p><br>",
-		"b":"<p>While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along \
-		the obstruction. The friction is causing your palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be \
-		a tire iron.<br>Pick it up? (Y/N):</p><br>",
+		"a":"<p>You pull what you believe to be a handle. It is an emergency release latch. The trunk opens up and more darkness pours in. The air is dank, the atmosphere unsettling. But there is no disputing that feeling of no longer \
+		being suffocated, the one which gives you a feeling, like a second wind.</p><br>",
+		"b":"<p>While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along the obstruction. The friction is causing your \
+		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.<br>Pick it up? (Y/N):</p><br>",
 		"c":"<p>You hear precious little, other than your heart throbbing in your left ear. Deep down, you are dying to escape.</p><br>",
 		"y":"You picked up the tire iron.",
 		"n":"<p>You did not pick up the tire iron.</p><br>",
@@ -39,37 +37,33 @@ var dialogue =
 	},
 
 	"trunk_open": { 
-	description:"<p>The air wraps around your face like a hot, moist blanket, but there seems to be some hint of coolness. A Spring shower, perhaps.</p><p>The trunk swings up and rocks on its hinges, \
-	ravaging the silence. As its stubborn creaks and groans still, the sound of nighttime creatures fills your ears. The heartbeat still in your ears thrums, <i>\"Go-go, go-go, go-go.\"</i></p>\
+	description:"<p>The air wraps around your face like a hot, moist blanket, but there seems to be some hint of coolness. A Spring shower, perhaps.</p><p>The trunk swings up and rocks on its hinges, ravaging the silence. As its stubborn \
+	creaks and groans still, the sound of nighttime creatures fills your ears. The heartbeat still in your ears thrums, <i>\"Go-go, go-go, go-go.\"</i></p>\
 	<p><br>A) Investigate the trunk.<br>B) Scream for help.<br>C) Climb out of the trunk.<br></p>",
 	options:
 	{
-		"a":"While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along \
-		the obstruction. The friction is causing your palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be \
-		a tire iron.<br>Pick it up? (Y/N):<br>",
+		"a":"While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along the obstruction. The friction is causing your \
+		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.<br>Pick it up? (Y/N):<br>",
 		"b":"YOU SCREAM!!!<br>",
-		"c":"You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and \
-		then to hoist your shivering stilts over the frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So \
-		right, and yet so wrong.<br>",
+		"c":"You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over \
+		the frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.<br>",
 		"y":"You picked up the tire iron.",
 		"n":"You did not pick up the tire iron.<br>",
 		},
 	correct: "c",
 },
 	"trunk_out": { 
-	description:"<p><i>(Where the hell am I?)</i></p><p>Your dilated pupils pick up the faintest light in the distance, standing out like a shimmering beacon, strangled by a copse of trees. To your rear, as you already know, \
-	is the vehicle from whence you came.</p>\
+	description:"<p><i>(Where the hell am I?)</i></p><p>Your dilated pupils pick up the faintest light in the distance, standing out like a shimmering beacon, strangled by a copse of trees. To your rear, as you already know, is the \
+	vehicle from whence you came.</p>\
 	<p><br>A) Run towards the light.<br>B) Investigate the vehicle.<br>C) Scream for help.<br>",
 	options:
 	{
-		"a":"<p>Your legs are shaky and seemingly gelatinous, but you manage to come to a steady canter. The trees whiz by the more certain your each and every footfall becomes. There is a part of \
-		you that is grateful you didn’t routinely skip leg day, as if part of you always knew you’d be in this very predicament.</p><p>Your mind begins to wonder again how it got in this predicament, \
-		but fails to come up with anything of substance. The visibility out here is limited, but nothing you see has any semblance of familiarity.</p><p>In what would seem like a direct attack in the \
-		form of hindrance, a plant tendril entangles your ankle and pulls you down to the earthen floor.</p><br>",
+		"a":"<p>Your legs are shaky and seemingly gelatinous, but you manage to come to a steady canter. The trees whiz by the more certain your each and every footfall becomes. There is a part of you that is grateful you didn’t \
+		routinely skip leg day, as if part of you always knew you’d be in this very predicament.</p><p>Your mind begins to wonder again how it got in this predicament, but fails to come up with anything of substance. The visibility out \
+		here is limited, but nothing you see has any semblance of familiarity.</p><p>In what would seem like a direct attack in the form of hindrance, a plant tendril entangles your ankle and pulls you down to the earthen floor.</p><br>",
 		"b":"Your sage wisdom implores your to check the vehicle for clues, or perhaps something helpful.<br>",
-		"c":"You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and \
-		then to hoist your shivering stilts over the frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So \
-		right, and yet so wrong.<br>",
+		"c":"You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over the \
+		frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.<br>",
 		"y":"You picked up the tire iron.",
 		"n":"You did not pick up the tire iron.<br>",
 		},
@@ -82,24 +76,22 @@ var dialogue =
 	<p><br>A) Break the window.<br>B) Scream for help.<br>C) Further investigate the vehicle.<br>",
 	options:
 	{
-		"a":"<p>Armed with only your fisticuffs, you punch the glass. Ow! Now something other than your pride is hurting. There’s no way you’re going to be able to break the glass barehanded, you \
-		realize.</p><br>",
+		"a":"<p>Armed with only your fisticuffs, you punch the glass. Ow! Now something other than your pride is hurting. There’s no way you’re going to be able to break the glass barehanded, you realize.</p><br>",
 		"b":"YOU SCREAM!!!<br>",
-		"c":"<p>Without breaking the window, you are quite certain that you won't be able to get in to thoroughly examine the vehicle. What you can see from the window, however, is a key hanging from\
-		the rear-view mirror. The possible applications of such a key astound you.</p><br>",
+		"c":"<p>Without breaking the window, you are quite certain that you won't be able to get in to thoroughly examine the vehicle. What you can see from the window, however, is a key hanging from the rear-view mirror. The possible \
+		applications of such a key astound you.</p><br>",
 		},
 	correct: "",
 },
 
 	"checkinterior": { 
-	description:"<p>Clutching the tire iron in your white-knuckled fist, you strike the window once. The tire iron bounces off with little more than a loud <i>pop!</i></p><p>You strike it again, this time more \
-	towards the edge. Less of a pop, more of a crack.</p><p>You strike it again with all your might and the glass shatters. Armed with knowledge from action movies, you use the tire iron to clear out the \
-	glass in the frame and pull up the lock switch. With reckless abandon, you grab the door handle and throw it open.</p> \
+	description:"<p>Clutching the tire iron in your white-knuckled fist, you strike the window once. The tire iron bounces off with little more than a loud <i>pop!</i></p><p>You strike it again, this time more towards the edge. Less of \
+	a pop, more of a crack.</p><p>You strike it again with all your might and the glass shatters. Armed with knowledge from action movies, you use the tire iron to clear out the glass in the frame and pull up the lock switch. With \
+	reckless abandon, you grab the door handle and throw it open.</p> \
 	<p>A) Further investigate the car.<br>B) Open the glove box.<br>C) Take the key.<br>",
 	options:
 	{
-		"a":"<p>You hope that now you are inside the vehicle that something else will become apparent. While you lean over the center console and take stock of everything, it becomes obvious there is nothing more \
-		of importance here.</p><br>",
+		"a":"<p>You hope that now you are inside the vehicle that something else will become apparent. While you lean over the center console and take stock of everything, it becomes obvious there is nothing more of importance here.</p><br>",
 		"b":"<p>Damnit! The glove box is locked! What would’ve been the odds that anything other than gloves would’ve been found inside anyway, you wonder.</p><br>",
 		"c":"<p>Seeing nothing else of remote importance in the general vicinity, you lift the chain from the rearview mirror and take the key.</p><br>",
 		},
@@ -107,10 +99,9 @@ var dialogue =
 },
 
 	"tripped_up": { 
-	description:"<p>Abrasions and contusions plague your already bewildered body—a constant reminder of your downfall. Dirt has crammed its way underneath your fingernails and it blackens your face. \
-	The soil smells of approaching storms.</p> \
-	<p>In the distance, the light seems neither closer nor farther than it did before, but looking back at the car is a telling sign of the distance you’ve traveled. It now looks at least a quarter of the \
-	size it did when you climbed out of it.</p> \
+	description:"<p>Abrasions and contusions plague your already bewildered body—a constant reminder of your downfall. Dirt has crammed its way underneath your fingernails and it blackens your face. The soil smells of approaching storms.</p> \
+	<p>In the distance, the light seems neither closer nor farther than it did before, but looking back at the car is a telling sign of the distance you’ve traveled. It now looks at least a quarter of the size it did when you climbed out \
+	of it.</p> \
 	<p><i>(But why was I there? Why am I here and not in bed?)</i></p> \
 	<p>To your immediate right is a doll resembling a little girl propped neatly up against the tree with her hands in her lap. Her hair is tangled and unkempt; her pastel pink dress filthy; her body weathered from an \
 	indeterminate passing of seasons. Clutched in her right hand is a corroded coin.</p> \
@@ -131,8 +122,8 @@ var dialogue =
 },
 
 	"checkdoll": { 
-	description:"<p>Your overwhelming sense of curiosity takes over upon gazing at this haggard doll. It reminds you of simpler times, like playing outside with friends and recess at school. But, just like the doll \
-	those memories age and decay—wither and rot. While the blood continues thumping in your head, it seems to become muted when you gaze into the one undying eye of this little doll.</p> \
+	description:"<p>Your overwhelming sense of curiosity takes over upon gazing at this haggard doll. It reminds you of simpler times, like playing outside with friends and recess at school. But, just like the doll those memories age \
+	and decay—wither and rot. While the blood continues thumping in your head, it seems to become muted when you gaze into the one undying eye of this little doll.</p> \
 	<p>A) Further investigate the doll.<br>B) Leave the doll alone.<br>C) Take the doll.<br>",
 	options:
 	{
@@ -241,8 +232,8 @@ var dialogue =
 },
 
 	"house_bporch": { 
-	description:"<p>You walk for what now feels like to your paranoid mind an eternity. Constantly, you look over your shoulder to see if you’re being followed. Maybe the creature changed its mind—or maybe \
-	it simply went to go get friends. Every change in ambiance, every sudden sound makes your skin crawl.</p> \
+	description:"<p>You walk for what now feels like to your paranoid mind an eternity. Constantly, you look over your shoulder to see if you’re being followed. Maybe the creature changed its mind—or maybe it simply went to go get \
+	friends. Every change in ambiance, every sudden sound makes your skin crawl.</p> \
 	<p>A new thought passes into your mind. The tree line is thinning. It has to be!</p> \
 	<p>And it is. Within another fifty yards, you finally step out of the forest and into a long, sprawling countryside. And there it is: the source of the light.</p> \
 	<p>Several hundred yards away is a shimmering, sometimes flickering, lamp atop a post which serves to illuminate the dooryard of the house whose property it resides on.</p> \
@@ -287,7 +278,7 @@ var dialogue =
 	will come for you when you least expect it.</p> \
 	<p>Your keen eyes now see the power cable stretching across from the shed to the telephone pole with a light mounted on it.</p> \
 	<p><i>(That</i>must<i>be where the generator is!)</i></p> \
-	<p>A) Investigate the front door.<br>B) Go towards the garage.<br>C) Go towards the shed.",
+	<p>A) Investigate the front door.<br>B) Go towards the garage.<br>C) Go towards the shed.</p>",
 	options:
 	{
 		"a":"<p>You walk over to take a closer look at the front door.</p>",
@@ -326,6 +317,22 @@ var dialogue =
 	or at least crap nobody wants to just trash.</p> \
 	<p>You, however, get to leave with the satisfaction of holding a rechargeable torch in your hand that can also be left to hang around your wrist.</p>",
 		"n":"<p>You choose to forgo taking the illuminated path and to instead trust your keen instincts—the ones which have brought you here.</p>",
+		},
+},
+
+	"house_shed": { 
+	description:"<p>Equipped with the beam of the rechargeable flashlight cutting through the darkness, the shed starts to take on a life of its own.</p> \
+	<p>The concrete floor beneath appears to be clear of obstruction, but you still keep an eye on it as you open the door wider. Now you move the beam up higher, along the walls, side to side.</p> \
+	<p>The picture you illuminate for yourself is one of a shed storing the generator, but also of a shed with a solid steel workbench bolted to the floor. Behind the workbench on the wall you see a Masonite pegboard with various tools \
+	you’d expect any handyman to own.</p> \
+	<p>The one thing to leap at you the most, though, is a key hanging from one of the metal hooks in the pegboard.</p> \
+	<p><i>(That might be the key to the house!)</i></p> \
+	<p>A) Grab the key.<br>B) Investigate the generator.<br>C) Go back out into the side yard.</p>"
+	options:
+	{
+		"a":"<p></p>",
+		"b":"<p></p>",
+		"c":"<p></p>",
 		},
 },
 

@@ -1,5 +1,7 @@
 /*
-	"SCREAM FOR HELP" Game Logic
+	"SCREAM FOR HELP - Chapter 1"
+	A 'Choose Your Own Adventure' Game by Andrew Sturm
+	Running on Sturmmotor Version 0.1.0
 */
 
 // TODO: Use this function to prevent players from spamming commands.
@@ -390,7 +392,10 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.house_side.options["b"] && (investigateGarage == 1 || invFlashlight == 1)) {
 		clear()
 		$('#game-text').append("<p>You realize the second the thought crosses your mind that you've already gotten everything you need from the garage.</p>");
-	} else if(currentOption == dialogue.house_side.options["c"]) {
+	} else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 0)) {
+		$('#game-text').append("<p>The shed was just about as rickety as most constructs you’ve run into tonight. It isn’t an overly large building, but it is clearly capable of supporting a large tractor, provided the doors were \
+			larger.</p><p>The shed door stood ajar, but there is absolutely no way you can see inside. You turn back, defeated.</p><p><i>If only I had some kind of light...</i></p>");
+	} else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 1 && invKey == 0)) {
 		currentLocation = "house_shed"
 		console.log("Your currentLocation changed to 'house_shed'.");
 }
@@ -401,6 +406,7 @@ function chooseOption(opt) {
 		investigateFrontdoor = 1;
 		console.log("You knocked on the door.");
 	} else if(currentOption == dialogue.house_fporch.options["y"] && investigateFrontdoor == 1) {
+		clear()
 		$('#game-text').append("<p>You've already investigated the door.</p><p>Without some sort of light source, there isn't any point in going inside.");
 	} else if(currentOption == dialogue.house_fporch.options["n"]) {
 		doorKnocked = 0;
@@ -415,11 +421,21 @@ function chooseOption(opt) {
 // Garage
 	if(currentOption == dialogue.house_garage.options["y"] && (investigateGarage == 0 && lightsOn == 0)) {
 		invFlashlight = 1;
-		console.log("You picked up the flashlight.")
+		console.log("You picked up the flashlight.");
 		investigateGarage = 1;
 		console.log("You knocked on the door.");
 }
 
+// Shed
+	if(currentOption == dialogue.house_shed.options["a"] && invKey == 1) {
+		clear()
+		$('#game-text').append("<p>You look at the key hanging from the nail and the key hanging around your neck.</p><p>The sudden deluge that is the realization that the key hanging from the nail appears to be the exact same key \
+			you found hanging in the rear-view of your vehicular prison violently washes over you.</p><p><i>(This cannot be an accident...)</i></p>");
+	} else if(currentOption == dialogue.house_shed.options["a"] && (invKey == 0 && invHookLine == 0)) {
+		clear()
+		$('#game-text').append("<p>You place your left hand on the table to steady yourself while you stand on the tips of your toes and stretch across the worktable towards the hook. The solitary key on its keyring dangles from the \
+			metal hook on the pegboard. Amidst the various tools, it seems to shine like a beacon of hope in an otherwise dark place.</p>");
+	}
 
 // SFH_Count
 /* THIS IS MERELY A PLACEHOLDER
@@ -435,6 +451,12 @@ function chooseOption(opt) {
 	}
 }
 
+// Handle the user failing to complete the adventure because of poor choices.
+function gameover() {
+	clear()
+	$('#game-text').append(dialogue.gameover.description);
+}
+
 // Kick off the whole thing with the initial start game function.
 function startgame() {
 	$('#game-text').append(dialogue[currentLocation].description);
@@ -443,12 +465,12 @@ function startgame() {
 // Listen for input as soon as document is ready.
 $(document).ready(function(){
 	$(document).keypress(function(key){
-		if(key.which === 13 && $('#user-input').is(':focus')) {
+		if(key.which == 13 && $('#user-input').is(':focus')) {
 			choice = $('#user-input').val().toLowerCase();
 			$('#user-input').val("");
 			playerInput(choice)
 		}
-		else if(key.which === 13) {
+		else if(key.which == 13) {
 			playerInput("")
 		}
 		
