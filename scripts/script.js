@@ -1,7 +1,7 @@
 /*
 	"SCREAM FOR HELP - Chapter 1"
 	A 'Choose Your Own Adventure' Game by Andrew Sturm
-	Running on Sturmmotor Version 0.1.0
+	Running on SturMotor Version 0.1.0
 */
 
 // TODO: Use this function to prevent players from spamming commands.
