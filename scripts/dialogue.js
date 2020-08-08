@@ -1,6 +1,6 @@
 var dialogue =
 {
-	"intro": {
+	"trunk": {
 	description: "<p>Racing through your mind are these fleeting memories of moments past. Oh, how they feel like an eternity ago... Part of you feels safe and secure in your cozy bed inside your quaint home. The other part of you is \
 	convinced you’re in danger. That none of this is real. That it’s all a dream. So, you simply do what makes the most sense in a situation like this...</p><p>You open your eyes, but there is nothing to see. You blink, but can see no \
 	differentiation between your eyes being open or closed.</p><p><i>(Where ... am I?)</i></p>\
@@ -14,11 +14,9 @@ var dialogue =
 	<p>Your hands rifle through the hip pockets, then the back pockets.</p><p><i>Ugh! Nothing!</i></p>",
 	"c":"YOU SCREAM! AAAAAAAAH!!!!!",
 	},
-	correct: "a",
-
 },
 
-	"introhandle": { 
+	"trunk_handle": { 
 	description:"<p>You begin moving your hands along your sides and work towards directly in front of you. At your sides, you feel upholstery (albeit matted and likely neglected for far too long). In front of you, off to your \
 	right-hand side, you feel what may be a handle, while your other hand feels more upholstery.</p>\
 	<p><br>A) Pull the handle<br>B) Investigate further.<br>C) Do nothing and listen.</p>",
@@ -30,7 +28,6 @@ var dialogue =
 		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.</p>",
 		"c":"<p>You hear precious little, other than your heart throbbing in your left ear. Deep down, you are dying to escape.</p><br>",
 		},
-	correct: "a",
 	},
 
 	"trunk_open": { 
@@ -45,7 +42,6 @@ var dialogue =
 		"c":"<p>You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over \
 		the frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.</p>",
 		},
-	correct: "c",
 },
 	"trunk_out": { 
 	description:"<p><i>(Where the hell am I?)</i></p><p>Your dilated pupils pick up the faintest light in the distance, standing out like a shimmering beacon, strangled by a copse of trees. To your rear, as you already know, is the \
@@ -60,7 +56,6 @@ var dialogue =
 		"c":"<p>You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over the \
 		frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.</p>",
 		},
-	correct: "a",
 },
 
 	"tireiron": { 
@@ -78,10 +73,10 @@ var dialogue =
 	<p><br>A) Break the window.<br>B) Scream for help.<br>C) Further investigate the vehicle.<br>",
 	options:
 	{
-		"a":"<p>Armed with only your fisticuffs, you punch the glass. Ow! Now something other than your pride is hurting. There’s no way you’re going to be able to break the glass barehanded, you realize.</p><br>",
-		"b":"YOU SCREAM!!!<br>",
+		"a":"<p>Armed with only your fisticuffs, you punch the glass. Ow! Now something other than your pride is hurting. There’s no way you’re going to be able to break the glass barehanded, you realize.</p>",
+		"b":"<p>YOU SCREAM!!!</p>",
 		"c":"<p>Without breaking the window, you are quite certain that you won't be able to get in to thoroughly examine the vehicle. What you can see from the window, however, is a key hanging from the rear-view mirror. The possible \
-		applications of such a key astound you.</p><br>",
+		applications of such a key astound you.</p>",
 		},
 	correct: "",
 },
@@ -97,7 +92,6 @@ var dialogue =
 		"b":"<p>Damnit! The glove box is locked! What would’ve been the odds that anything other than gloves would’ve been found inside anyway, you wonder.</p><br>",
 		"c":"<p>Seeing nothing else of remote importance in the general vicinity, you lift the chain from the rearview mirror and take the key.</p><br>",
 		},
-	correct: "c",
 },
 
 	"tripped_up": { 
@@ -120,7 +114,6 @@ var dialogue =
 		<p>In the center of the doll’s back is a ring, which feels as though you could pull it to make her talk.</p><br>",
 		"c":"<p>You bend over and pick up the coin, to study it.</p>",
 		},
-	correct: "a",
 },
 
 	"checkdoll": { 
@@ -174,7 +167,6 @@ var dialogue =
 		out at you from your periphery.</p> \
 		<p>It appears to be a box of sorts.</p>",
 		},
-	correct: "c",
 },
 
 	"on_bridge": { 
@@ -193,7 +185,6 @@ var dialogue =
 		head finds purchase on a jutted out rock.</p> \
 		<p>In your last moments of consciousness, you swear a humanoid silhouette is standing on the shore, walking beside you, as if he or she had heard your ... scream for help.</p>",
 		},
-	correct: "b",
 },
 
 	"tacklebox": { 

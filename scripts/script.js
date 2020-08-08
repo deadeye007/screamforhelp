@@ -17,7 +17,7 @@ function clear() {
 
 
 // Get Player Input
-function playerInput(value) {
+function playerInput(choice) {
 			switch(choice) {
 				case "a":
 					chooseOption("a");
@@ -52,44 +52,76 @@ function chooseOption(opt) {
 		currentOption = dialogue[currentLocation].options[opt];
 		clear()
 		$('#game-text').append(dialogue[currentLocation].options[opt]);
-	}
+		}
 	
+
 	// Automatically appends 'Press Enter to Continue' in the absence of a choice array
-	if(dialogue[currentLocation].options["a"] == undefined || currentOption == "") {
+	if(currentOption === "") {
 		$('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b></p>");
-	}
+		}
 
 
-	if(currentOption == (dialogue.introhandle.options["b"] || dialogue.trunk_open.options["a"]) && invTireIron == 0) {
+	if(currentOption == dialogue.trunk.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "trunk_handle";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	if(currentOption == dialogue.trunk_handle.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "trunk_open";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	if(currentOption == (dialogue.trunk_handle.options["b"] || dialogue.trunk_open.options["a"]) && invTireIron == 0) {
 		previousLocation = currentLocation;
 		currentLocation = "tireiron";
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
-	}
+		}
 
 
 	if(currentOption == dialogue.tireiron.options["y"] && invTireIron == 0) {
 		invTireIron = 1;
 		investigateTrunk = 1;
 		dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
-		dialogue.introhandle.options["b"] = "You already investigated the trunk.";
+		dialogue.trunk_handle.options["b"] = "You already investigated the trunk.";
 		clear()		
-		$('#game-text').append("<p>You picked up the tire iron.</p>")
+		$('#game-text').append("<p>You picked up the tire iron.</p>");
+		console.log("You picked up the tire iron.");
 		currentLocation = previousLocation
 		console.log("Your currentLocation changed to: " + currentLocation);
 	} else if(currentOption == dialogue.tireiron.options["n"]) {
+		console.log("Clearing 'currentOption'.");
 		invTireIron = 0;
 		investigateTrunk = 1;
 		dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
-		dialogue.introhandle.options["b"] = "You already investigated the trunk.";
+		dialogue.trunk_handle.options["b"] = "You already investigated the trunk.";
 		clear()		
 		$('#game-text').append("<p>You did not pick up the tire iron.</p>")
+		console.log("You did not pick up the tire iron.");
 		currentLocation = previousLocation;
 		console.log("Your currentLocation changed to: " + currentLocation);
-		currentOption = "";
-		console.log("Clearing 'currentOption'.");
-	}
+		}
 
+	if(currentOption == dialogue.trunk_open.options["c"]) {
+		previousLocation = currentLocation;
+		currentLocation = "trunk_out";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	if(currentOption == dialogue.trunk_out.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "tripped_up";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+	}
 
 // Change to 'checkvehicle' if it hasn't been checked already
 	if(currentOption == dialogue.trunk_out.options["b"] && investigateVehicle == 0) {
@@ -97,38 +129,58 @@ function chooseOption(opt) {
 		currentLocation = "checkvehicle";
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
-		currentOption = "";
-		console.log("Clearing 'currentOption'.");
-	}
+		}
+
 
 // Access the vehicle if you have the tire iron
-	if(currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 1) {
-		dialogue.checkvehicle.options["a"] = "<p>Clutching the tire iron in your white-knuckled fist, you strike the window once. The tire iron bounces off with little more than a loud pop. You strike it again, this time more towards \
+	if(currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 1 && investigateVehicle == 0) {
+		clear()
+		$('#game-text').append("<p>Clutching the tire iron in your white-knuckled fist, you strike the window once. The tire iron bounces off with little more than a loud pop. You strike it again, this time more towards \
 		the edge. Less of a pop, more of a crack. You strike it again with all your might and the glass shatters. Armed with knowledge from action movies, you use the tire iron to clear out the glass in the frame and pull up the lock \
-		switch. With reckless abandon, you grab the door handle and throw it open.</p>"
+		switch. With reckless abandon, you grab the door handle and throw it open.</p>");
+		previousLocation = currentLocation;
 		currentLocation = "checkinterior";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+	} else if (currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 0) {
+		previousLocation = currentLocation;
+		currentLocation = "trunk_out";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+
+	} else if(currentOption == dialogue.checkvehicle.options["a"] && investigateVehicle == 1) {
 		clear()
-		$('#game-text').append(dialogue[currentLocation].description);
-	}
+		$('#game-text').append("<p>The sudden compulsion to break an already broken window has you questioning your sanity ... as if you weren't already.</p>")
+		}
 
 
 	// If you go straight for the key...
-	if(currentOption == dialogue.checkinterior.options["c"]) {
+	if(currentOption == dialogue.checkinterior.options["c"] && investigateVehicle == 0) {
 		investigateVehicle = 1;
 		dialogue.trunk_out.options["b"] = "You already investigated the vehicle."
-		currentLocation = locations[locationInt];	
+		previousLocation == currentLocation;
+		currentLocation = "trunk_out";	
 		console.log("currentLocation has been changed to: " + currentLocation);
-	}
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	if(currentOption == dialogue.tripped_up.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "at_bridge";
+		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
 
 
 	// Creepy Doll Interaction
 	if(currentOption == dialogue.tripped_up.options["b"] && investigateDoll == 0) {
+		previousLocation = currentLocation;
 		currentLocation = "checkdoll";
 		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		clear()
 		$('#game-text').append(dialogue[currentLocation].description);
-
 	} else if(investigateDoll == 1) {
 		dialogue.checkdoll.options["b"] = "You already investigated the doll.";
 		}
@@ -136,8 +188,10 @@ function chooseOption(opt) {
 
 	// Coin Interaction
 	if(currentOption == dialogue.tripped_up.options["c"] && investigateCoin == 0) {
+		previousLocation = currentLocation;
 		currentLocation = "takecoin";
 		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		clear()
 		$('#game-text').append(dialogue[currentLocation].description);
 
@@ -153,10 +207,13 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.checkdoll.options["b"] && investigateDoll == 0) {
 		invDoll = 0;
 		investigateDoll = 1;
-		dialogue.tripped_up.options["b"] = "You chose not to investigate the doll.";
-		dialogue.checkdoll.options["a"] = "You chose not to investigate the doll.";
+		dialogue.tripped_up.options["b"] = "<p>You chose not to investigate the doll.</p>";
+		dialogue.checkdoll.options["a"] = "<p>You chose not to investigate the doll.</p>";
+		previousLocation = currentLocation;
 		currentLocation = "tripped_up";
 		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+
 	} else if(currentOption == dialogue.checkdoll.options["c"] && invDoll == 0) {
 		// YOU GET THE DOLL
 		invDoll = 1;
@@ -164,7 +221,7 @@ function chooseOption(opt) {
 		dialogue.tripped_up.options["b"] = "You already stowed away the doll.";
 		dialogue.checkdoll.options["a"] = "You already stowed away the doll.";
 		console.log("You got the doll.");
-	}
+		}
 
 
 	// Evaluate the options of checkdoll
@@ -177,7 +234,7 @@ function chooseOption(opt) {
 		console.log("Ring has not been pulled.");
 		currentLocation = "takedoll";
 		console.log("currentLocation has been changed to: " + currentLocation);
-	}
+		}
 
 
 	// Take the doll, or don't take the doll.
@@ -193,7 +250,8 @@ function chooseOption(opt) {
 		dialogue.tripped_up.options["b"] = "You already investigated the doll.";
 		currentLocation = "tripped_up";
 		console.log("currentLocation has been changed to: " + currentLocation);
-	}
+		}
+
 
 	// Take the coin, or don't take the coin.
 	if(currentOption == dialogue.takecoin.options["y"]) {
@@ -201,14 +259,18 @@ function chooseOption(opt) {
 		console.log("You got the coin.");
 		investigateCoin = 1;
 		dialogue.tripped_up.options["c"] = "You already investigated the coin.";
+		previousLocation = currentLocation;
 		currentLocation = "tripped_up";
-		console.log("currentLocation has been changed to: " + currentLocation);	
+		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.takecoin.options["n"]) {
 		investigateCoin = 1;
 		dialogue.tripped_up.options["c"] = "You already investigated the coin.";
+		previousLocation = currentLocation;
 		currentLocation = "tripped_up";
 		console.log("currentLocation has been changed to: " + currentLocation);
-	}
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
 
 
 	// Do you drink from the river?
@@ -216,20 +278,41 @@ function chooseOption(opt) {
 		drinkRiver = 1;
 		console.log("You drank from the river.");
 		dialogue.at_bridge.options["a"] = "You've already sated your thirst.";
-}
+		}
+
+
+	if(currentOption == dialogue.at_bridge.options["c"]) {
+		previousLocation = currentLocation;
+		currentLocation = "on_bridge";
+		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
 
 
 	// Investigating the tacklebox.
 	if(currentOption == dialogue.on_bridge.options["a"]) {
+		previousLocation = currentLocation;
 		currentLocation = 'tacklebox';
-		console.log("Current location changed to 'tacklebox'.");
-}
+		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	// Investigating the talisman.
+	if(currentOption == dialogue.on_bridge.options["b"] && drinkRiver == 0) {
+		previousLocation = currentLocation;
+		currentLocation = 'talisman';
+		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+	}
+
 
 	// Do you lean on the railing?
 	if(currentOption == dialogue.on_bridge.options["c"]) {
 		console.log("You leaned against the railing.");
 		gameover()
-	}
+		}
+
 
     // Tacklebox Investigation
 	if(currentOption == dialogue.tacklebox.options["a"]) {
@@ -245,15 +328,7 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.tacklebox.options["c"]) {
 		currentLocation = "on_bridge";
 		console.log("currentLocation has been changed to: " + currentLocation);
-
-}
-
-
-	// Investigating the talisman.
-	if(currentOption == dialogue.on_bridge.options["b"] && drinkRiver == 0) {
-		currentLocation = 'talisman';
-		console.log("currentLocation has been changed to: " + currentLocation);
-}
+		}
 
 
 	// Take the talisman or not?
@@ -265,7 +340,7 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.talisman.options["n"]) {
 		currentLocation = "lonewolf";
 		console.log("Your currentLocation changed to: " + currentLocation);
-}    
+		}    
 
 
 	if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 1 || invTalisman == 1)) {
@@ -287,7 +362,7 @@ function chooseOption(opt) {
 		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
 		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		gameover()
-	}
+		}
 
 	if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 1 || invTalisman == 1)) {
 		clear()
@@ -314,7 +389,7 @@ function chooseOption(opt) {
 		there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for the throat.</p><p>And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as \
 		your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		gameover()
-}
+		}
 
 	if(currentOption == dialogue.lonewolf.options["c"] && invTireIron == 1) {
 		clear()
@@ -345,7 +420,7 @@ function chooseOption(opt) {
 		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
 		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		gameover()
-}
+		}
 
 
 // House - Back Porch
@@ -379,7 +454,7 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.house_bporch.options["c"]) {
 		// SFH_Count
 		clear()
-}
+		}
 
 
 // Loose Soil/Tight Surprise
@@ -398,7 +473,7 @@ function chooseOption(opt) {
 		unapologetically pulling you around the side of the house.</p><p>Far from the recently unearthed, seemingly otherworldly picture frame.</p>");
 		currentLocation = "house_side";
 		console.log("Your currentLocation changed to: " + currentLocation);
-}
+		}
 
 
 /*
@@ -428,7 +503,7 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 1 && invKey == 0)) {
 		currentLocation = "house_shed";
 		console.log("Your currentLocation changed to: " + currentLocation);
-}
+		}
 
 
 // Front Door/Door Knocker
@@ -454,7 +529,7 @@ function chooseOption(opt) {
 		playerEntryway = 1;
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("playerEntryway changed to: " + playerEntryway);
-}
+		}
 
 
 // Garage
@@ -462,7 +537,7 @@ function chooseOption(opt) {
 		invFlashlight = 1;
 		console.log("You picked up the flashlight.");
 		investigateGarage = 1;
-}
+		}
 
 
 // Shed
@@ -498,7 +573,7 @@ function chooseOption(opt) {
 			<p>Somehow you manage to keep your excitment contained until you pull the key and the hook out from the crevice.</p> \
 			<p><i>\"Yes!\"</i> you exclaim, still in nothing more than a whisper.</p> \
 			<p><i>You got the key.</i></p>");
-	}
+		}
 
 
 	if(currentOption == dialogue.house_shed.options["b"] && (invTalisman == 1 || invKey == 1)) {
@@ -512,7 +587,7 @@ function chooseOption(opt) {
 			<p>In times such as these, however, the noise brings unwanted attention, which manifests itself when you look down and realize there is a black as pitch clawed hand going entirely through your chest.</p> \
 			<p>The agony of being run through is unbearable. You are at least fortunate enough not to have to spend much time wondering if throwing an empty gas can was truly worth it in the larger scheme of things.</p>");
 		gameover()
-	}
+		}
 
 
 // Lights On or Off?
@@ -523,7 +598,7 @@ function chooseOption(opt) {
 		<p>The last book got a second momentary glance from you before your eyes pan to a fascinating fortuneteller machine, likely from the early 1900s.</p> \
 		<p>The desk butted up against the two adjacent windows facing the back yard from whence you came probably offered a breathtaking view in the daytime. At night, it merely felt as though someone could be watching you from just \
 		beyond the pane of glass.</p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>"
-	}
+		}
 
 
 // House Interior - Study
@@ -535,13 +610,13 @@ function chooseOption(opt) {
 		currentLocation = "house_fortuneteller";
 		console.log("Your currentLocation changed to: " + currentLocation);
 		$('#game-text').append("<p>Would you like to use the buffalo nickel to receive your fortune? (Y/N): </p>")
+		}
 	
 	if(currentOption == dialogue.house_fortuneteller.options["y"] && (lightsOn == 1 && invCoin == 1 && playerStudy == 1)) {
 		$('#game-text').append("<p>You fish the coin out of your pocket and push it into the nickel slot with your thumb. The coin makes a series of rolling sounds before clanking and clattering into what sounds like an empty coin tray.</p> \
 			<p>Madame Zora’s eyes light up and her animatronic hand raises to move above the crystal ball in a circular motion about three times before the hand lowers back into her lap.</p><p>The sound of paper being moved catches your \
 			attention. When you look down, a small business card-size piece of paper is sticking out.</p><p>You take it and flip it over. It reads:</p><p><i><h5 align=\"center\">\"DO NOT FOLLOW THE LIGHT BLINDLY<br>FOR IT MAY BE A TRAIN TUNNEL.\"</h5></i></p>")
 		}
-	}
 
 
 
@@ -558,11 +633,6 @@ function chooseOption(opt) {
 */
 
 
-// Default Statement to progress through the storyline
-	if(choice == dialogue[currentLocation].correct) {
-		locationInt = locationInt + 1;
-		currentLocation = locations[locationInt];
-	}
 }
 
 
@@ -585,7 +655,7 @@ function gameover() {
 function startgame() {
 	// Reset all variables without requiring user refresh
 	let state = {}
-	let locations = ['intro', 'introhandle', 'trunk_open', 'trunk_out', 'tripped_up','at_bridge','on_bridge','lonewolf','at_house','house_bporch','house_side']
+	let locations = ['trunk', 'trunk_handle', 'trunk_open', 'trunk_out', 'tripped_up','at_bridge','on_bridge','lonewolf','at_house','house_bporch','house_side']
 	let locationInt = 0
 	let currentLocation = locations[locationInt]
 	var currentOption = ""
