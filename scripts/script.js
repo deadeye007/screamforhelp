@@ -55,7 +55,7 @@ function chooseOption(opt) {
 	}
 	
 	// Automatically appends 'Press Enter to Continue' in the absence of a choice array
-	if(dialogue[currentLocation].options["c"] == undefined) {
+	if(dialogue[currentLocation].options["a"] == undefined || currentOption == "") {
 		$('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b></p>");
 	}
 
@@ -86,6 +86,8 @@ function chooseOption(opt) {
 		$('#game-text').append("<p>You did not pick up the tire iron.</p>")
 		currentLocation = previousLocation;
 		console.log("Your currentLocation changed to: " + currentLocation);
+		currentOption = "";
+		console.log("Clearing 'currentOption'.");
 	}
 
 
@@ -95,6 +97,8 @@ function chooseOption(opt) {
 		currentLocation = "checkvehicle";
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
+		currentOption = "";
+		console.log("Clearing 'currentOption'.");
 	}
 
 // Access the vehicle if you have the tire iron
@@ -221,6 +225,11 @@ function chooseOption(opt) {
 		console.log("Current location changed to 'tacklebox'.");
 }
 
+	// Do you lean on the railing?
+	if(currentOption == dialogue.on_bridge.options["c"]) {
+		console.log("You leaned against the railing.");
+		gameover()
+	}
 
     // Tacklebox Investigation
 	if(currentOption == dialogue.tacklebox.options["a"]) {
@@ -259,6 +268,27 @@ function chooseOption(opt) {
 }    
 
 
+	if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 1 || invTalisman == 1)) {
+		// Rule of Cool
+		clear()
+		$('#game-text').append("<p>You let out a scream to the high heavens, one which faintly echoes back. In the distance, somewhere far behind you, you hear a respondent howl. This, much to your delight, is enough to stir \
+		the creature to move away from you, seemingly disinterested.</p>")
+		wolfHandled = 1;
+		currentLocation = "house_bporch";
+		console.log("Your currentLocation changed to: " + currentLocation);
+	} else if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 0 && invTalisman == 0)) {
+		clear()
+		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can scream for help, or maybe just to startle the beast. Either way, you just have to convince him that you aren’t one to be trifled with.</p> \
+		<p>You let out a scream to the high heavens, one which faintly echoes back. In the distance, somewhere far behind you, you hear a respondent howl.</p><p>This creature, empowered by the battle cry, charges you.</p> \
+		<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
+		and snaps at your ankle.</p> \
+		<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
+		there is nothing here for you.</p> \
+		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
+		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
+		gameover()
+	}
+
 	if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 1 || invTalisman == 1)) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re \
@@ -284,11 +314,13 @@ function chooseOption(opt) {
 		there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for the throat.</p><p>And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as \
 		your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		gameover()
-	} else if(currentOption == dialogue.lonewolf.options["c"] && invTireIron == 1) {
+}
+
+	if(currentOption == dialogue.lonewolf.options["c"] && invTireIron == 1) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can intimidate this beast. You just have to convince him that you aren’t one to be trifled with.</p> \
 		<p>With the tire iron in hand, you start to holler and growl and swing wildly at the trees and the ground. You’re able to strike some things with enough ferocity to ring out in spite of their \
-		dullness. That, and a combination of the hollering and growling is enough – it would seem – to make the creature turn and carry on, seemingly disinterested.</p>");
+		dullness. That, and a combination of the hollering and growling is enough—it would seem—to make the creature turn and carry on, seemingly disinterested.</p>");
 		wolfHandled = 1;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
@@ -469,6 +501,20 @@ function chooseOption(opt) {
 	}
 
 
+	if(currentOption == dialogue.house_shed.options["b"] && (invTalisman == 1 || invKey == 1)) {
+		$('#game-text').append("<p><i>Slosh-ka-slosh-ka-slosh!</i></p> \
+			<p>You waste no time pouring what’s left in the can into the generator and capping the gas tank. The next obvious step is to grab the pull start and crank; so, you do.</p> \
+			<p>You don’t panic when the third crank comes and goes because it’s clear it ran dry. But then there’s the fourth crank. And then the fifth...</p> \
+			<p>But it starts up and lights begin to flicker to life once more. You have escaped the dark ... for now.</p>");
+	} else if(currentOption == dialogue.house_shed.options["b"] && (invKey == 0 || invHookLine == 0)) {
+		$('#game-text').append("<p>Nothing.</p><p>Infuriated, you toss the can aside and scour the shed for some other can. Never in your wildest imagination could you fathom someone leaving a gas can empty when owning a generator.</p> \
+			<p>The amount of noise you made in anger was satisfying, at least. Something about making a lot of noise always feels therapeutic in times such as these.</p> \
+			<p>In times such as these, however, the noise brings unwanted attention, which manifests itself when you look down and realize there is a black as pitch clawed hand going entirely through your chest.</p> \
+			<p>The agony of being run through is unbearable. You are at least fortunate enough not to have to spend much time wondering if throwing an empty gas can was truly worth it in the larger scheme of things.</p>");
+		gameover()
+	}
+
+
 // Lights On or Off?
 	if(lightsOn == 1) {
 		dialogue.house_study.description = "<p>You are in what looks to you to be a study. There’s an illuminated shade lamp sitting atop a side table by a recliner. Sitting in front of it is a sealed bag of pipe tobacco. The wood floor \
@@ -503,20 +549,6 @@ function chooseOption(opt) {
 
 
 
-	if(currentOption == dialogue.house_shed.options["b"] && (invTalisman == 1 || invKey == 1)) {
-		$('#game-text').append("<p><i>Slosh-ka-slosh-ka-slosh!</i></p> \
-			<p>You waste no time pouring what’s left in the can into the generator and capping the gas tank. The next obvious step is to grab the pull start and crank; so, you do.</p> \
-			<p>You don’t panic when the third crank comes and goes because it’s clear it ran dry. But then there’s the fourth crank. And then the fifth...</p> \
-			<p>But it starts up and lights begin to flicker to life once more. You have escaped the dark ... for now.</p>");
-	} else if(currentOption == dialogue.house_shed.options["b"] && (invKey == 0 || invHookLine == 0)) {
-		$('#game-text').append("<p>Nothing.</p><p>Infuriated, you toss the can aside and scour the shed for some other can. Never in your wildest imagination could you fathom someone leaving a gas can empty when owning a generator.</p> \
-			<p>The amount of noise you made in anger was satisfying, at least. Something about making a lot of noise always feels therapeutic in times such as these.</p> \
-			<p>In times such as these, however, the noise brings unwanted attention, which manifests itself when you look down and realize there is a black as pitch clawed hand going entirely through your chest.</p> \
-			<p>The agony of being run through is unbearable. You are at least fortunate enough not to have to spend much time wondering if throwing an empty gas can was truly worth it in the larger scheme of things.</p>");
-		gameover()
-	}
-
-
 
 // SFH_Count
 /* THIS IS MERELY A PLACEHOLDER
@@ -537,13 +569,72 @@ function chooseOption(opt) {
 // Handle the user failing to complete the adventure because of poor choices.
 function gameover() {
 	clear()
+	currentLocation = "gameover";
 	$('#game-text').append(dialogue.gameover.description);
-	// newgame()
+	if(currentOption == dialogue.gameover.options["y"] && currentLocation == "gameover") {
+		startgame()
+	} else if(currentOption == dialogue.gameover.options["n"] && currentLocation == "gameover") {
+		clear()
+		$('#game-text').append("<p>Thanks for playing my game!</p><p>Feel free to leave me some feedback on it.</p>")
+	}
+	
 }
 
 
 // Kick off the whole thing with the initial start game function.
 function startgame() {
+	// Reset all variables without requiring user refresh
+	let state = {}
+	let locations = ['intro', 'introhandle', 'trunk_open', 'trunk_out', 'tripped_up','at_bridge','on_bridge','lonewolf','at_house','house_bporch','house_side']
+	let locationInt = 0
+	let currentLocation = locations[locationInt]
+	var currentOption = ""
+	var previousLocation = ""
+	var choice = ""
+
+	// Inventory Variables
+
+	var invTireIron = 0;
+	var invKey = 0;
+	var invDoll = 0;
+	var invCoin = 0;
+	var invPlyers = 0;
+	var invHookLine = 0;
+	var invTalisman = 0;
+	var invFlashlight = 0;
+
+	// Status Variables
+	var screamCount = 0;
+	var screamMax = 0;
+	var drinkRiver = 0;
+	var ringPulled = 0;
+	var closeTacklebox = 0;
+	var wolfHandled = 0;
+	var doorKnocked = 0;
+	var lightsOn = 0;
+
+	// Investigation Status Variables
+	var checkPockets = 0;
+	var investigateTrunk = 0;
+	var investigateVehicle = 0;
+	var investigateDoll = 0;
+	var investigateCoin = 0;
+	var investigatePlyers = 0;
+	var investigateHookLine = 0;
+	var investigateBackdoor = 0;
+	var investigateFrontdoor = 0;
+	var investigateGarage = 0;
+	var investigateFortuneteller
+
+	// Player Locations
+	var playerStudy = 0;
+	var playerKitchen = 0;
+	var playerLivingroom = 0;
+	var playerHall = 0;
+	var playerNorthbedroom = 0;
+	var playerSouthbedroom = 0;
+	var playerEntryway = 0;
+
 	$('#game-text').append(dialogue[currentLocation].description);
 }
 

@@ -50,15 +50,15 @@ var dialogue =
 	"trunk_out": { 
 	description:"<p><i>(Where the hell am I?)</i></p><p>Your dilated pupils pick up the faintest light in the distance, standing out like a shimmering beacon, strangled by a copse of trees. To your rear, as you already know, is the \
 	vehicle from whence you came.</p>\
-	<p><br>A) Run towards the light.<br>B) Investigate the vehicle.<br>C) Scream for help.<br>",
+	<p><br>A) Run towards the light.<br>B) Investigate the vehicle.<br>C) Scream for help.</p>",
 	options:
 	{
 		"a":"<p>Your legs are shaky and seemingly gelatinous, but you manage to come to a steady canter. The trees whiz by the more certain your each and every footfall becomes. There is a part of you that is grateful you didn’t \
 		routinely skip leg day, as if part of you always knew you’d be in this very predicament.</p><p>Your mind begins to wonder again how it got in this predicament, but fails to come up with anything of substance. The visibility out \
-		here is limited, but nothing you see has any semblance of familiarity.</p><p>In what would seem like a direct attack in the form of hindrance, a plant tendril entangles your ankle and pulls you down to the earthen floor.</p><br>",
-		"b":"Your sage wisdom implores your to check the vehicle for clues, or perhaps something helpful.<br>",
-		"c":"You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over the \
-		frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.<br>",
+		here is limited, but nothing you see has any semblance of familiarity.</p><p>In what would seem like a direct attack in the form of hindrance, a plant tendril entangles your ankle and pulls you down to the earthen floor.</p>",
+		"b":"<p>Your sage wisdom implores your to check the vehicle for clues, or perhaps something helpful.</p>",
+		"c":"<p>You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over the \
+		frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.</p>",
 		},
 	correct: "a",
 },
@@ -114,11 +114,11 @@ var dialogue =
 		light grows brighter and brighter still, but it is still impossible to tell what its intended purpose could be.</p> \
 		<p><i>(Someone could be there. Someone who could help.)</i></p> \
 		<p>With each breath of the humid summer air you take into your lungs, you feel your stamina starting to wither. Your legs are beginning to burn and your injuries throb with a noticeable but not \
-		life-threatening rhythm. As you start to fall back to a walk, you recognize a sound you thought you’d only just imagined...</p><br>",
+		life-threatening rhythm. As you start to fall back to a walk, you recognize a sound you thought you’d only just imagined...</p>",
 		"b":"<p>When you pick up the doll, the coin it was clutching falls from its tiny hand and onto the forest floor. Now that the doll is closer, you can see that one of the eyes is cocked to the \
 		side and the other is completely black. While you can't put your finger on it, there is something eerily off.</p> \
 		<p>In the center of the doll’s back is a ring, which feels as though you could pull it to make her talk.</p><br>",
-		"c":"You bend over, pick up the coin, and begin to study it.",
+		"c":"<p>You bend over and pick up the coin, to study it.</p>",
 		},
 	correct: "a",
 },
@@ -226,10 +226,9 @@ var dialogue =
 	<p>A) Scream for help.<br>B) Make a run for it.<br>C) Intimidate the creature.</p>",
 	options:
 	{
-		"a":"<p>You let out a scream to the high heavens, one which faintly echoes back. In the distance, somewhere far behind you, you hear a respondent howl. This, much to your delight, is enough to stir \
-		the creature to move away from you, seemingly disinterested.</p>",
+		"a":"<p><i>(I'll scream for help! That's what I'll do!)</i></p>",
 		"b":"<p><i>(I'm gonna do it. I'm gonna make a run for it.)</i></p>",
-		"c":"<p>(I'm gonna do it. I'm gonna scare this thing.)</p>",
+		"c":"<p><i>(I'm gonna do it. I'm gonna scare this thing.)</i></p>",
 		},
 },
 
@@ -366,7 +365,7 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 },
 
 	"gameover": { 
-	description:"<h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game?</p>",
+	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game?</p>",
 	options:
 	{
 		"y":"<p></p>",
