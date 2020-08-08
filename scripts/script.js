@@ -46,8 +46,7 @@ function playerInput(value) {
 		}
 }
 
-
-// Automatically appends 'Press Enter to Continue' in the absence of a choice array
+// Main Story Function
 function chooseOption(opt) {
 	if(dialogue[currentLocation].options[opt] !== undefined) {
 		currentOption = dialogue[currentLocation].options[opt];
@@ -55,8 +54,8 @@ function chooseOption(opt) {
 		$('#game-text').append(dialogue[currentLocation].options[opt]);
 	}
 	
-
-	if(dialogue[currentLocation].options["y"] == undefined) {
+	// Automatically appends 'Press Enter to Continue' in the absence of a choice array
+	if(dialogue[currentLocation].options["c"] == undefined) {
 		$('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b></p>");
 	}
 
@@ -264,7 +263,7 @@ function chooseOption(opt) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re \
 		being followed.</p><p>Fortune favors you on this night. The creature seems to have not been interested in a hunt.</p>");
-		opt = ""
+		wolfHandled = 1;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
 	} else if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 0 && invTireIron == 1)) {
@@ -273,6 +272,7 @@ function chooseOption(opt) {
 		followed.</p><p>The creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p><p>Just missed!</p> \
 		<p>It is enough to jar you and you stumble to the ground, but not before grabbing hold of the tire iron. When the creature lunges at you, you swing wildly and manage to strike the creature. <i>Thud!</i> \
 		The creature yelps and runs off.</p><p>Fortune favors you on this night. The creature doesn’t seem to be interested in pursuing you further.</p>");
+		wolfHandled = 1;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
 	} else if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 0 && invTireIron == 0)) {
@@ -289,6 +289,7 @@ function chooseOption(opt) {
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can intimidate this beast. You just have to convince him that you aren’t one to be trifled with.</p> \
 		<p>With the tire iron in hand, you start to holler and growl and swing wildly at the trees and the ground. You’re able to strike some things with enough ferocity to ring out in spite of their \
 		dullness. That, and a combination of the hollering and growling is enough – it would seem – to make the creature turn and carry on, seemingly disinterested.</p>");
+		wolfHandled = 1;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
 	} else if(currentOption == dialogue.lonewolf.options["c"] && (drinkRiver == 1 || invTalisman == 1)) {
@@ -297,6 +298,7 @@ function chooseOption(opt) {
 		followed.</p><p>The creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p><p>Just missed!</p> \
 		<p>It is enough to jar you and you stumble to the ground, but not before grabbing hold of a fistful of dirt. When the creature lunges at you, you toss the dirt with purpose and deadly precision. The \
 		creature seems to scoff at you just before running off.</p><p>Fortune favors you on this night. The creature doesn’t seem to be interested in pursuing you further.</p>");
+		wolfHandled = 1;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
 	} else if(currentOption == dialogue.lonewolf.options["c"] && (drinkRiver == 0 && invTireIron == 0)) {
@@ -325,18 +327,21 @@ function chooseOption(opt) {
 		<p>“</i>Hello?</i> Is anybody home?” you call out to the darkness.</p> \
 		<p>Only silence bounces back from the dark recesses of the abode.</p> \
 		<p><i>(I'll never be able to see without light. Maybe I should go check out the shed?)</i></p>");
-		currentLocation = "house_side";
+		investigateBackdoor = 1;
+		currentLocation = "loose_soil";
 		console.log("Your currentLocation changed to: " + currentLocation);
 	} else if(currentOption == dialogue.house_bporch.options["a"] && (invKey == 0 && invTireIron == 1)) {
 		$('#game-text').append("<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center \
 		in such a way that you can simply step off the sound onto the ground below where the grass has become sparse from continued rainfall off the valley of the roof.</p> \
 		<p>As it turns out, the ground was not as solid as it appeared and your foot makes a heavy indention in the softened soil.</p>");
+		investigateBackdoor = 1;
 		currentLocation = "loose_soil";
 		console.log("Your currentLocation changed: " + currentLocation);
 	} else if(currentOption == dialogue.house_bporch.options["a"] && (invKey == 0 && invTireIron == 0)) {
 		$('#game-text').append("<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center \
 		in such a way that you can simply step off the sound onto the ground below where the grass has become sparse from continued rainfall off the valley of the roof.</p> \
 		<p>As it turns out, the ground was not as solid as it appeared and your foot makes a heavy indention in the softened soil.</p>");
+		investigateBackdoor = 1;
 		currentLocation = "house_side";
 		console.log("Your currentLocation changed: " + currentLocation);
 	} else if(currentOption == dialogue.house_bporch.options["c"]) {
@@ -346,16 +351,16 @@ function chooseOption(opt) {
 
 
 // Loose Soil/Tight Surprise
-	if(currentOption == dialogue.loose_soil.options["y"] && invTireIron == 1) {
+	if(currentOption == dialogue.loose_soil.options["y"] && (invTireIron == 1 && investigateBackdoor == 1)) {
 		clear()
 		$('#game-text').append("<p>You take the bladed end of the tire iron, stab it into the soil, and then wrench it to the side to further break loose the dirt that has had some time to pack.</p> \
 		<p>The amount of effort expended, you hope, will be nothing in comparison to what you find. The moment that thought crosses your mind, the blade of the tire iron strikes something solid that can in \
 		no way be hard soil. No, this is what you were digging for...</p> \
-		<p>You dive in with both hands and wrestle with the item in its shallow grave. Your mind is awash with possibilities… until, at least, you finally pull it free and only a thin layer of dirt keeps what \
+		<p>You dive in with both hands and wrestle with the item in its shallow grave. Your mind is awash with possibilities ... until, at least, you finally pull it free and only a thin layer of dirt keeps what \
 		remains a mystery.</p> \
 		<p>Like a magician pulling back the veil, the rectangular item in your hand mystically transforms into a picture frame. Captured inside were two—</p> \
 		<p><i>...three...</i></p> \
-		<p>—older people, standing in an area that could have been near here.</p> \
+		<p>—older people, standing in an area that looked as though it could have been near here.</p> \
 		<p>In a flash, the frame tumbles to the ground where its glass cracks from gracelessly landing on the corner. There is a faint tingling in your hand, and the sudden pain building just behind your eyes \
 		is surely not helping matters either. You think to yourself that something was wrong with the picture, that you needed to take another look ... but it's a war of attrition and you're losing. Your body is \
 		unapologetically pulling you around the side of the house.</p><p>Far from the recently unearthed, seemingly otherworldly picture frame.</p>");
@@ -372,17 +377,16 @@ function chooseOption(opt) {
 
 
 // House - Side
-	if(currentOption == dialogue.house_side.options["a"] && (lightsOn == 1 || invFlashlight == 1)) {
-		if(invKey == 1) {
+	if(currentOption == dialogue.house_side.options["a"] && (lightsOn == 1 || invFlashlight == 1) && invKey ==1) {
 		clear()
-		$('#game-text').append("<p>Now that you have illumination, sticking the key into the deadbolt is easy part. Just like with the back door, you turn the key and the door is now unlocked.</p> \
+		$('#game-text').append("<p>Now that you have illumination, sticking the key into the deadbolt is the easy part. Just like with the back door, you turn the key and the door is now unlocked.</p> \
 		<p>You walk into the entryway and hope this nightmare in which you're living is soon to come to a close.</p>"); 
-			currentLocation = "house_entryway"
-			console.log("Your currentLocation changed to 'house_entryway'.");
-		}
+			currentLocation = "house_entryway";
+			playerEntryway = 1;
+			console.log("Your currentLocation changed: " + currentLocation);
 	} else if(currentOption == dialogue.house_side.options["a"]) {
-			currentLocation = "house_fporch"
-			console.log("Your currentLocation changed to 'house_fporch'.");
+			currentLocation = "house_fporch";
+			console.log("Your currentLocation changed: " + currentLocation);
 	} else if(currentOption == dialogue.house_side.options["b"] && (investigateGarage == 1 || invFlashlight == 1)) {
 		clear()
 		$('#game-text').append("<p>You realize the second the thought crosses your mind that you've already gotten everything you need from the garage.</p>");
@@ -390,8 +394,8 @@ function chooseOption(opt) {
 		$('#game-text').append("<p>The shed was just about as rickety as most constructs you’ve run into tonight. It isn’t an overly large building, but it is clearly capable of supporting a large tractor, provided the doors were \
 			larger.</p><p>The shed door stood ajar, but there is absolutely no way you can see inside. You turn back, defeated.</p><p><i>If only I had some kind of light...</i></p>");
 	} else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 1 && invKey == 0)) {
-		currentLocation = "house_shed"
-		console.log("Your currentLocation changed to 'house_shed'.");
+		currentLocation = "house_shed";
+		console.log("Your currentLocation changed to: " + currentLocation);
 }
 
 
@@ -400,6 +404,8 @@ function chooseOption(opt) {
 		doorKnocked = 1;
 		investigateFrontdoor = 1;
 		console.log("You knocked on the door.");
+		currentLocation = "house_side";
+		console.log("Your currentLocation changed to: " + currentLocation);
 	} else if(currentOption == dialogue.house_fporch.options["y"] && investigateFrontdoor == 1) {
 		clear()
 		$('#game-text').append("<p>You've already investigated the door.</p><p>Without some sort of light source, there isn't any point in going inside.");
@@ -407,10 +413,15 @@ function chooseOption(opt) {
 		doorKnocked = 0;
 		investigateFrontdoor = 1;
 		console.log("You did not knock on the door.");
+		currentLocation = "house_side";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		// This may not be the logic you thought it was
 	} else if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 1 || invFlashlight == 1)) {
 		// Now you can enter the house
 		currentLocation = "house_entryway";
-		console.log("Your currentLocation changed to 'house_entryway'.");
+		playerEntryway = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("playerEntryway changed to: " + playerEntryway);
 }
 
 
@@ -419,7 +430,6 @@ function chooseOption(opt) {
 		invFlashlight = 1;
 		console.log("You picked up the flashlight.");
 		investigateGarage = 1;
-		console.log("You knocked on the door.");
 }
 
 
@@ -459,6 +469,40 @@ function chooseOption(opt) {
 	}
 
 
+// Lights On or Off?
+	if(lightsOn == 1) {
+		dialogue.house_study.description = "<p>You are in what looks to you to be a study. There’s an illuminated shade lamp sitting atop a side table by a recliner. Sitting in front of it is a sealed bag of pipe tobacco. The wood floor \
+		beneath has patina befitting such an old house. Most of the center of the floor is covered by a decorative red and beige rug.</p> \
+		<p>Three bookshelves stand side by side, full of various books of all sizes and colors. You see a few that stand out with titles like \"Loss and Moving On\", \"Coping: The Art of Grief\", and \"The Unadulterated History of Necromancy\". \
+		<p>The last book got a second momentary glance from you before your eyes pan to a fascinating fortuneteller machine, likely from the early 1900s.</p> \
+		<p>The desk butted up against the two adjacent windows facing the back yard from whence you came probably offered a breathtaking view in the daytime. At night, it merely felt as though someone could be watching you from just \
+		beyond the pane of glass.</p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>"
+	}
+
+
+// House Interior - Study
+	// Fortuneteller Machine
+	if(currentOption == dialogue.house_study.options["c"] && (lightsOn == 1 && invCoin == 1 && playerStudy == 1)) {
+		currentLocation = previousLocation
+		console.log("Your previousLocation changed to: " + previousLocation);
+		investigateFortuneteller = 1;
+		currentLocation = "house_fortuneteller";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		$('#game-text').append("<p>Would you like to use the buffalo nickel to receive your fortune? (Y/N): </p>")
+	
+	if(currentOption == dialogue.house_fortuneteller.options["y"] && (lightsOn == 1 && invCoin == 1 && playerStudy == 1)) {
+		$('#game-text').append("<p>You fish the coin out of your pocket and push it into the nickel slot with your thumb. The coin makes a series of rolling sounds before clanking and clattering into what sounds like an empty coin tray.</p> \
+			<p>Madame Zora’s eyes light up and her animatronic hand raises to move above the crystal ball in a circular motion about three times before the hand lowers back into her lap.</p><p>The sound of paper being moved catches your \
+			attention. When you look down, a small business card-size piece of paper is sticking out.</p><p>You take it and flip it over. It reads:</p><p><i><h5 align=\"center\">\"DO NOT FOLLOW THE LIGHT BLINDLY<br>FOR IT MAY BE A TRAIN TUNNEL.\"</h5></i></p>")
+		}
+	}
+
+
+
+// House Interior - Entryway
+
+
+
 	if(currentOption == dialogue.house_shed.options["b"] && (invTalisman == 1 || invKey == 1)) {
 		$('#game-text').append("<p><i>Slosh-ka-slosh-ka-slosh!</i></p> \
 			<p>You waste no time pouring what’s left in the can into the generator and capping the gas tank. The next obvious step is to grab the pull start and crank; so, you do.</p> \
@@ -471,6 +515,8 @@ function chooseOption(opt) {
 			<p>The agony of being run through is unbearable. You are at least fortunate enough not to have to spend much time wondering if throwing an empty gas can was truly worth it in the larger scheme of things.</p>");
 		gameover()
 	}
+
+
 
 // SFH_Count
 /* THIS IS MERELY A PLACEHOLDER
@@ -492,7 +538,7 @@ function chooseOption(opt) {
 function gameover() {
 	clear()
 	$('#game-text').append(dialogue.gameover.description);
-	newgame()
+	// newgame()
 }
 
 
