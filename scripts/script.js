@@ -518,6 +518,10 @@ function chooseOption(opt) {
 		<p>The last book got a second momentary glance from you before your eyes pan to a fascinating fortuneteller machine, likely from the early 1900s.</p> \
 		<p>The desk butted up against the two adjacent windows facing the back yard from whence you came probably offered a breathtaking view in the daytime. At night, it merely felt as though someone could be watching you from just \
 		beyond the pane of glass.</p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>"
+
+		dialogue.house_kitchen.description = "<p>The kitchen is modest with a washing room that starts at the end of the countertop. The oblong room painted in peach and trimmed in white has what you’d expect any modern kitchen to have: microwave, \
+	stove, dishwasher, toaster, and ... a wall phone!</p><p>The wall phone hangs crooked atop the mounting hardware with a long phone cord tail heaped up in a pile below the phone and snaking back up to an outlet on the wall.</p> \
+	<p>A) Go to the study.<br>B) Go to the living room.<br>C) Investigate the wall phone.</p>"
 		}
 
 
@@ -657,11 +661,22 @@ function chooseOption(opt) {
 		}
 
 
+	// Go back to the side yard
+	if(currentOption == dialogue.house_shed.options["c"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_side";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);			
+	}
+
+
 // House Interior - Study
 	// Go to kitchen
 	if(currentOption == dialogue.house_study.options["a"]) {
 		previousLocation = currentLocation;
 		currentLocation = "house_kitchen";
+		playerStudy = 0;
+		playerKitchen = 1;
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);	
 	}
@@ -671,6 +686,8 @@ function chooseOption(opt) {
 	if(currentOption == dialogue.house_study.options["b"]) {
 		previousLocation = currentLocation;
 		currentLocation = "house_hall";
+		playerStudy = 0;
+		playerHall = 1;
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
 	}
@@ -699,9 +716,32 @@ function chooseOption(opt) {
 
 
 // House Interior - Kitchen
+	// Go to the study
+	if(currentOption == dialogue.house_kitchen.options["a"])
+		previousLocation = currentLocation;
+		currentLocation = "house_study";
+		playerKitchen = 0;
+		playerStudy = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+
+	// Go to the living room
+	if(currentOption == dialogue.house_kitchen.options["b"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_study";
+		playerKitchen = 0;
+		playerLivingroom = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+	}
 
 	if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone == 0 && playerKitchen == 1)) {
-
+		clear()
+		$('#game-text').append("<p>It’s a wonder you didn’t trip and fall with the way you double-timed it over to the point. You lift the handset off the receiver hard enough that the bell inside resounds for a second or two.</p><p>Even \
+			before you get the handset to your ear, you can hear salvation in the form of a dial tone. This is largely attributed to the fact that the owner has the handset volume maxed out.</p><p>You thoughtlessly dial '9-1-1'.</p> \
+			<p><i>Riiing.<br>Riiing.<br>Riiing.<br>Riii—<br>\"9-1-1. Please hold.\"<br>\"Wait!\" you scream.</i></p><p>The line clicks to eerie silence. You feel tears burning your eyes, but you don’t lose hope. Not yet. Not after everything. \
+			If anything, you realize now that you can survive any—</p><p>The line clicks again.<br><i>Dial tone.</i></p><p>You hang up and dial it again.<br><i>Busy.</i></p><p>You slam the handset onto the receiver in anger. Of course you wouldn’t \
+			even be able to call for help. That’s how these things always work, isn’t it?</p>");
 	}
 
 
