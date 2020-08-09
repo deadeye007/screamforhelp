@@ -540,6 +540,15 @@ function chooseOption(opt) {
 		necklaces and jewelry. The rest of the platform had pictures, drawings, and countless other knickknacks from throughout the years.</p><p><i>(Yep... that vase is an urn and this is a ... shrine.)</i></p><p>You gather your wits and stand to \
 		your feet. The shrine itself draws you to it in a timeless sort of way. While part of your mind crunches all the possibilities for this shrine’s existence, the more rational part of your mind determines you have better things to spend your \
 		time worrying about.</p>"
+
+		dialogue.house_southbedroom.description = "<p>With the lights on in this room, you see what can be none other than a perfectly preserved child’s room. The why doesn’t matter to you as much as if there’s anything in this room that will be \
+		useful to your escape, and likely your survival overall.</p><p>There’s a faint static white noise coming from behind you.</p><p><i>(Was the TV on when I came in?)</i></p><p>A bed with a peach comforter had been set up in the farthest corner \
+		of the room from every other room. It probably served as the greatest form of isolation a child could get without going outside.</p><p>In another corner of the bedroom, there is a large pile of identical, very familiar dolls, all facing you. \
+		What, you wonder, would possess a child to have so many identical dolls?</p><p>The sound of an exasperated sigh just outside causes you to spin on your heels. This is followed only by the sound of a careful footfall on the wooden floor.</p> \
+		<p><i>(Someone’s coming!)</i></p><p>As ridiculous as the idea seems, you bolt across the room and dig yourself an opening in the pile, only to bury yourself with dolls.</p><p>You have little else to do now but wait.</p><p>You can hear your \
+		heartbeat in your ears and your breathing sounds amplified the more you fight to hold it, along with every other sound you could make to alert whatever it is to your position.</p><p>While you lie there almost entirely covered in dolls, you \
+		can see the shadowy creature aimlessly saunter in front of the doorway. You aren’t sure if the hallway light is preventing you from seeing more details, or if there simply aren’t any details to be seen. Either way, you and the dolls are \
+		trembling in the corner.</p>"
 		}
 
 
@@ -766,7 +775,13 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone = 1 && playerKitchen == 1 && invInvoice == 1)) {
 		$('#game-text').append("<p>You pick up the phone and waste no time dialing the numbers you found on the invoice.</p><p><i>Riiiing...<br>Riiiing...</i></p><p>\"Puckett Premier Towing, this is Carla.\"</p><p>\"Carla!\" you nearly scream. \"I need someone to come pick me up. I’m at the house of...\" You look down at the invoice, \
 			but your eyes are welling up with tears. You never thought you’d hear another person’s voice again, and here help was so close by now.</p><p>Carla, who’d been typing away in the background, chimed up. \"Oh, honey, I’ve got your address. \
-			Don’t you worry, I’ll phone up the Sherriff and have him come get you. You just sit tight, okay?\"</p><p><i>(Just why the heck would I decide to play hide and seek with the sheriff?)</i></p>")
+			Don’t you worry, I’ll phone up the Sherriff and have him come get you. You just sit tight, okay?\"</p><p><i>(Just why the heck would I decide to play hide and seek with the sheriff?)</i></p>");
+		previousLocation = currentLocation;
+		currentLocation = "epilogue";
+		playerKitchen = 0;
+		playerWin = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		}
 
 
@@ -852,13 +867,16 @@ function chooseOption(opt) {
 		}
 
 	// Go to the south bedroom
-	if(currentOption == dialogue.house_hall.options["b"]) {
+	if(currentOption == dialogue.house_hall.options["b"] && entityEncounter == 0) {
 		previousLocation = currentLocation;
 		currentLocation = "house_southbedroom";
 		playerHall = 0;
 		playerSouthbedroom = 1;
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
+		} else if(currentOption == dialogue.house_hall.options["b"] && entityEncounter == 1) {
+			clear()
+			$('#game-text').append("<p>Between whatever <i>that</i> was and the creepy dolls, you have no interest in going back into that bedroom.</p>")
 		}
 
 	// Go to the entryway
@@ -883,13 +901,16 @@ function chooseOption(opt) {
 		}
 
 	// Go into the south bedroom
-	if(currentOption == dialogue.house_northbedroom.options["b"]) {
+	if(currentOption == dialogue.house_northbedroom.options["b"] && entityEncounter == 0) {
 		previousLocation = currentLocation;
 		currentLocation = "house_southbedroom";
 		playerNorthbedroom = 0;
 		playerSouthbedroom = 1;
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
+		} else if (currentOption == dialogue.house_northbedroom.options["b"] && entityEncounter == 1) {
+			clear()
+			$('#game-text').append("<p>Between whatever <i>that</i> was and the creepy dolls, you have no interest in going back into that bedroom.</p>")
 		}
 
 	// Investigate the closet
@@ -900,7 +921,28 @@ function chooseOption(opt) {
 		dialogue.house_northbedroom.options["c"] = "<p>You already investigated the closet and don't care to revisit it.</p>"
 		}
 
+// House Interior - South Bedroom
+	// Encounter Logic
+	if(playerSouthbedroom == 1 && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 1) {
+		$('#game-text').append("<p>You hear the faintest click behind you and your heart stops cold.</p><i>\"I sure would love a hug!\"</i> bleats the voice box of the doll whose ring you pulled earlier.</p> \
+			<p>The creature turned heel and walked with newfound purpose to the pile of dolls. A long hand is extended to grab one of the dolls.</p><p>You clinch your eyes shut and hold your breath—every movement, \
+			really. The chosen doll happened to be the one covering your face. Extremely unlucky.</p><p>The glances you hazard reveal that there are no facial features, as if the creature itself were encased \
+			in a skin-tight latex suit.</p><p>The creature lowers the doll it’s holding by the arm and looks straight into your exposed eyes.</p><p><i>Craaaack!</i><p>The creature shatters the doll and drops \
+			it in a heap at the foot of the pile before reaching in to grab you.</p><p>You kick and struggle ... at least until the other hand grabs your neck and squeezes.</p><p>The creature turns on its heel \
+			and drags your nearing lifeless body out of the bedroom. You succumb to the light before seeing where the creature would’ve taken you.</p>");
+		entityEncounter = 1;
+		gameover()
+	} else if(playerSouthbedroom == 1 && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 0) {
+		$('#game-text').append("<p>After some time, the creature turns heel and saunters on.</p><p><i>(Oh my goodness, I... I almost died...)</i></p><p>The creature can no longer be seen and the sound of static \
+			retreats to pure silence.</p><p>You are terrified, but your gut is telling you that it is hopefully safe—that you have to do something if you have any hope of getting out alive.</p><p>You leave the \
+			bedroom with no intentions of returning. You also tell yourself that if you survive this, you won’t return to this house.</p>")
+		}
 
+// Epilogue
+	if(playerWin == 1 && currentLocation == "epilogue") {
+		currentLocation = "acknowledgements";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		}
 
 
 // SFH_Count

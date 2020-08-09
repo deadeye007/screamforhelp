@@ -431,6 +431,42 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 		},
 },
 
+	"house_southbedroom": {
+	description:"<p>You see what may have been, at one point, a child’s room. Back here in this bedroom, it's silent save for a faint static white noise coming from behind you.</p><p>A bed with a peach comforter had been set up in the \
+	farthest corner of the room from every other room. It probably served as the greatest form of isolation a child could get without going outside.</p><p>In another corner of the bedroom, there is a large pile of identical, very \
+	familiar dolls, all facing you. What, you wonder, would possess a child to have so many identical dolls?</p><p>The sound of an exasperated sigh just outside causes you to spin on your heels. This is followed only by the sound of a \
+	careful footfall on the wooden floor.</p><i>(Someone’s coming!)</i></p><p>As ridiculous as the idea seems, you bolt across the room and dig yourself an opening in the pile, only to bury yourself with dolls.</p><p>You have little else \
+	to do now but wait.</p><p>You can hear your heartbeat in your ears and your breathing sounds amplified the more you fight to hold it, along with every other sound you could make to alert whatever it is to your position.</p><p>While you \
+	lie there almost entirely covered in dolls, you can hear the shadowy creature aimlessly saunter in front of the doorway.</p> \
+	<p>A) Go into the hall.<br>B) Go into the north bedroom.<br>C) Go into the hall.</p>",
+	options:
+	{
+		"a":"<p>You go into the hall.</p>",
+		"b":"<p>You go into the south bedroom.</p>",
+		"c":"<p>You grab the knobs and pull open the doors.</p><p>You are powerless but to release a scream and let loose of the knobs on the folding doors. This attempt at fight or flight also sends you with enough momentum backwards \
+		that you trip and fall flat on your buttocks while your brain rushes to make sense of what your eyes are looking at in the shaky beam of light you wield.</p><p>The large portrait of a young woman standing in front of a river \
+		wall startled you before your mind could process the information that this young woman was only captured in a picture—and not in the closet, like you first feared.</p><p><i>Is that a...</i><p><i>It’s eerie, is what it is.</i> \
+		<p>You close the closet door and try not to think about it.</p>",
+		},
+},
+
+	"epilogue": {
+	description:"<p>You manage to just hang up the phone before collapsing to your knees and sobbing uncontrollably as the weight of the situation wins out over the adrenaline on which you’ve been running this whole night.</p> \
+	<p>Several minutes go by before you're able to calm yourself down—and that is just fine. This is expedited by the concussive force of a car door slamming outside.</p><p>All at once, you’re on your feet and out the front door, \
+	leaving it wide open behind you.</p><p>A police cruiser was idling in the driveway with the driver’s side door open. An older man stood just behind it.</p><p>The man with the comb-over that fooled absolutely no one stood still \
+	and just stared at you with a bewildered look on his face.</p><p>\"I’m so glad you made it here. I was so terr—\"</p><p>\"I don’t know,\" he interrupted, waiting for you to stop trying to talk over his deep, gruff tone. \"I don’t \
+	know how you got here, but I’ll take you down to the station and we’ll get you all situated.\"</p><p>There seemed to be more weighing on his tongue, so you only nod in acknowledgement.</p><p>\"What I really want to know,\" he said \
+	with a fret on his face. \"...is where my wife is.\"</p><p>There is a deafening silence as the two of you just stare at the other. A silence which is only broken by the groaning crescendo coming from the shed. The older man continues looking at you.</p> \
+	The creaks and crackles grow as it shifts to and fro, until the movement catches your eye. You turn in time to watch the shed collapse as though the wood were the earth beneath your feet and this were a landslide.</p><p>\"You didn’t see her, did you?\" \
+	the older man asks again, partially obscured by a cloud of dust from the shed’s rather abrupt collapse.</p><p><i>\"What the f—?\"</i></p><p>\"You get used to it,\" he interrupted. \"C’mon. Let’s get you to the station.\"</p>",	
+},
+
+	"acknowledgements": {
+		description:"<p><h3 align=\"center\">Thanks for playing!</h3></p><p>You have my sincerest appreciation for playing my little project. This was a story I've been wanting to tell for several years, but I didn't quite know how I \
+		wanted to share it with you all. Please feel free to let me know what you thought.</p><p>Until then, let's wait and see what comes for our protagonist.</p><p>Andrew Sturm</p><p>P.S. There are several different possibilities \
+		and I encourage you to find all the different ways our protagonist has to ... scream for help.",
+},
+
 	"gameover": { 
 	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game?</p>",
 	options:

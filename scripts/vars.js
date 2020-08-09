@@ -28,6 +28,7 @@ var closeTacklebox = 0;
 var wolfHandled = 0;
 var doorKnocked = 0;
 var lightsOn = 0;
+var entityEncounter = 0;
 
 // Investigation Status Variables
 var checkPockets = 0;
