@@ -88,9 +88,10 @@ var dialogue =
 	<p>A) Further investigate the car.<br>B) Open the glove box.<br>C) Take the key.<br>",
 	options:
 	{
-		"a":"<p>You hope that now you are inside the vehicle that something else will become apparent. While you lean over the center console and take stock of everything, it becomes obvious there is nothing more of importance here.</p><br>",
-		"b":"<p>Damnit! The glove box is locked! What would’ve been the odds that anything other than gloves would’ve been found inside anyway, you wonder.</p><br>",
-		"c":"<p>Seeing nothing else of remote importance in the general vicinity, you lift the chain from the rearview mirror and take the key.</p><br>",
+		"a":"<p>You hope that now you are inside the vehicle that something else will become apparent. While you lean over the center console and take stock of everything, it becomes obvious there is nothing more of importance here.</p>",
+		"b":"<p>Damnit! The glove box is locked! What would’ve been the odds that anything other than gloves would’ve been found inside anyway, you wonder.</p>",
+		"c":"<p>Seeing nothing else of remote importance in the general vicinity, you attempt to lift the chain from the rearview mirror and take the key.</p><p>You get the key without issue, but the rear-view mirror breaks off the \
+		windshield and hits the floorboard with barely a sound. It seems a little odd, but you don't feel compelled to look into it further.</p>",
 		},
 },
 
@@ -392,7 +393,7 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 },
 
 	"house_entryway": {
-	description:"<p><The entryway is an utterly boring room with aged floral wallpaper, which is peeling where the glue is losing grip./p> \
+	description:"<p>The entryway is an utterly boring room with aged floral wallpaper, which is peeling where the glue is losing grip.</p> \
 	<p>A) Go to the hall.<br>B) Go to the living room.<br>C) Leave out the front door.</p>",
 	options:
 	{
@@ -401,6 +402,35 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 		"c":"<p>Now that you've finally found a way inside, you're not about to leave until you find a way out of here.</p>",
 		},
 },
+
+	"house_hall": {
+	description:"<p>The hall is less boring than the entryway, at least marginally. It at least has a certain level of excitement ingrained into the variety of wood textures.</p><p>It feels like you stand at the precipice of various \
+	potential outcomes.</p> \
+	<p>A) Go into the north bedroom.<br>B) Go into the south bedroom.<br>C) Go into the entryway.</p>",
+	options:
+	{
+		"a":"<p>You go into the north bedroom.</p>",
+		"b":"<p>You go into the south bedroom.</p>",
+		"c":"<p>You go into the entryway.</p>",
+		},
+},
+
+	"house_northbedroom": {
+	description:"<p>This sprawling room seems to open further as you walk into it.</p><p>The layout was otherwise what you’d expect from a master bedroom. The bed was in the center of the room, framed by nightstands on each side.</p> \
+	<p>The room was littered with various men’s clothing. This contributed to that faint smell of cologne that wafted into your nostrils, you figure.</p><p>On the opposite side of the room, there are two areas with folding doors. \
+	The one farthest from you is cracked up enough for you to see that it’s a closet holding at least the clothing belonging to a man.</p><p>The other one is entirely shut, but common sense suggests it’s a closet.</p> \
+	<p>A) Go into the hall.<br>B) Go into the south bedroom.<br>C) Investigate the closet.</p>",
+	options:
+	{
+		"a":"<p>You go into the hall.</p>",
+		"b":"<p>You go into the south bedroom.</p>",
+		"c":"<p>You grab the knobs and pull open the doors.</p><p>You are powerless but to release a scream and let loose of the knobs on the folding doors. This attempt at fight or flight also sends you with enough momentum backwards \
+		that you trip and fall flat on your buttocks while your brain rushes to make sense of what your eyes are looking at in the shaky beam of light you wield.</p><p>The large portrait of a young woman standing in front of a river \
+		wall startled you before your mind could process the information that this young woman was only captured in a picture—and not in the closet, like you first feared.</p><p><i>Is that a...</i><p><i>It’s eerie, is what it is.</i> \
+		<p>You close the closet door and try not to think about it.</p>",
+		},
+},
+
 	"gameover": { 
 	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game?</p>",
 	options:

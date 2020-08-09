@@ -525,6 +525,21 @@ function chooseOption(opt) {
 
 		dialogue.house_entryway.description = "<p>The entryway is an utterly boring room with aged floral wallpaper, which is peeling where the glue is losing grip. With the ceiling light drawing your attention, you notice how sloppily the ceiling \
 		has been painted in off-white over aged tar staining from what had probably been years of smoking inside the house.</p><p><i>(Ugh. Disgusting. And the house smells like an ashtray too!)</i></p>"
+		
+		dialogue.house_hall.description = "<p>The hall is less boring than the entryway, at least marginally. It at least has a certain level of excitement ingrained into the variety of wood textures. The wooden doorframe going into the north bedroom \
+		has a certain <i>je ne sais quoi</i> about it. Around the baseboards, there seems to be a bit of deterioration. Not like termites, though. It feels instead like more of the same—whatever <i>it</i> is.</p>It feels like you stand at the \
+		precipice of various potential outcomes.</p>"
+
+		dialogue.house_northbedroom.description = "<p>The room seems to brighten as you walk into it.</p><p>The layout was otherwise what you’d expect from a master bedroom. The bed was in the center of the room, framed by nightstands on each side.</p> \
+		<p>The room was littered with various clothing. This contributed to that faint smell of cologne that wafted into your nostrils, you figure.</p><p>On the opposite side of the room, there are two areas with off-white folding doors. The one farthest \
+		from you is cracked up enough for you to see that it’s a closet holding at least the clothing belonging to a man.</p><p>The other one is entirely shut, but common sense at least suggests it’s a closet.</p>"
+
+		dialogue.house_northbedroom.options["c"] = "<p>At a closer glance, you realize there is a light on behind this door that spills out around the imperfectly hanging doors.</p><p>You grab the knobs and pull open the doors.</p><p><i>GASP!</i> \
+		<p>You let loose of the knobs and fall flat on your buttocks while your brain rushes to make sense of what your eyes are looking at.</p><p>The large portrait of a young woman standing in front of a river wall startled you before your mind \
+		could process the information that this young woman was only captured in a picture—and not in the closet, like you first feared.</p><p><i>(Is that a...)</i><p>There is a vase atop a homemade wooden platform that is surrounded by various \
+		necklaces and jewelry. The rest of the platform had pictures, drawings, and countless other knickknacks from throughout the years.</p><p><i>(Yep... that vase is an urn and this is a ... shrine.)</i></p><p>You gather your wits and stand to \
+		your feet. The shrine itself draws you to it in a timeless sort of way. While part of your mind crunches all the possibilities for this shrine’s existence, the more rational part of your mind determines you have better things to spend your \
+		time worrying about.</p>"
 		}
 
 
@@ -801,7 +816,7 @@ function chooseOption(opt) {
 		currentLocation = "house_livingroom";
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
-	}
+		}
 
 // House Interior - Entryway
 	// Go to the hall
@@ -825,8 +840,67 @@ function chooseOption(opt) {
 		console.log("Your previousLocation changed to: " + previousLocation);
 		}
 
+// House Interior - Hall
+	// Go to the north bedroom
+	if(currentOption == dialogue.house_hall.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_northbedroom";
+		playerHall = 0;
+		playerNorthbedroom = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
 
-	
+	// Go to the south bedroom
+	if(currentOption == dialogue.house_hall.options["b"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_southbedroom";
+		playerHall = 0;
+		playerSouthbedroom = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+	// Go to the entryway
+	if(currentOption == dialogue.house_hall.options["c"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_entryway";
+		playerHall = 0;
+		playerEntryway = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+// House Interior - North Bedroom
+	// Go into the entryway
+	if(currentOption == dialogue.house_northbedroom.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_entryway";
+		playerNorthbedroom = 0;
+		playerEntryway = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+	// Go into the south bedroom
+	if(currentOption == dialogue.house_northbedroom.options["b"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_southbedroom";
+		playerNorthbedroom = 0;
+		playerSouthbedroom = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+	// Investigate the closet
+	// This is covered above, with the other lightsOn variables
+	if(currentOption == dialogue.house_northbedroom.options["c"] && investigateCloset == 0) {
+		investigateChest = 1;
+	} else if(currentOption == dialogue.house_northbedroom.options["c"] && investigateCloset == 1) {
+		dialogue.house_northbedroom.options["c"] = "<p>You already investigated the closet and don't care to revisit it.</p>"
+		}
+
+
 
 
 // SFH_Count
