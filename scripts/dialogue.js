@@ -305,10 +305,9 @@ var dialogue =
 	<p>Take the flashlight? (Y/N): </p>",
 	options:
 	{
-		"y":"<p>You took the flashlight.</p> \
-	After a good minute or so of cranking, you flip the power switch and a workable beam of light leaps from the handheld torch to light up the boring and devoid husk of a structure that should house vehicles, \
-	or at least crap nobody wants to just trash.</p> \
-	<p>You, however, get to leave with the satisfaction of holding a rechargeable torch in your hand that can also be left to hang around your wrist.</p>",
+		"y":"<p>You took the flashlight.</p><p>	After a good minute or so of cranking, you flip the power switch and a workable beam of light leaps from the handheld torch to light up the boring and devoid husk \
+		of a structure that should house vehicles, or at least crap nobody wants to just trash.</p><p>You, however, get to leave with the satisfaction of holding a rechargeable torch in your hand that can also be \
+		left to hang around your wrist.</p>",
 		"n":"<p>You choose to forgo taking the illuminated path and to instead trust your keen instincts—the ones which have brought you here.</p>",
 		},
 },
