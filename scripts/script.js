@@ -520,8 +520,11 @@ function chooseOption(opt) {
 		beyond the pane of glass.</p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>"
 
 		dialogue.house_kitchen.description = "<p>The kitchen is modest with a washing room that starts at the end of the countertop. The oblong room painted in peach and trimmed in white has what you’d expect any modern kitchen to have: microwave, \
-	stove, dishwasher, toaster, and ... a wall phone!</p><p>The wall phone hangs crooked atop the mounting hardware with a long phone cord tail heaped up in a pile below the phone and snaking back up to an outlet on the wall.</p> \
-	<p>A) Go to the study.<br>B) Go to the living room.<br>C) Investigate the wall phone.</p>"
+		stove, dishwasher, toaster, and ... a wall phone!</p><p>The wall phone hangs crooked atop the mounting hardware with a long phone cord tail heaped up in a pile below the phone and snaking back up to an outlet on the wall.</p> \
+		<p>A) Go to the study.<br>B) Go to the living room.<br>C) Investigate the wall phone.</p>"
+
+		dialogue.house_entryway.description = "<p>The entryway is an utterly boring room with aged floral wallpaper, which is peeling where the glue is losing grip. With the ceiling light drawing your attention, you notice how sloppily the ceiling \
+		has been painted in off-white over aged tar staining from what had probably been years of smoking inside the house.</p><p><i>(Ugh. Disgusting. And the house smells like an ashtray too!)</i></p>"
 		}
 
 
@@ -717,38 +720,113 @@ function chooseOption(opt) {
 
 // House Interior - Kitchen
 	// Go to the study
-	if(currentOption == dialogue.house_kitchen.options["a"])
+	if(currentOption == dialogue.house_kitchen.options["a"]) {
 		previousLocation = currentLocation;
 		currentLocation = "house_study";
 		playerKitchen = 0;
 		playerStudy = 1;
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
+		}
 
 	// Go to the living room
 	if(currentOption == dialogue.house_kitchen.options["b"]) {
 		previousLocation = currentLocation;
-		currentLocation = "house_study";
+		currentLocation = "house_livingroom";
 		playerKitchen = 0;
 		playerLivingroom = 1;
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
-	}
+		}
+
 
 	if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone == 0 && playerKitchen == 1)) {
 		clear()
+		investigatePhone = 1;
 		$('#game-text').append("<p>It’s a wonder you didn’t trip and fall with the way you double-timed it over to the point. You lift the handset off the receiver hard enough that the bell inside resounds for a second or two.</p><p>Even \
 			before you get the handset to your ear, you can hear salvation in the form of a dial tone. This is largely attributed to the fact that the owner has the handset volume maxed out.</p><p>You thoughtlessly dial '9-1-1'.</p> \
 			<p><i>Riiing.<br>Riiing.<br>Riiing.<br>Riii—<br>\"9-1-1. Please hold.\"<br>\"Wait!\" you scream.</i></p><p>The line clicks to eerie silence. You feel tears burning your eyes, but you don’t lose hope. Not yet. Not after everything. \
 			If anything, you realize now that you can survive any—</p><p>The line clicks again.<br><i>Dial tone.</i></p><p>You hang up and dial it again.<br><i>Busy.</i></p><p>You slam the handset onto the receiver in anger. Of course you wouldn’t \
 			even be able to call for help. That’s how these things always work, isn’t it?</p>");
+	} else if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone = 1 && playerKitchen == 1 && invInvoice == 1)) {
+		$('#game-text').append("<p>You pick up the phone and waste no time dialing the numbers you found on the invoice.</p><p><i>Riiiing...<br>Riiiing...</i></p><p>\"Puckett Premier Towing, this is Carla.\"</p><p>\"Carla!\" you nearly scream. \"I need someone to come pick me up. I’m at the house of...\" You look down at the invoice, \
+			but your eyes are welling up with tears. You never thought you’d hear another person’s voice again, and here help was so close by now.</p><p>Carla, who’d been typing away in the background, chimed up. \"Oh, honey, I’ve got your address. \
+			Don’t you worry, I’ll phone up the Sherriff and have him come get you. You just sit tight, okay?\"</p><p><i>(Just why the heck would I decide to play hide and seek with the sheriff?)</i></p>")
+		}
+
+
+// House Interior - Living Room
+
+	// Go to the entryway
+	if(currentOption == dialogue.house_kitchen.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_entryway";
+		playerLivingroom = 0;
+		playerEntryway = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	// Go to the kitchen
+	if(currentOption == dialogue.house_kitchen.options["b"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_kitchen";
+		playerLivingroom = 0;
+		playerKitchen = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	// Go into the secretary desk
+	if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone == 1 && playerLivingroom == 1)) {
+		previousLocation = currentLocation;
+		currentLocation = "secretarydesk";
+		playerKitchen = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	if(currentOption == dialogue.secretarydesk.options["y"] && invInvoice == 0) {
+		investigateDesk = 1;
+		invInvoice = 1;
+		previousLocation = currentLocation;
+		currentLocation = "house_livingroom";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+	} else if(currentOption == dialogue.secretarydesk.options["n"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_livingroom";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	}
 
-
-
 // House Interior - Entryway
+	// Go to the hall
+	if(currentOption == dialogue.house_entryway.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_hall";
+		playerEntryway = 0;
+		playerHall = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
 
 
+	// Go to the living room
+	if(currentOption == dialogue.house_entryway.options["b"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_livingroom";
+		playerEntryway = 0;
+		playerLivingroom = 1;
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
+		}
+
+
+	
 
 
 // SFH_Count

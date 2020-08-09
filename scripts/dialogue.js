@@ -355,7 +355,6 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 		},
 },
 
-
 	"house_kitchen": {
 	description:"<p>The kitchen is modest with a washing room that starts at the end of the countertop. The oblong room has what you’d expect any modern kitchen to have: microwave, stove, dishwasher, toaster, and ... a wall phone!</p> \
 	<p>The wall phone hangs crooked atop the mounting hardware.</p> \
@@ -368,6 +367,40 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 		},
 },
 
+	"house_livingroom": {
+	description:"<p>You scan the room with the flashlight and see various picture frames and memorabilia hanging up on the walls.</p><p>In the corner closest to the kitchen, you see a small dining area that consists of a small rounded \
+	table with one chair pushed neatly under the table.</p><p>In the middle of the room is a large couch positioned in front of an old box-style TV. Keepsakes hold their places atop the TV.</p>Several feet from the TV and towards the \
+	kitchen is an antique roll-top secretary desk. It might not be fully closed.</p></p> \
+	<p>A) Go to the entryway.<br>B) Go to the kitchen.<br>C) Investigate the secretary desk.</p>",
+	options:
+	{
+		"a":"<p>Investigate the entryway.</p>",
+		"b":"<p>You go to the kitchen.</p>",
+		"c":"<p>It feels to you like an unnecessary invasion of privacy to go into the secretary desk for no reason.</p>",
+		},
+},
+
+	"secretarydesk": {
+	description:"<p>The first thing you try is pulling up the secretary desk’s rolling top. It doesn’t seem to quite roll as smoothly as you were hoping, but you do get it rolled up.</p><p>Inside are various pieces of paper: everything \
+	from junk mail to bills. The top-most piece of paper on the stack is clearly an invoice marked PAID from Puckett’s Premier Towing, LLC.</p><p>The basic outline of a tow truck for a logo jumped out at you, along with the tagline \
+	underneath:</p><p><i>WE TAKE A WINK, BUT NEVER SLEEP!</i></p><p>Take the invoice? (Y/N): </p>",
+	options:
+	{
+		"y":"<p>You take the invoice.</p>",
+		"n":"<p>You do not take the invoice.</p>",
+		},
+},
+
+	"house_entryway": {
+	description:"<p><The entryway is an utterly boring room with aged floral wallpaper, which is peeling where the glue is losing grip./p> \
+	<p>A) Go to the hall.<br>B) Go to the living room.<br>C) Leave out the front door.</p>",
+	options:
+	{
+		"a":"<p>You go into the hall.</p>",
+		"b":"<p>You go into the living room.</p>",
+		"c":"<p>Now that you've finally found a way inside, you're not about to leave until you find a way out of here.</p>",
+		},
+},
 	"gameover": { 
 	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game?</p>",
 	options:

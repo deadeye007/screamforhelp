@@ -17,6 +17,7 @@ var invPlyers = 0;
 var invHookLine = 0;
 var invTalisman = 0;
 var invFlashlight = 0;
+var invInvoice = 0;
 
 // Status Variables
 var screamCount = 0;
@@ -39,7 +40,8 @@ var investigateHookLine = 0;
 var investigateBackdoor = 0;
 var investigateFrontdoor = 0;
 var investigateGarage = 0;
-var investigateFortuneteller
+var investigateFortuneteller = 0;
+var investigateDesk = 0;
 
 // Player Locations
 var playerStudy = 0;
