@@ -326,8 +326,10 @@ function chooseOption(opt) {
 		investigateHookLine = 1
 		dialogue.tacklebox.options["b"] = "You already took the fishing line and fishing hook.";
 	} else if(currentOption == dialogue.tacklebox.options["c"]) {
+		previousLocation = currentLocation;
 		currentLocation = "on_bridge";
 		console.log("currentLocation has been changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		}
 
 
@@ -335,11 +337,15 @@ function chooseOption(opt) {
 	if(currentOption == dialogue.talisman.options["y"]) {
 		invTalisman = 1;
 		console.log("You got the talisman.");
+		previousLocation = currentLocation;
 		currentLocation = "lonewolf";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.talisman.options["n"]) {
+		previousLocation = currentLocation;
 		currentLocation = "lonewolf";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		}    
 
 
@@ -349,8 +355,10 @@ function chooseOption(opt) {
 		$('#game-text').append("<p>You let out a scream to the high heavens, one which faintly echoes back. In the distance, somewhere far behind you, you hear a respondent howl. This, much to your delight, is enough to stir \
 		the creature to move away from you, seemingly disinterested.</p>")
 		wolfHandled = 1;
+		previousLocation = currentLocation;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 0 && invTalisman == 0)) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can scream for help, or maybe just to startle the beast. Either way, you just have to convince him that you aren’t one to be trifled with.</p> \
@@ -369,8 +377,10 @@ function chooseOption(opt) {
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re \
 		being followed.</p><p>Fortune favors you on this night. The creature seems to have not been interested in a hunt.</p>");
 		wolfHandled = 1;
+		previousLocation = currentLocation;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 0 && invTireIron == 1)) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re being \
@@ -378,8 +388,10 @@ function chooseOption(opt) {
 		<p>It is enough to jar you and you stumble to the ground, but not before grabbing hold of the tire iron. When the creature lunges at you, you swing wildly and manage to strike the creature. <i>Thud!</i> \
 		The creature yelps and runs off.</p><p>Fortune favors you on this night. The creature doesn’t seem to be interested in pursuing you further.</p>");
 		wolfHandled = 1;
+		previousLocation = currentLocation;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 0 && invTireIron == 0)) {
 		// GAME OVER
 		clear()
@@ -397,8 +409,10 @@ function chooseOption(opt) {
 		<p>With the tire iron in hand, you start to holler and growl and swing wildly at the trees and the ground. You’re able to strike some things with enough ferocity to ring out in spite of their \
 		dullness. That, and a combination of the hollering and growling is enough—it would seem—to make the creature turn and carry on, seemingly disinterested.</p>");
 		wolfHandled = 1;
+		previousLocation = currentLocation
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.lonewolf.options["c"] && (drinkRiver == 1 || invTalisman == 1)) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re being \
@@ -406,8 +420,10 @@ function chooseOption(opt) {
 		<p>It is enough to jar you and you stumble to the ground, but not before grabbing hold of a fistful of dirt. When the creature lunges at you, you toss the dirt with purpose and deadly precision. The \
 		creature seems to scoff at you just before running off.</p><p>Fortune favors you on this night. The creature doesn’t seem to be interested in pursuing you further.</p>");
 		wolfHandled = 1;
+		previousLocation = currentLocation;
 		currentLocation = "house_bporch";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.lonewolf.options["c"] && (drinkRiver == 0 && invTireIron == 0)) {
 		// GAME OVER
 		clear()
@@ -425,6 +441,7 @@ function chooseOption(opt) {
 
 // House - Back Porch
 	if(currentOption == dialogue.house_bporch.options["a"] && invKey == 1) {
+		clear()
 		$('#game-text').append("<p>You remember the key you picked up from the car and realize that both the deadbolt and the key have the same logo, so what is there to lose? You tear the key off your neck \
 		with a firm yank and immediately slide it into the lock.</p> \
 		<p><i>(So far, so good.)</i></p> \
@@ -435,22 +452,30 @@ function chooseOption(opt) {
 		<p>Only silence bounces back from the dark recesses of the abode.</p> \
 		<p><i>(I'll never be able to see without light. Maybe I should go check out the shed?)</i></p>");
 		investigateBackdoor = 1;
+		previousLocation = currentLocation;
 		currentLocation = "loose_soil";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.house_bporch.options["a"] && (invKey == 0 && invTireIron == 1)) {
+		clear()
 		$('#game-text').append("<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center \
 		in such a way that you can simply step off the sound onto the ground below where the grass has become sparse from continued rainfall off the valley of the roof.</p> \
 		<p>As it turns out, the ground was not as solid as it appeared and your foot makes a heavy indention in the softened soil.</p>");
 		investigateBackdoor = 1;
+		previousLocation = currentLocation;
 		currentLocation = "loose_soil";
 		console.log("Your currentLocation changed: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.house_bporch.options["a"] && (invKey == 0 && invTireIron == 0)) {
+		clear()
 		$('#game-text').append("<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center \
 		in such a way that you can simply step off the sound onto the ground below where the grass has become sparse from continued rainfall off the valley of the roof.</p> \
 		<p>As it turns out, the ground was not as solid as it appeared and your foot makes a heavy indention in the softened soil.</p>");
 		investigateBackdoor = 1;
+		previousLocation = currentLocation;
 		currentLocation = "house_side";
 		console.log("Your currentLocation changed: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.house_bporch.options["c"]) {
 		// SFH_Count
 		clear()
@@ -471,8 +496,10 @@ function chooseOption(opt) {
 		<p>In a flash, the frame tumbles to the ground where its glass cracks from gracelessly landing on the corner. There is a faint tingling in your hand, and the sudden pain building just behind your eyes \
 		is surely not helping matters either. You think to yourself that something was wrong with the picture, that you needed to take another look ... but it's a war of attrition and you're losing. Your body is \
 		unapologetically pulling you around the side of the house.</p><p>Far from the recently unearthed, seemingly otherworldly picture frame.</p>");
+		previousLocation = currentLocation;
 		currentLocation = "house_side";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		}
 
 
@@ -483,17 +510,50 @@ function chooseOption(opt) {
 */
 
 
+// Lights On or Off?
+	if(lightsOn == 1) {
+		dialogue.house_study.description = "<p>You are in what looks to you to be a study. There’s an illuminated shade lamp sitting atop a side table by a recliner. Sitting in front of it is a sealed bag of pipe tobacco. The wood floor \
+		beneath has patina befitting such an old house. Most of the center of the floor is covered by a decorative red and beige rug.</p> \
+		<p>Three bookshelves stand side by side, full of various books of all sizes and colors. You see a few that stand out with titles like \"Loss and Moving On\", \"Coping: The Art of Grief\", and \"The Unadulterated History of Necromancy\". \
+		<p>The last book got a second momentary glance from you before your eyes pan to a fascinating fortuneteller machine, likely from the early 1900s.</p> \
+		<p>The desk butted up against the two adjacent windows facing the back yard from whence you came probably offered a breathtaking view in the daytime. At night, it merely felt as though someone could be watching you from just \
+		beyond the pane of glass.</p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>"
+		}
+
+
+// Room Traversal
+	if(playerStudy == 1) {
+		console.log("playerStudy: 1");
+	} else if(playerKitchen == 1) {
+		console.log("playerKitchen: 1");
+	} else if(playerEntryway == 1) {
+		console.log("playerEntryway: 1");
+	} else if(playerLivingroom == 1) {
+		console.log("playerLivingroom: 1");
+	} else if(playerHall == 1) {
+		console.log("playerHall: 1");
+	} else if(playerNorthbedroom == 1) {
+		console.log("playerNorthbedroom: 1");
+	} else if(playerSouthbedroom == 1) {
+		console.log("playerSouthbedroom: 1");
+	}
+
+
 // House - Side
 	if(currentOption == dialogue.house_side.options["a"] && (lightsOn == 1 || invFlashlight == 1) && invKey ==1) {
 		clear()
 		$('#game-text').append("<p>Now that you have illumination, sticking the key into the deadbolt is the easy part. Just like with the back door, you turn the key and the door is now unlocked.</p> \
-		<p>You walk into the entryway and hope this nightmare in which you're living is soon to come to a close.</p>"); 
-			currentLocation = "house_entryway";
-			playerEntryway = 1;
+		<p>You walk into the entryway and hope this nightmare in which you're living is soon to come to a close.</p>");
+		previousLocation = currentLocation;
+		currentLocation = "house_entryway";
+		playerEntryway = 1;
 			console.log("Your currentLocation changed: " + currentLocation);
+			console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.house_side.options["a"]) {
+			previousLocation = currentLocation;
 			currentLocation = "house_fporch";
 			console.log("Your currentLocation changed: " + currentLocation);
+			console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.house_side.options["b"] && (investigateGarage == 1 || invFlashlight == 1)) {
 		clear()
 		$('#game-text').append("<p>You realize the second the thought crosses your mind that you've already gotten everything you need from the garage.</p>");
@@ -501,8 +561,10 @@ function chooseOption(opt) {
 		$('#game-text').append("<p>The shed was just about as rickety as most constructs you’ve run into tonight. It isn’t an overly large building, but it is clearly capable of supporting a large tractor, provided the doors were \
 			larger.</p><p>The shed door stood ajar, but there is absolutely no way you can see inside. You turn back, defeated.</p><p><i>If only I had some kind of light...</i></p>");
 	} else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 1 && invKey == 0)) {
+		previousLocation = currentLocation;
 		currentLocation = "house_shed";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		}
 
 
@@ -511,8 +573,10 @@ function chooseOption(opt) {
 		doorKnocked = 1;
 		investigateFrontdoor = 1;
 		console.log("You knocked on the door.");
+		previousLocation = currentLocation;
 		currentLocation = "house_side";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.house_fporch.options["y"] && investigateFrontdoor == 1) {
 		clear()
 		$('#game-text').append("<p>You've already investigated the door.</p><p>Without some sort of light source, there isn't any point in going inside.");
@@ -520,15 +584,18 @@ function chooseOption(opt) {
 		doorKnocked = 0;
 		investigateFrontdoor = 1;
 		console.log("You did not knock on the door.");
+		previousLocation = currentLocation;
 		currentLocation = "house_side";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		// This may not be the logic you thought it was
 	} else if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 1 || invFlashlight == 1)) {
 		// Now you can enter the house
+		previousLocation = currentLocation;
 		currentLocation = "house_entryway";
 		playerEntryway = 1;
 		console.log("Your currentLocation changed to: " + currentLocation);
-		console.log("playerEntryway changed to: " + playerEntryway);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		}
 
 
@@ -590,33 +657,52 @@ function chooseOption(opt) {
 		}
 
 
-// Lights On or Off?
-	if(lightsOn == 1) {
-		dialogue.house_study.description = "<p>You are in what looks to you to be a study. There’s an illuminated shade lamp sitting atop a side table by a recliner. Sitting in front of it is a sealed bag of pipe tobacco. The wood floor \
-		beneath has patina befitting such an old house. Most of the center of the floor is covered by a decorative red and beige rug.</p> \
-		<p>Three bookshelves stand side by side, full of various books of all sizes and colors. You see a few that stand out with titles like \"Loss and Moving On\", \"Coping: The Art of Grief\", and \"The Unadulterated History of Necromancy\". \
-		<p>The last book got a second momentary glance from you before your eyes pan to a fascinating fortuneteller machine, likely from the early 1900s.</p> \
-		<p>The desk butted up against the two adjacent windows facing the back yard from whence you came probably offered a breathtaking view in the daytime. At night, it merely felt as though someone could be watching you from just \
-		beyond the pane of glass.</p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>"
-		}
-
-
 // House Interior - Study
-	// Fortuneteller Machine
-	if(currentOption == dialogue.house_study.options["c"] && (lightsOn == 1 && invCoin == 1 && playerStudy == 1)) {
-		currentLocation = previousLocation
+	// Go to kitchen
+	if(currentOption == dialogue.house_study.options["a"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_kitchen";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);	
+	}
+
+
+	// Go to the hall
+	if(currentOption == dialogue.house_study.options["b"]) {
+		previousLocation = currentLocation;
+		currentLocation = "house_hall";
+		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
+	}
+
+
+	// Fortuneteller Machine
+	if(currentOption == dialogue.house_study.options["c"] && (lightsOn == 1 && invCoin == 1 && playerStudy == 1 && investigateFortuneteller == 0)) {
 		investigateFortuneteller = 1;
+		previousLocation = currentLocation;
 		currentLocation = "house_fortuneteller";
 		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		$('#game-text').append("<p>Would you like to use the buffalo nickel to receive your fortune? (Y/N): </p>")
 		}
 	
 	if(currentOption == dialogue.house_fortuneteller.options["y"] && (lightsOn == 1 && invCoin == 1 && playerStudy == 1)) {
+		clear()
 		$('#game-text').append("<p>You fish the coin out of your pocket and push it into the nickel slot with your thumb. The coin makes a series of rolling sounds before clanking and clattering into what sounds like an empty coin tray.</p> \
 			<p>Madame Zora’s eyes light up and her animatronic hand raises to move above the crystal ball in a circular motion about three times before the hand lowers back into her lap.</p><p>The sound of paper being moved catches your \
-			attention. When you look down, a small business card-size piece of paper is sticking out.</p><p>You take it and flip it over. It reads:</p><p><i><h5 align=\"center\">\"DO NOT FOLLOW THE LIGHT BLINDLY<br>FOR IT MAY BE A TRAIN TUNNEL.\"</h5></i></p>")
+			attention. When you look down, a small business card-size piece of paper is sticking out.</p><p>You take it and flip it over. It reads:</p><p><i><h5 align=\"center\">\"DO NOT FOLLOW THE LIGHT BLINDLY<br>FOR IT MAY BE A TRAIN TUNNEL.\"</h5></i></p>");
+		previousLocation = currentLocation;
+		currentLocation = "house_study";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 		}
+
+
+// House Interior - Kitchen
+
+	if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone == 0 && playerKitchen == 1)) {
+
+	}
 
 
 
@@ -654,56 +740,7 @@ function gameover() {
 // Kick off the whole thing with the initial start game function.
 function startgame() {
 	// Reset all variables without requiring user refresh
-	let state = {}
-	let locations = ['trunk', 'trunk_handle', 'trunk_open', 'trunk_out', 'tripped_up','at_bridge','on_bridge','lonewolf','at_house','house_bporch','house_side']
-	let locationInt = 0
-	let currentLocation = locations[locationInt]
-	var currentOption = ""
-	var previousLocation = ""
-	var choice = ""
-
-	// Inventory Variables
-
-	var invTireIron = 0;
-	var invKey = 0;
-	var invDoll = 0;
-	var invCoin = 0;
-	var invPlyers = 0;
-	var invHookLine = 0;
-	var invTalisman = 0;
-	var invFlashlight = 0;
-
-	// Status Variables
-	var screamCount = 0;
-	var screamMax = 0;
-	var drinkRiver = 0;
-	var ringPulled = 0;
-	var closeTacklebox = 0;
-	var wolfHandled = 0;
-	var doorKnocked = 0;
-	var lightsOn = 0;
-
-	// Investigation Status Variables
-	var checkPockets = 0;
-	var investigateTrunk = 0;
-	var investigateVehicle = 0;
-	var investigateDoll = 0;
-	var investigateCoin = 0;
-	var investigatePlyers = 0;
-	var investigateHookLine = 0;
-	var investigateBackdoor = 0;
-	var investigateFrontdoor = 0;
-	var investigateGarage = 0;
-	var investigateFortuneteller
-
-	// Player Locations
-	var playerStudy = 0;
-	var playerKitchen = 0;
-	var playerLivingroom = 0;
-	var playerHall = 0;
-	var playerNorthbedroom = 0;
-	var playerSouthbedroom = 0;
-	var playerEntryway = 0;
+	// I removed the variables because it's a mess. I'll figure out how I want to do this when I finish the main game.
 
 	$('#game-text').append(dialogue[currentLocation].description);
 }

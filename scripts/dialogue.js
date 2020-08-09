@@ -355,6 +355,19 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 		},
 },
 
+
+	"house_kitchen": {
+	description:"<p>The kitchen is modest with a washing room that starts at the end of the countertop. The oblong room painted in peach and trimmed in white has what you’d expect any modern kitchen to have: microwave, \
+	stove, dishwasher, toaster, and ... a wall phone!</p><p>The wall phone hangs crooked atop the mounting hardware with a long phone cord tail heaped up in a pile below the phone and snaking back up to an outlet on the wall.</p> \
+	<p>A) Go to the study.<br>B) Go to the living room.<br>C) Investigate the wall phone.</p>",
+	options:
+	{
+		"a":"<p>You go to the study.</p>",
+		"b":"<p>You go to the living room.</p>",
+		"c":"<p>You pick up the phone and try to dial out again...</p><p>Nothing.</p>",
+		},
+},
+
 	"gameover": { 
 	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game?</p>",
 	options:
