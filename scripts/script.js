@@ -310,7 +310,7 @@ function chooseOption(opt) {
 	// Do you lean on the railing?
 	if(currentOption == dialogue.on_bridge.options["c"]) {
 		console.log("You leaned against the railing.");
-		gameover()
+		currentLocation = "gameover";
 		}
 
 
@@ -369,7 +369,7 @@ function chooseOption(opt) {
 		there is nothing here for you.</p> \
 		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
 		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
-		gameover()
+		currentLocation = "gameover";
 		}
 
 	if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 1 || invTalisman == 1)) {
@@ -400,7 +400,7 @@ function chooseOption(opt) {
 		<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
 		there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for the throat.</p><p>And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as \
 		your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
-		gameover()
+		currentLocation = "gameover";
 		}
 
 	if(currentOption == dialogue.lonewolf.options["c"] && invTireIron == 1) {
@@ -435,7 +435,7 @@ function chooseOption(opt) {
 		there is nothing here for you.</p> \
 		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
 		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
-		gameover()
+		currentLocation = "gameover";
 		}
 
 
@@ -571,7 +571,7 @@ function chooseOption(opt) {
 
 
 // House - Side
-	if(currentOption == dialogue.house_side.options["a"] && (lightsOn == 1 || invFlashlight == 1) && invKey ==1) {
+	if(currentOption == dialogue.house_side.options["a"] && (lightsOn == 1 || invFlashlight == 1) && invKey == 1) {
 		clear()
 		$('#game-text').append("<p>Now that you have illumination, sticking the key into the deadbolt is the easy part. Just like with the back door, you turn the key and the door is now unlocked.</p> \
 		<p>You walk into the entryway and hope this nightmare in which you're living is soon to come to a close.</p>");
@@ -585,10 +585,19 @@ function chooseOption(opt) {
 			currentLocation = "house_fporch";
 			console.log("Your currentLocation changed: " + currentLocation);
 			console.log("Your previousLocation changed to: " + previousLocation);
+	}
+
+	if(currentOption == dialogue.house_side.options["b"] && investigateGarage == 0) {
+		previousLocation = currentLocation;
+		currentLocation = "house_garage";
+		console.log("Your currentLocation changed to: " + currentLocation);
+		console.log("Your previousLocation changed to: " + previousLocation);
 	} else if(currentOption == dialogue.house_side.options["b"] && (investigateGarage == 1 || invFlashlight == 1)) {
 		clear()
 		$('#game-text').append("<p>You realize the second the thought crosses your mind that you've already gotten everything you need from the garage.</p>");
-	} else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 0)) {
+	}
+
+	if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 0)) {
 		$('#game-text').append("<p>The shed was just about as rickety as most constructs you’ve run into tonight. It isn’t an overly large building, but it is clearly capable of supporting a large tractor, provided the doors were \
 			larger.</p><p>The shed door stood ajar, but there is absolutely no way you can see inside. You turn back, defeated.</p><p><i>If only I had some kind of light...</i></p>");
 	} else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 1 && invKey == 0)) {
@@ -597,6 +606,15 @@ function chooseOption(opt) {
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
 		}
+
+// Garage
+	if(currentOption == dialogue.house_garage.options["y"] && invFlashlight == 0) {
+		invFlashlight = 1;
+		currentLocation = previousLocation;
+	} else if(currentOption == dialogue.house_garage.options["n"]) {
+		invFlashlight = 0;
+		currentLocation = previousLocation;
+	}
 
 
 // Front Door/Door Knocker
@@ -620,7 +638,7 @@ function chooseOption(opt) {
 		console.log("Your currentLocation changed to: " + currentLocation);
 		console.log("Your previousLocation changed to: " + previousLocation);
 		// This may not be the logic you thought it was
-	} else if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 1 || invFlashlight == 1)) {
+	} else if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 1 || invFlashlight == 1) && invKey == 1) {
 		// Now you can enter the house
 		previousLocation = currentLocation;
 		currentLocation = "house_entryway";
@@ -655,6 +673,7 @@ function chooseOption(opt) {
 			trying fruitlessly to reach for the key, your neck tingles and you get that god awful sensation again.</p> \
 			<p>You turn to relieve your paranoia, but there’s no relief to be found. An androgynous humanoid creature of average height stands over you. Your mind is suddenly full to bursting of a cacophony of noises ... until the \
 			creature releases you from the torment of this existence with one swift twist of your neck.</p>");
+			currentLocation = "gameover";
 	} else if(currentOption == dialogue.house_shed.options["a"] && (invKey == 0 && invHookLine == 1)) {
 		clear()
 		$('#game-text').append("<p>You place your left hand on the table to steady yourself while you stand on the tips of your toes and stretch across the worktable towards the hook. The solitary key on its keyring dangles from the \
@@ -675,6 +694,7 @@ function chooseOption(opt) {
 
 
 	if(currentOption == dialogue.house_shed.options["b"] && (invTalisman == 1 || invKey == 1)) {
+		lightsOn = 1;
 		$('#game-text').append("<p><i>Slosh-ka-slosh-ka-slosh!</i></p> \
 			<p>You waste no time pouring what’s left in the can into the generator and capping the gas tank. The next obvious step is to grab the pull start and crank; so, you do.</p> \
 			<p>You don’t panic when the third crank comes and goes because it’s clear it ran dry. But then there’s the fourth crank. And then the fifth...</p> \
@@ -684,7 +704,7 @@ function chooseOption(opt) {
 			<p>The amount of noise you made in anger was satisfying, at least. Something about making a lot of noise always feels therapeutic in times such as these.</p> \
 			<p>In times such as these, however, the noise brings unwanted attention, which manifests itself when you look down and realize there is a black as pitch clawed hand going entirely through your chest.</p> \
 			<p>The agony of being run through is unbearable. You are at least fortunate enough not to have to spend much time wondering if throwing an empty gas can was truly worth it in the larger scheme of things.</p>");
-		gameover()
+		currentLocation = "gameover";
 		}
 
 
@@ -772,7 +792,7 @@ function chooseOption(opt) {
 			<p><i>Riiing.<br>Riiing.<br>Riiing.<br>Riii—<br>\"9-1-1. Please hold.\"<br>\"Wait!\" you scream.</i></p><p>The line clicks to eerie silence. You feel tears burning your eyes, but you don’t lose hope. Not yet. Not after everything. \
 			If anything, you realize now that you can survive any—</p><p>The line clicks again.<br><i>Dial tone.</i></p><p>You hang up and dial it again.<br><i>Busy.</i></p><p>You slam the handset onto the receiver in anger. Of course you wouldn’t \
 			even be able to call for help. That’s how these things always work, isn’t it?</p>");
-	} else if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone = 1 && playerKitchen == 1 && invInvoice == 1)) {
+	} else if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone == 1 && playerKitchen == 1 && invInvoice == 1)) {
 		$('#game-text').append("<p>You pick up the phone and waste no time dialing the numbers you found on the invoice.</p><p><i>Riiiing...<br>Riiiing...</i></p><p>\"Puckett Premier Towing, this is Carla.\"</p><p>\"Carla!\" you nearly scream. \"I need someone to come pick me up. I’m at the house of...\" You look down at the invoice, \
 			but your eyes are welling up with tears. You never thought you’d hear another person’s voice again, and here help was so close by now.</p><p>Carla, who’d been typing away in the background, chimed up. \"Oh, honey, I’ve got your address. \
 			Don’t you worry, I’ll phone up the Sherriff and have him come get you. You just sit tight, okay?\"</p><p><i>(Just why the heck would I decide to play hide and seek with the sheriff?)</i></p>");
@@ -931,7 +951,7 @@ function chooseOption(opt) {
 			it in a heap at the foot of the pile before reaching in to grab you.</p><p>You kick and struggle ... at least until the other hand grabs your neck and squeezes.</p><p>The creature turns on its heel \
 			and drags your nearing lifeless body out of the bedroom. You succumb to the light before seeing where the creature would’ve taken you.</p>");
 		entityEncounter = 1;
-		gameover()
+		currentLocation = "gameover";
 	} else if(playerSouthbedroom == 1 && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 0) {
 		$('#game-text').append("<p>After some time, the creature turns heel and saunters on.</p><p><i>(Oh my goodness, I... I almost died...)</i></p><p>The creature can no longer be seen and the sound of static \
 			retreats to pure silence.</p><p>You are terrified, but your gut is telling you that it is hopefully safe—that you have to do something if you have any hope of getting out alive.</p><p>You leave the \
@@ -953,21 +973,15 @@ function chooseOption(opt) {
 */
 
 
-}
-
-
 // Handle the user failing to complete the adventure because of poor choices.
-function gameover() {
-	clear()
-	currentLocation = "gameover";
-	$('#game-text').append(dialogue.gameover.description);
-	if(currentOption == dialogue.gameover.options["y"] && currentLocation == "gameover") {
-		startgame()
+if(currentOption == dialogue.gameover.options["y"] && currentLocation == "gameover") {
+		// Dirty page reload for the moment
+		location.reload(forceGet);
 	} else if(currentOption == dialogue.gameover.options["n"] && currentLocation == "gameover") {
 		clear()
 		$('#game-text').append("<p>Thanks for playing my game!</p><p>Feel free to leave me some feedback on it.</p>")
 	}
-	
+
 }
 
 

@@ -43,6 +43,7 @@ var investigateFrontdoor = 0;
 var investigateGarage = 0;
 var investigateFortuneteller = 0;
 var investigateDesk = 0;
+var investigatePhone = 0;
 
 // Player Locations
 var playerStudy = 0;
@@ -52,3 +53,4 @@ var playerHall = 0;
 var playerNorthbedroom = 0;
 var playerSouthbedroom = 0;
 var playerEntryway = 0;
+var playerWin = 0;
