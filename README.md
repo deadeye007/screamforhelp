@@ -1,5 +1,5 @@
-# Scream for Help - Alpha Version 0.1.0
-SturMotor 0.1.0
+# Scream for Help - Alpha Version 0.2.0
+SturMotor 0.1.1
 # Work in Progress
 "Scream for Help" is designed to be an episodic text-based Choose Your Own Adventure Game where you play a protaganist desperately trying to make it home.
 

@@ -1,7 +1,7 @@
 /*
 	"SCREAM FOR HELP - Chapter 1"
 	A 'Choose Your Own Adventure' Game by Andrew Sturm
-	Running on SturMotor Version 0.1.0
+	Running on SturMotor Version 0.1.1
 */
 
 // TODO: Use this function to prevent players from spamming commands.
@@ -29,11 +29,23 @@ function playerInput(choice) {
 					chooseOption("c");
 					break;
 				case "y":
+					if(currentLocation == "gameover") {
+						console.log("Refreshing the page.");
+						location.reload(true);
+						return false;
+					} else {
 					chooseOption("y");
 					break;
+						}
 				case "n":
+					if(currentLocation == "gameover") {
+						clear()
+						$('#game-text').append("<p>Thanks for playing my game!</p><p>Feel free to leave me some feedback on it.</p>")
+						return false;
+					} else {
 					chooseOption("n");
 					break;
+						}
 				case "":
 					clear()
 					$('#game-text').append(dialogue[currentLocation].description);
@@ -220,7 +232,7 @@ function chooseOption(opt) {
 	if(currentOption == dialogue.on_bridge.options["c"]) {
 		console.log("You leaned against the railing.");
 		// GAME OVER
-		currentLocation = "gameover";
+		currentLocation = gameover;
 		}
 
 
@@ -291,7 +303,7 @@ function chooseOption(opt) {
 			is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p><p>White hot pain rushes from your extremity and you drop to the ground. \
 			Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for the \
 			throat.</p><p>And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
-		currentLocation = "gameover";
+		currentLocation = gameover;
 		}
 
 	if(currentOption == dialogue.lonewolf.options["c"] && invTireIron == 1) {
@@ -317,7 +329,7 @@ function chooseOption(opt) {
 			creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p><p>White hot pain rushes from your extremity and you drop to the \
 			ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for \
 			the throat. And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
-		currentLocation = "gameover";
+		currentLocation = gameover;
 		}
 
 
@@ -517,7 +529,7 @@ function chooseOption(opt) {
 			top and sides of the workbench, but there’s just no way you can get your arm or hand in the crevice. Still, you stay crouched, trying fruitlessly to reach for the key, your neck tingles and you get that god awful sensation \
 			again.</p><p>You turn to relieve your paranoia, but there’s no relief to be found. An androgynous humanoid creature of average height stands over you. Your mind is suddenly full to bursting of a cacophony of noises ... until \
 			the creature releases you from the torment of this existence with one swift twist of your neck.</p>");
-			currentLocation = "gameover";
+			currentLocation = gameover;
 	} else if(currentOption == dialogue.house_shed.options["a"] && (invKey == 0 && invHookLine == 1)) {
 		clear()
 		$('#game-text').append("<p>You place your left hand on the table to steady yourself while you stand on the tips of your toes and stretch across the worktable towards the hook. The solitary key on its keyring dangles from the \
@@ -735,7 +747,7 @@ function chooseOption(opt) {
 			and drags your nearing lifeless body out of the bedroom. You succumb to the light before seeing where the creature would’ve taken you.</p>");
 		entityEncounter = 1;
 		// GAME OVER
-		currentLocation = "gameover";
+		gameover();
 	} else if(playerSouthbedroom == 1 && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 0) {
 		$('#game-text').append("<p>After some time, the creature turns heel and saunters on.</p><p><i>(Oh my goodness, I... I almost died...)</i></p><p>The creature can no longer be seen and the sound of static \
 			retreats to pure silence.</p><p>You are terrified, but your gut is telling you that it is hopefully safe—that you have to do something if you have any hope of getting out alive.</p><p>You leave the \
@@ -746,16 +758,6 @@ function chooseOption(opt) {
 	if(playerWin == 1 && currentLocation == "epilogue") {
 		currentLocation = "acknowledgements";
 		}
-
-
-	// Handle the user failing to complete the adventure because of poor choices.
-if(currentOption == dialogue.gameover.options["y"] && currentLocation == "gameover") {
-		// Dirty page reload for the moment
-		location.reload(forceGet);
-	} else if(currentOption == dialogue.gameover.options["n"] && currentLocation == "gameover") {
-		clear()
-		$('#game-text').append("<p>Thanks for playing my game!</p><p>Feel free to leave me some feedback on it.</p>")
-	}
 
 }
 

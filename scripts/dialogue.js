@@ -241,7 +241,7 @@ var dialogue =
 	<p>A) Investigate the house.<br>B) Wait on the porch.<br>C) Scream for help.</p>",
 	options:
 	{
-		"a":"<p></p>",
+		"a":"<p>You decide to investigate the house.</p>",
 		"b":"<p><i>(Maybe the owner is alseep. I should wait.)</i></p> \
 		<p>So, you wait.</p><p>Your mind is rife with thoughts of things like how you could've gotten here, and even that uneasy feeling you can't quite put your finger on. Is it a feeling of impending doom? \
 		Is it a feeling of nothing in your surroundings adding up? Maybe it's just a feeling of being watched that has you on edge.</p><p>You realize, however, that standing around waiting is ultimately fruitless \
@@ -350,8 +350,8 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 <p><h5 align=\"center\">\"MADAME ZORA<br>FIVE CENTS ONLY\"</h5></p></p><p>As your luck would have it, you are fresh out of cents.",
 	options:
 	{
-		"y":"<p></p>",
-		"n":"<p></p>",
+		"y":"<p>You fish out the coin and drop it into the slot.</p>",
+		"n":"<p>You don't interact with the fortune teller machine.</p>",
 		},
 },
 
@@ -467,11 +467,11 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 },
 
 	"gameover": { 
-	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game?</p>",
+	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game? (Y/N)</p>",
 	options:
 	{
-		"y":"<p></p>",
-		"n":"<p></p>",
+		"y":"<p>You are going to attempt to play again.</p>",
+		"n":"<p>You have had enough, and that's okay.</p>",
 		},
 },
 
