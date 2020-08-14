@@ -262,7 +262,7 @@ function chooseOption(opt) {
 
 	if(currentOption == dialogue.talisman.options["n"]) { roomtraverse("lonewolf"); }
 
-
+  
 	if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 1 || invTalisman == 1)) {
 		// Rule of Cool
 		clear()
