@@ -1,11 +1,9 @@
 // Development Variables
-let state = {}
-let locations = ['trunk', 'trunk_handle', 'trunk_open', 'trunk_out', 'tripped_up','at_bridge','on_bridge','lonewolf','at_house','house_bporch','house_side']
-let locationInt = 0
-let currentLocation = locations[locationInt]
-var currentOption = ""
-var previousLocation = ""
-var choice = ""
+let state = {};
+var currentLocation = "trunk";
+var currentOption = "";
+var previousLocation = "";
+var choice = "";
 
 // Inventory Variables
 
