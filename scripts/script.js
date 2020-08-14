@@ -232,7 +232,7 @@ function chooseOption(opt) {
 	if(currentOption == dialogue.on_bridge.options["c"]) {
 		console.log("You leaned against the railing.");
 		// GAME OVER
-		currentLocation = gameover;
+		currentLocation = "gameover";
 		}
 
 
