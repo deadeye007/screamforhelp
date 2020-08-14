@@ -59,11 +59,11 @@ var dialogue =
 },
 
 	"tireiron": { 
-	description:"<p>Pick up the tire iron? (Y/N)?",
+	description:"<p>Pick up the tire iron? (Y/N)</p>",
 	options:
 	{
 		"y":"<p>You picked up the tire iron.</p>",
-		"n":"<p>You did not pick up the tire iron.</p><br>",
+		"n":"<p>You did not pick up the tire iron.</p>",
 		},
 	},
 
@@ -112,7 +112,7 @@ var dialogue =
 		life-threatening rhythm. As you start to fall back to a walk, you recognize a sound you thought you’d only just imagined...</p>",
 		"b":"<p>When you pick up the doll, the coin it was clutching falls from its tiny hand and onto the forest floor. Now that the doll is closer, you can see that one of the eyes is cocked to the \
 		side and the other is completely black. While you can't put your finger on it, there is something eerily off.</p> \
-		<p>In the center of the doll’s back is a ring, which feels as though you could pull it to make her talk.</p><br>",
+		<p>In the center of the doll’s back is a ring, which feels as though you could pull it to make her talk.</p>",
 		"c":"<p>You bend over and pick up the coin, to study it.</p>",
 		},
 },
@@ -124,7 +124,7 @@ var dialogue =
 	options:
 	{
 		"a":"<p>You realize upon picking up the doll that you have seen <i>almost</i> everything you need, except for a little white ring on the back just big enough for your index finger to go through. \
-		The memories which rush back are of the toys you had as a kid, which brought you such happiness; however, you can't honestly say if this will bring you that same happiness or not.</p><br>",
+		The memories which rush back are of the toys you had as a kid, which brought you such happiness; however, you can't honestly say if this will bring you that same happiness or not.</p>",
 		"b":"<p>You decide to leave the doll in the likeness of a happy little girl to the cruel hand of nature and time.</p>",
 		"c":"<p>You took the doll.</p>",
 		"y":"<p>You pull the ring.</p><p>The string is allowed to be pulled back about half a foot before catching. Once you release it, it slowly retracts with a tiny winding sound. Some mechanism inside \
@@ -241,7 +241,7 @@ var dialogue =
 	<p>A) Investigate the house.<br>B) Wait on the porch.<br>C) Scream for help.</p>",
 	options:
 	{
-		"a":"<p></p>",
+		"a":"<p>You decide to investigate the house.</p>",
 		"b":"<p><i>(Maybe the owner is alseep. I should wait.)</i></p> \
 		<p>So, you wait.</p><p>Your mind is rife with thoughts of things like how you could've gotten here, and even that uneasy feeling you can't quite put your finger on. Is it a feeling of impending doom? \
 		Is it a feeling of nothing in your surroundings adding up? Maybe it's just a feeling of being watched that has you on edge.</p><p>You realize, however, that standing around waiting is ultimately fruitless \
@@ -350,8 +350,8 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 <p><h5 align=\"center\">\"MADAME ZORA<br>FIVE CENTS ONLY\"</h5></p></p><p>As your luck would have it, you are fresh out of cents.",
 	options:
 	{
-		"y":"<p></p>",
-		"n":"<p></p>",
+		"y":"<p>You fish out the coin and drop it into the slot.</p>",
+		"n":"<p>You don't interact with the fortune teller machine.</p>",
 		},
 },
 
@@ -467,11 +467,11 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 },
 
 	"gameover": { 
-	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game?</p>",
+	description:"<p><h1 align=\"center\"><p>YOU DIED</p></h1><p>Would you like to begin a new game? (Y/N)</p>",
 	options:
 	{
-		"y":"<p></p>",
-		"n":"<p></p>",
+		"y":"<p>You are going to attempt to play again.</p>",
+		"n":"<p>You have had enough, and that's okay.</p>",
 		},
 },
 
