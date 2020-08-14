@@ -14,7 +14,7 @@ From the beta onward, the game will be accessible via the World Wide Web.
 For those interested in bleeding edge and want to play the rough, in-development version, you only need to do a few simple things!
 
 1. Run `git clone https://github.com/deadeye007/screamforhelp.git`.
-2. [https://www.php.net/downloads](Download PHP from PHP.net)
+2. [https://www.php.net/downloads/](Download PHP from PHP.net)
 3. Open a command prompt, navigate to the location where you cloned the repository.
 4. Execute the command `php -S localhost:8000`.
 5. Open your favorite browser and navigate to `http://localhost:8000`.

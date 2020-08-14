@@ -107,8 +107,8 @@ function chooseOption(opt) {
 	if(currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 1 && investigateVehicle == 0) {
 		clear()
 		$('#game-text').append("<p>Clutching the tire iron in your white-knuckled fist, you strike the window once. The tire iron bounces off with little more than a loud pop. You strike it again, this time more towards \
-		the edge. Less of a pop, more of a crack. You strike it again with all your might and the glass shatters. Armed with knowledge from action movies, you use the tire iron to clear out the glass in the frame and pull up the lock \
-		switch. With reckless abandon, you grab the door handle and throw it open.</p>");
+			the edge. Less of a pop, more of a crack. You strike it again with all your might and the glass shatters. Armed with knowledge from action movies, you use the tire iron to clear out the glass in the frame and pull up the lock \
+			switch. With reckless abandon, you grab the door handle and throw it open.</p>");
 		roomtraverse("checkinterior");
 	} else if (currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 0) {
 		roomtraverse("trunk_out");
@@ -273,13 +273,13 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 0 && invTalisman == 0)) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can scream for help, or maybe just to startle the beast. Either way, you just have to convince him that you aren’t one to be trifled with.</p> \
-		<p>You let out a scream to the high heavens, one which faintly echoes back. In the distance, somewhere far behind you, you hear a respondent howl.</p><p>This creature, empowered by the battle cry, charges you.</p> \
-		<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
-		and snaps at your ankle.</p> \
-		<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
-		there is nothing here for you.</p> \
-		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
-		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
+			<p>You let out a scream to the high heavens, one which faintly echoes back. In the distance, somewhere far behind you, you hear a respondent howl.</p><p>This creature, empowered by the battle cry, charges you.</p> \
+			<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
+			and snaps at your ankle.</p> \
+			<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
+			there is nothing here for you.</p> \
+			<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
+			<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		currentLocation = "gameover";
 		}
 
@@ -301,10 +301,10 @@ function chooseOption(opt) {
 		// GAME OVER
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re being \
-		followed.</p><p>The creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p> \
-		<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
-		there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for the throat.</p><p>And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as \
-		your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
+			followed.</p><p>The creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p> \
+			<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
+			there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for the throat.</p><p>And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as \
+			your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		currentLocation = "gameover";
 		}
 
@@ -327,13 +327,13 @@ function chooseOption(opt) {
 		// GAME OVER
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can intimidate this beast. You just have to convince him that you aren’t one to be trifled with.</p> \
-		<p>You start to holler and growl and stand taller than you’ve ever stood in a fight to convince the creature to leave you be, but it only seems to fuel the aggression and it charges you.</p> \
-		<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
-		and snaps at your ankle.</p> \
-		<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
-		there is nothing here for you.</p> \
-		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
-		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
+			<p>You start to holler and growl and stand taller than you’ve ever stood in a fight to convince the creature to leave you be, but it only seems to fuel the aggression and it charges you.</p> \
+			<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
+			and snaps at your ankle.</p> \
+			<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
+			there is nothing here for you.</p> \
+			<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
+			<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		currentLocation = "gameover";
 		}
 
