@@ -65,7 +65,6 @@ function chooseOption(opt) {
 		clear()
 		$('#game-text').append(dialogue[currentLocation].options[opt]);
 		}
-	
 
 	// Automatically appends 'Press Enter to Continue' in the absence of a choice array
 	if(currentOption === "") { $('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b></p>"); }
@@ -108,8 +107,8 @@ function chooseOption(opt) {
 	if(currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 1 && investigateVehicle == 0) {
 		clear()
 		$('#game-text').append("<p>Clutching the tire iron in your white-knuckled fist, you strike the window once. The tire iron bounces off with little more than a loud pop. You strike it again, this time more towards \
-		the edge. Less of a pop, more of a crack. You strike it again with all your might and the glass shatters. Armed with knowledge from action movies, you use the tire iron to clear out the glass in the frame and pull up the lock \
-		switch. With reckless abandon, you grab the door handle and throw it open.</p>");
+			the edge. Less of a pop, more of a crack. You strike it again with all your might and the glass shatters. Armed with knowledge from action movies, you use the tire iron to clear out the glass in the frame and pull up the lock \
+			switch. With reckless abandon, you grab the door handle and throw it open.</p>");
 		roomtraverse("checkinterior");
 	} else if (currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 0) {
 		roomtraverse("trunk_out");
@@ -123,7 +122,7 @@ function chooseOption(opt) {
 	if(currentOption == dialogue.checkinterior.options["c"] && investigateVehicle == 0) {
 		investigateVehicle = 1;
 		dialogue.trunk_out.options["b"] = "You already investigated the vehicle."
-		roomtraverse("trunk_out");	
+		roomtraverse("trunk_out");
 		}
 
 
@@ -131,7 +130,7 @@ function chooseOption(opt) {
 
 
 	// Creepy Doll Interaction
-	if(currentOption == dialogue.tripped_up.options["b"] && investigateDoll == 0) { 
+	if(currentOption == dialogue.tripped_up.options["b"] && investigateDoll == 0) {
 		roomtraverse("checkdoll");
 	} else if(investigateDoll == 1) {
 		dialogue.checkdoll.options["b"] = "You already investigated the doll.";
@@ -158,7 +157,7 @@ function chooseOption(opt) {
 		dialogue.tripped_up.options["b"] = "<p>You chose not to investigate the doll.</p>";
 		dialogue.checkdoll.options["a"] = "<p>You chose not to investigate the doll.</p>";
 		currentLocation = previousLocation;
-		} 
+		}
 
 	if(currentOption == dialogue.checkdoll.options["c"] && invDoll == 0) {
 		// YOU GET THE DOLL
@@ -231,6 +230,7 @@ function chooseOption(opt) {
 	// Do you lean on the railing?
 	if(currentOption == dialogue.on_bridge.options["c"]) {
 		console.log("You leaned against the railing.");
+		// GAME OVER
 		currentLocation = "gameover";
 		}
 
@@ -242,13 +242,13 @@ function chooseOption(opt) {
 		investigatePlyers = 1;
 		dialogue.tacklebox.options["a"] = "You already took the plyers.";
 		}
-	
+
 	if (currentOption == dialogue.tacklebox.options["b"]) {
 		invHookLine = 1;
 		console.log("You got the fishing hook and fishing line.");
 		investigateHookLine = 1
 		dialogue.tacklebox.options["b"] = "You already took the fishing line and fishing hook.";
-		} 
+		}
 
 	if(currentOption == dialogue.tacklebox.options["c"]) { roomtraverse("on_bridge"); }
 
@@ -260,9 +260,9 @@ function chooseOption(opt) {
 		roomtraverse("lonewolf");
 		}
 
-	if(currentOption == dialogue.talisman.options["n"]) { roomtraverse("lonewolf"); }    
+	if(currentOption == dialogue.talisman.options["n"]) { roomtraverse("lonewolf"); }
 
-
+  
 	if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 1 || invTalisman == 1)) {
 		// Rule of Cool
 		clear()
@@ -273,13 +273,13 @@ function chooseOption(opt) {
 	} else if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 0 && invTalisman == 0)) {
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can scream for help, or maybe just to startle the beast. Either way, you just have to convince him that you aren’t one to be trifled with.</p> \
-		<p>You let out a scream to the high heavens, one which faintly echoes back. In the distance, somewhere far behind you, you hear a respondent howl.</p><p>This creature, empowered by the battle cry, charges you.</p> \
-		<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
-		and snaps at your ankle.</p> \
-		<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
-		there is nothing here for you.</p> \
-		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
-		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
+			<p>You let out a scream to the high heavens, one which faintly echoes back. In the distance, somewhere far behind you, you hear a respondent howl.</p><p>This creature, empowered by the battle cry, charges you.</p> \
+			<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
+			and snaps at your ankle.</p> \
+			<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
+			there is nothing here for you.</p> \
+			<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
+			<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		currentLocation = "gameover";
 		}
 
@@ -301,10 +301,10 @@ function chooseOption(opt) {
 		// GAME OVER
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re being \
-		followed.</p><p>The creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p> \
-		<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
-		there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for the throat.</p><p>And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as \
-		your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
+			followed.</p><p>The creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps and snaps at your ankle.</p> \
+			<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
+			there is nothing here for you.</p><p>The creature comes at you again. This time, it goes for the throat.</p><p>And it does not miss or waver in savagery.</p><p>As you feel the life leaving you, as \
+			your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		currentLocation = "gameover";
 		}
 
@@ -327,13 +327,13 @@ function chooseOption(opt) {
 		// GAME OVER
 		clear()
 		$('#game-text').append("<p>Your fight or flight senses are raging, but you see clarity now. You can intimidate this beast. You just have to convince him that you aren’t one to be trifled with.</p> \
-		<p>You start to holler and growl and stand taller than you’ve ever stood in a fight to convince the creature to leave you be, but it only seems to fuel the aggression and it charges you.</p> \
-		<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
-		and snaps at your ankle.</p> \
-		<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
-		there is nothing here for you.</p> \
-		<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
-		<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
+			<p>You start to holler and growl and stand taller than you’ve ever stood in a fight to convince the creature to leave you be, but it only seems to fuel the aggression and it charges you.</p> \
+			<p>Terrified, your kneejerk reaction is to turn and run, but the creature is bearing down on you, a prime predator in its peak environment who’s spotted wounded prey ripe for the killing. It leaps \
+			and snaps at your ankle.</p> \
+			<p>White hot pain rushes from your extremity and you drop to the ground. Your hands move frantically across the earth in the desperate hopes of finding something with which to protect yourself, but \
+			there is nothing here for you.</p> \
+			<p>The creature comes at you again. This time, it goes for the throat. And it does not miss or waver in savagery.</p> \
+			<p>As you feel the life leaving you, as your eyes begin to set in their final resting position, you swear you see a silhouette standing just off in your periphery.</p>");
 		currentLocation = "gameover";
 		}
 
@@ -405,7 +405,7 @@ function chooseOption(opt) {
 
 		dialogue.house_entryway.description = "<p>The entryway is an utterly boring room with aged floral wallpaper, which is peeling where the glue is losing grip. With the ceiling light drawing your attention, you notice how sloppily the ceiling \
 			has been painted in off-white over aged tar staining from what had probably been years of smoking inside the house.</p><p><i>(Ugh. Disgusting. And the house smells like an ashtray too!)</i></p>"
-		
+
 		dialogue.house_hall.description = "<p>The hall is less boring than the entryway, at least marginally. It at least has a certain level of excitement ingrained into the variety of wood textures. The wooden doorframe going into the north bedroom \
 			has a certain <i>je ne sais quoi</i> about it. Around the baseboards, there seems to be a bit of deterioration. Not like termites, though. It feels instead like more of the same—whatever <i>it</i> is.</p>It feels like you stand at the \
 			precipice of various potential outcomes.</p>"
@@ -457,7 +457,7 @@ function chooseOption(opt) {
 			hope this nightmare in which you're living is soon to come to a close.</p>");
 		playerEntryway = 1;
 		roomtraverse("house_entryway");
-		
+
 	} else if(currentOption == dialogue.house_side.options["a"]) {
 		roomtraverse("house_fporch");
 		}
@@ -590,7 +590,7 @@ function chooseOption(opt) {
 		console.log("Your previousLocation changed to: " + previousLocation);
 		$('#game-text').append("<p>Would you like to use the buffalo nickel to receive your fortune? (Y/N): </p>")
 		}
-	
+
 	if(currentOption == dialogue.house_fortuneteller.options["y"] && (lightsOn == 1 && invCoin == 1 && playerStudy == 1)) {
 		clear()
 		$('#game-text').append("<p>You fish the coin out of your pocket and push it into the nickel slot with your thumb. The coin makes a series of rolling sounds before clanking and clattering into what sounds like an empty coin tray.</p> \
@@ -802,7 +802,7 @@ $(document).ready(function(){
 		else if(key.which === 13) {
 			playerInput("")
 		}
-		
+
 		})
 })
 
