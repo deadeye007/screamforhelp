@@ -44,6 +44,7 @@ var investigateGarage = 0;
 var investigateFortuneteller = 0;
 var investigateDesk = 0;
 var investigatePhone = 0;
+var investigateCloset = 0;
 
 // Player Locations
 var playerStudy = 0;
