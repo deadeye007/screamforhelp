@@ -1,17 +1,34 @@
 var dialogue =
 {
+	"prologue": {
+	description: "<p>\"I always tell the new fish... if you wanna get anywhere in the company, you’re gonna have to suck it up and just drink the punch.\"</p><p>Donnie, the too-close talker, is standing about four feet closer than you’d \
+	like for him to be, giving you the rundown on the workings of the local business you recently started interning for. He's an older man with salty hair that only has some hint of pepper left in it that he meticulously slicked back \
+	earlier with some dapper gentleman’s pomade. Not to mention he reeks of musky aftershave.</p><p>You think about what he offers, though, while you look down at the somewhat ironic disposable plastic cup full of some amalgamation of \
+	strawberry, cherry, and pineapple punch someone undoubtedly spiked with cheap vodka or rum.</p><p>Drink the punch? (Y/N):</p><p><i>TUTORIAL: Simply type 'Y' or 'N' into the interactive prompt and hit 'Enter'. If you type an invalid \
+	response, the game will wait for you to type one of the presented options. If not otherwise stated, simply striking 'Enter' will advance the dialogue.</i></p>",
+	options:
+	{
+	"y":"<p>You nod at Too-Close Talker Donnie and lift the plastic cup to your lips.</p><p>Whether the advice is literal or figurative, you have no problem answering the call to action where punch is involved. It’s good, in spite of the \
+	fact that it’s gotten a bit room temperature, what with the alcohol and the fact that the bowl consisted only of lost, lonely ice cube islands in the vast open ocean of punch.</p><p>No matter.</p><p>The <i>façade</i> melted away around you pretty quickly once it started running like wet paint, washing the walls with nothingness until you stood in a room of pitch black.</p> \
+	<p>It was eerily quiet for a bit. A faint sound of static white noise could be heard.</p><p>You open your mouth wide and scream for help. You are answered only by the sudden crescendo of maddening noise.</p><p>An impossibly shadowy \
+	creature now stands before you, having seemingly appeared out of thin air.</p><p>The sudden terror shocks you awake...</p>",
+	"n":"<p>You shake your head at Too-Close Talker Donnie and set the plastic cup down on the table.</p>Whether the advice was literal or figurative, you refuse to answer the call to action.</p><p>No matter.</p><p>The <i>façade</i> melts away around you pretty quickly once it started running like wet paint, washing the walls with nothingness until you stand in \
+	a room of pitch black.</p><p>It’s eerily quiet for a bit. A faint sound of static white noise can be heard.</p><p>You open your mouth wide and scream for help. You are answered only by the sudden crescendo of maddening noise.</p>An \
+	impossibly shadowy creature now stands before you, having seemingly appeared out of thin air.</p><p>The sudden terror shocks you awake...</p>",
+	},
+},
+
 	"trunk": {
 	description: "<p>Racing through your mind are these fleeting memories of moments past. Oh, how they feel like an eternity ago... Part of you feels safe and secure in your cozy bed inside your quaint home. The other part of you is \
 	convinced you’re in danger. That none of this is real. That it’s all a dream. So, you simply do what makes the most sense in a situation like this...</p><p>You open your eyes, but there is nothing to see. You blink, but can see no \
 	differentiation between your eyes being open or closed.</p><p><i>(Where ... am I?)</i></p>\
-	<br>A) Try to move<br>B) Check your pockets.<br>C) Scream for help.<br></p>",
+	<br>A) Try to move<br>B) Check your pockets.<br>C) Scream for help.</p>",
 	options: 
 	{
 	"a":"<p>You begin moving your hands along your sides and work towards directly in front of you. At your sides, you feel upholstery (albeit matted and likely neglected for far too long). In front of you, off to your right-hand side, \
 	you feel what may be a handle, while your other hand feels more upholstery.</p>",
 	"b":"<p>Your hands begin the journey of digging through your pockets with your mind already convincing them that they’ll feel a cotton undershirt and flannel pajama pants. What your hands feel instead is the familiarity of a cotton \
-	shirt, followed by the coarseness of denim.</p><p>You do not recall changing.</p> \
-	<p>Your hands rifle through the hip pockets, then the back pockets.</p><p><i>Ugh! Nothing!</i></p>",
+	shirt, followed by the coarseness of denim.</p><p>You do not recall changing.</p><p>Your hands rifle through the hip pockets, then the back pockets.</p><p><i>Ugh! Nothing!</i></p>",
 	"c":"YOU SCREAM! AAAAAAAAH!!!!!",
 	},
 },
@@ -26,7 +43,7 @@ var dialogue =
 		being suffocated, the one which gives you a feeling, like a second wind.</p>",
 		"b":"<p>While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along the obstruction. The friction is causing your \
 		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.</p>",
-		"c":"<p>You hear precious little, other than your heart throbbing in your left ear. Deep down, you are dying to escape.</p><br>",
+		"c":"<p>You hear precious little, other than your heart throbbing in your left ear. Deep down, you are dying to escape.</p>",
 		},
 	},
 
@@ -473,6 +490,5 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 		"y":"<p>You are going to attempt to play again.</p>",
 		"n":"<p>You have had enough, and that's okay.</p>",
 		},
-},
-
+	},
 };

@@ -1,6 +1,6 @@
 // Development Variables
 let state = {};
-var currentLocation = "trunk";
+var currentLocation = "prologue";
 var currentOption = "";
 var previousLocation = "";
 var choice = "";
@@ -19,6 +19,7 @@ var invInvoice = 0;
 
 // Status Variables
 var screamCount = 0;
+var punchDrank = 0;
 var screamMax = 0;
 var drinkRiver = 0;
 var ringPulled = 0;

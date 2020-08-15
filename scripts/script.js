@@ -66,8 +66,12 @@ function chooseOption(opt) {
         $('#game-text').append(dialogue[currentLocation].options[opt]);
         }
 
+    // This is going to need more metrics to work correctly.
     // Automatically appends 'Press Enter to Continue' in the absence of a choice array
     if(currentOption === "") { $('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b></p>"); }
+
+
+    if(currentOption == dialogue.prologue.options["y"] || dialogue.prologue.options["n"]) { roomtraverse("trunk"); }
 
 
     if(currentOption == dialogue.trunk.options["a"]) { roomtraverse("trunk_handle"); }
