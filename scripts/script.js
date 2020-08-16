@@ -68,11 +68,10 @@ function chooseOption(opt) {
         }
 
     // Hide Title/Footer for more immersion.
-    if(currentLocation !== (currentLocation == "prologue" || currentLocation == "epilogue" || currentLocation == "acknowledgements")) {
+    if(currentLocation !== "prologue" || currentLocation !== "epilogue" || currentLocation !== "acknowledgements") {
         var sheet = document.styleSheets[0];
         sheet.addRule("#title-text", "visibility:hidden;", sheet.cssRules.length);
         sheet.addRule("#footer", "visibility:hidden;", sheet.cssRules.length);
-        console.log(document.styleSheets[0]);
     }
 
 
@@ -83,7 +82,10 @@ function chooseOption(opt) {
 
     // Prologue (Y/N)
 
-    if(currentOption == dialogue.prologue.options["y"] || dialogue.prologue.options["n"]) { roomtraverse("trunk"); }
+    if(currentOption == dialogue.prologue.options["y"]) { drankPunch = 1; roomtraverse("trunk");
+    } else if(currentOption == dialogue.prologue.options["n"]) {
+        roomtraverse("trunk");
+        }
 
 
     // Trunk (ABC)
@@ -92,14 +94,14 @@ function chooseOption(opt) {
 
     if(currentOption == dialogue.trunk.options["b"]) { checkPockets = 1; }
 
-    if(currentOption == dialogue.trunk.options["c"]) { screamCount + 1; sfhcount() }
+    if(currentOption == dialogue.trunk.options["c"]) { screamCount = screamCount + 1; sfhcount(); }
 
 
     // Trunk, Handle Pulled (ABC)
 
     if(currentOption == dialogue.trunk_handle.options["a"]) { roomtraverse("trunk_open"); }
 
-    if(currentOption == (dialogue.trunk_handle.options["b"] || dialogue.trunk_open.options["a"]) && invTireIron == 0) { roomtraverse("tireiron"); }
+    if(currentOption == (dialogue.trunk_handle.options["b"] || currentOption == dialogue.trunk_open.options["a"]) && invTireIron == 0) { roomtraverse("tireiron"); }
 
     if(currentOption == dialogue.trunk_handle.options["c"]) { justListened = 1; }
 
@@ -121,26 +123,30 @@ function chooseOption(opt) {
         currentLocation = previousLocation;
         }
 
+
     // Trunk Open
     // Option A is an 'or' condition for trunk_handle option B, as they both go to Tire Iron.
 
-    if(currentOption == dialogue.trunk_open.options["b"]) { screamCount + 1; sfhcount() }
+    if(currentOption == dialogue.trunk_open.options["b"]) { screamCount = screamCount + 1; sfhcount(); }
 
     if(currentOption == dialogue.trunk_open.options["c"]) { roomtraverse("trunk_out"); }
 
-
+    // Tripped Up
     if(currentOption == dialogue.trunk_out.options["a"]) { roomtraverse("tripped_up"); }
 
-// Change to 'checkvehicle' if it hasn't been checked already
     if(currentOption == dialogue.trunk_out.options["b"] && investigateVehicle == 0) { roomtraverse("checkvehicle"); }
 
+    if(currentOption == dialogue.trunk_open.options["c"]) { screamCount = screamCount + 1; sfhcount(); }
 
-// Access the vehicle if you have the tire iron
-    if(currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 1 && investigateVehicle == 0) {
+
+    // Check Vehicle
+    // Access the vehicle if you have the tire iron
+    if(currentOption == dialogue.checkvehicle.options["a"] && (invTireIron == 1 && investigateVehicle == 0 && breakGlass == 0)) {
         clear()
         $('#game-text').append("<p>Clutching the tire iron in your white-knuckled fist, you strike the window once. The tire iron bounces off with little more than a loud pop. You strike it again, this time more towards \
             the edge. Less of a pop, more of a crack. You strike it again with all your might and the glass shatters. Armed with knowledge from action movies, you use the tire iron to clear out the glass in the frame and pull up the lock \
             switch. With reckless abandon, you grab the door handle and throw it open.</p>");
+        breakGlass = 1;
         roomtraverse("checkinterior");
     } else if (currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 0) {
         roomtraverse("trunk_out");
@@ -149,8 +155,21 @@ function chooseOption(opt) {
         $('#game-text').append("<p>The sudden compulsion to break an already broken window has you questioning your sanity ... as if you weren't already.</p>")
         }
 
+    if(currentOption == dialogue.checkvehicle.options["b"]) { screamCount = screamCount + 1; sfhcount(); }
 
-    // If you go straight for the key...
+    if(currentOption == dialogue.checkvehicle.options["c"] && breakGlass == 1) {
+        clear()
+        $('#game-text').append("<p>Now that you have broken the window, you are quite certain that you'll be able to get inside to thoroughly examine the vehicle. What you can see already from the shattered opening is a key hanging from the rear-view mirror. The possible \
+        applications of such a key astound you.</p>");
+    }
+
+    // Check Interior
+    if(currentOption == dialogue.checkinterior.options["b"] && drankPunch == 1) {
+        clear()
+        $('#game-text').append("<p>The glove box is unlocked. You grab the handle and pull to release. The glove compartment drops open and breaks off the hinges, which sends various documents flying onto the pitch black floorboard.</p><p><i>(Doubt there's anything important. Just papers.)</i></p>");
+        lookedForGloves = 1;
+}
+
     if(currentOption == dialogue.checkinterior.options["c"] && investigateVehicle == 0) {
         investigateVehicle = 1;
         dialogue.trunk_out.options["b"] = "You already investigated the vehicle."
@@ -166,8 +185,10 @@ function chooseOption(opt) {
         roomtraverse("checkdoll");
     } else if(investigateDoll == 1) {
         dialogue.checkdoll.options["b"] = "You already investigated the doll.";
+    } else if(investigateCoin == 1) {
+        dialogue.checkdoll.options["b"] = "<p>You pick up the doll. With it closer, you can see that one of the eyes is cocked to the \
+        side and the other is completely black. While you can't put your finger on it, there is something eerily off.</p><p>In the center of the doll’s back is a ring, which feels as though you could pull it to make her talk.</p>";
         }
-
 
     // Coin Interaction
     if(currentOption == dialogue.tripped_up.options["c"] && investigateCoin == 0) {
@@ -178,16 +199,14 @@ function chooseOption(opt) {
 
 
     // Pull the ring?
-    if(currentOption == dialogue.checkdoll.options["a"] && investigateDoll == 0) {
-        clear()
-        $('#game-text').append("<p>Nothing exciting jumps out at you except for that dingy white ring on the back of the doll.</p><p>Pull the ring? (Y/N): </p>");
-        }
+    if(currentOption == dialogue.checkdoll.options["a"] && investigateDoll == 0) { roomtraverse("pullring"); }
 
     if(currentOption == dialogue.checkdoll.options["b"] && investigateDoll == 0) {
         invDoll = 0;
         investigateDoll = 1;
         dialogue.tripped_up.options["b"] = "<p>You chose not to investigate the doll.</p>";
         dialogue.checkdoll.options["a"] = "<p>You chose not to investigate the doll.</p>";
+        console.log("You didn't take the doll.");
         currentLocation = previousLocation;
         }
 
@@ -197,16 +216,17 @@ function chooseOption(opt) {
         investigateDoll = 1;
         dialogue.tripped_up.options["b"] = "You already stowed away the doll.";
         dialogue.checkdoll.options["a"] = "You already stowed away the doll.";
-        console.log("You got the doll.");
+        console.log("You took the doll.");
         }
 
 
     // Evaluate the options of checkdoll
-    if(currentOption == dialogue.checkdoll.options["y"]) {
+    if(currentOption == dialogue.pullring.options["y"]) {
         ringPulled = 1;
         console.log("Ring has been pulled.");
         roomtraverse("takedoll");
-    } else if(currentOption == dialogue.checkdoll.options["n"]) {
+    } else if(currentOption == dialogue.pullring.options["n"]) {
+        ringPulled = 0;
         console.log("Ring has not been pulled.");
         roomtraverse("takedoll");
         }
@@ -240,13 +260,15 @@ function chooseOption(opt) {
         }
 
 
-    // Do you drink from the river?
+    // At Bridge
     if(currentOption == dialogue.at_bridge.options["a"]) {
         drinkRiver = 1;
         console.log("You drank from the river.");
         dialogue.at_bridge.options["a"] = "You've already sated your thirst.";
         }
 
+    if(currentOption == dialogue.at_bridge.options["b"]) { screamCount = screamCount + 1; sfhcount(); }
+    }
 
     if(currentOption == dialogue.at_bridge.options["c"]) { roomtraverse("on_bridge"); }
 
@@ -255,8 +277,8 @@ function chooseOption(opt) {
     if(currentOption == dialogue.on_bridge.options["a"]) { roomtraverse("tacklebox"); }
 
 
-    // Investigating the talisman.
-    if(currentOption == dialogue.on_bridge.options["b"] && drinkRiver == 0) { roomtraverse("talisman"); }
+    // Investigating the talisman, if you were skeptical
+    if(currentOption == dialogue.on_bridge.options["b"] && (drinkRiver == 0 && lookedForGloves == 1)) { roomtraverse("talisman"); }
 
 
     // Do you lean on the railing?
@@ -395,10 +417,7 @@ function chooseOption(opt) {
         roomtraverse("house_side");
         }
     
-    if(currentOption == dialogue.house_bporch.options["c"]) {
-        // SFH_Count
-        clear()
-        }
+    if(currentOption == dialogue.house_bporch.options["c"]) { screamCount = screamCount + 1; sfhcount(); }
 
 
 // Loose Soil/Tight Surprise
@@ -483,7 +502,7 @@ function chooseOption(opt) {
 
 
 // House - Side
-    if(currentOption == dialogue.house_side.options["a"] && (lightsOn == 1 || invFlashlight == 1) && invKey == 1) {
+    if(currentOption == dialogue.house_side.options["a"] && (lightsOn == 1 || invFlashlight == 1 && invKey == 1)) {
         clear()
         $('#game-text').append("<p>Now that you have illumination, sticking the key into the deadbolt is the easy part. Just like with the back door, you turn the key and the door is now unlocked.</p><p>You walk into the entryway and \
             hope this nightmare in which you're living is soon to come to a close.</p>");
@@ -502,7 +521,7 @@ function chooseOption(opt) {
         }
 
 
-    if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 0)) {
+    if(currentOption == dialogue.house_side.options["c"] && invFlashlight == 0) {
         $('#game-text').append("<p>The shed was just about as rickety as most constructs you’ve run into tonight. It isn’t an overly large building, but it is clearly capable of supporting a large tractor, provided the doors were \
             larger.</p><p>The shed door stood ajar, but there is absolutely no way you can see inside. You turn back, defeated.</p><p><i>If only I had some kind of light...</i></p>");
     } else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 1 && invKey == 0)) {
@@ -538,7 +557,7 @@ function chooseOption(opt) {
         // This may not be the logic you thought it was
         }
 
-    if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 1 || invFlashlight == 1) && invKey == 1) {
+    if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 1 || invFlashlight == 1 && invKey == 1)) {
         // Now you can enter the house
         playerEntryway = 1;
         roomtraverse("house_entryway");
@@ -800,10 +819,15 @@ function chooseOption(opt) {
 
 // Room Traversal
 function roomtraverse(room) {
-    previousLocation = currentLocation;
-    currentLocation = room;
-    console.log("Your currentLocation changed to: " + currentLocation);
-    console.log("Your previousLocation changed to: " + previousLocation);
+    if(room == "") {
+        return;
+    } else if(room !== "") {
+        previousLocation = currentLocation;
+        currentLocation = room;
+        console.log("Your currentLocation changed to: " + currentLocation);
+        console.log("Your previousLocation changed to: " + previousLocation);
+    return;
+    }
 }
 
 function sfhcount() {
@@ -815,12 +839,16 @@ function sfhcount() {
     console.log("Scream Count: "+screamCount);
 
     // If you've screamed your last scream...
-    if(random <= sfhcount) {
-        currentLocation = gameover;
+    if (random <= screamCount) {
+        currentLocation = "gameover";
         clear()
         $('#game-text').append("<p>The silence after the end of your scream is only momentary.</p><p>Immediately following that, your ears are drowned in a deluge of noise as your surroundings melt like a surrealistic \
             Salvador Dalí painting—and with it... all the light, too.</p><p>All at once, the burdens of the night are lifted, along with all the others.</p><p>You realize you don't realize anymore. You simply don't. You're \
             simply... <i>not.</i></p>");
+        return;
+    } else if (random > screamCount) {
+        $('#game-text').append("<p>You hear no response from the Ether.</p>");
+        return;
     }
 
 }

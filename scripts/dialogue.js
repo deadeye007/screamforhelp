@@ -29,7 +29,7 @@ var dialogue =
 	you feel what may be a handle, while your other hand feels more upholstery.</p>",
 	"b":"<p>Your hands begin the journey of digging through your pockets with your mind already convincing them that they’ll feel a cotton undershirt and flannel pajama pants. What your hands feel instead is the familiarity of a cotton \
 	shirt, followed by the coarseness of denim.</p><p>You do not recall changing.</p><p>Your hands rifle through the hip pockets, then the back pockets.</p><p><i>Ugh! Nothing!</i></p>",
-	"c":"YOU SCREAM! AAAAAAAAH!!!!!",
+	"c":"<p><i>\"Help me!\"</i> you scream. <i>\"Somebody!\"</i></p>",
 	},
 },
 
@@ -55,7 +55,7 @@ var dialogue =
 	{
 		"a":"<p>While you are unable to see, as you feel along the upholstery, you stretch until your hand is unable to move further. Once you hit the wall, you begin sliding your hand along the obstruction. The friction is causing your \
 		palm to warm, but not before your hand hits something tangible. The object feels long, metal, and curved at the end. You believe it to be a tire iron.</p>",
-		"b":"<p>YOU SCREAM!!!</p>",
+		"b":"<p><i>\"Help me!\"</i> you scream. <i>\"Somebody!\"</i></p>",
 		"c":"<p>You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over \
 		the frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.</p>",
 		},
@@ -70,8 +70,7 @@ var dialogue =
 		routinely skip leg day, as if part of you always knew you’d be in this very predicament.</p><p>Your mind begins to wonder again how it got in this predicament, but fails to come up with anything of substance. The visibility out \
 		here is limited, but nothing you see has any semblance of familiarity.</p><p>In what would seem like a direct attack in the form of hindrance, a plant tendril entangles your ankle and pulls you down to the earthen floor.</p>",
 		"b":"<p>Your sage wisdom implores your to check the vehicle for clues, or perhaps something helpful.</p>",
-		"c":"<p>You are uncertain how long you have been entombed in this trunk, and you still haven’t the foggiest how you ended up here; but you command your strength to lift your upper body and then to hoist your shivering stilts over the \
-		frame of the trunk and the bumper. With one final push, you are out, born into a world which seems so familiar and so strange all at once. So right, and yet so wrong.</p>",
+		"c":"<p><i>\"Help me!\"</i> you scream. <i>\"Somebody!\"</i></p>",
 		},
 },
 
@@ -91,11 +90,10 @@ var dialogue =
 	options:
 	{
 		"a":"<p>Armed with only your fisticuffs, you punch the glass. Ow! Now something other than your pride is hurting. There’s no way you’re going to be able to break the glass barehanded, you realize.</p>",
-		"b":"<p>YOU SCREAM!!!</p>",
+		"b":"<p>\"I don't know how I got here!\" you scream out while you whip your head to your left, then to your right. \"Can anybody hear me?!\"</p>",
 		"c":"<p>Without breaking the window, you are quite certain that you won't be able to get in to thoroughly examine the vehicle. What you can see from the window, however, is a key hanging from the rear-view mirror. The possible \
 		applications of such a key astound you.</p>",
 		},
-	correct: "",
 },
 
 	"checkinterior": { 
@@ -144,6 +142,13 @@ var dialogue =
 		The memories which rush back are of the toys you had as a kid, which brought you such happiness; however, you can't honestly say if this will bring you that same happiness or not.</p>",
 		"b":"<p>You decide to leave the doll in the likeness of a happy little girl to the cruel hand of nature and time.</p>",
 		"c":"<p>You took the doll.</p>",
+		},
+},
+
+	"pullring": { 
+	description:"<p>Pull the ring? (Y/N): </p>",
+	options:
+	{
 		"y":"<p>You pull the ring.</p><p>The string is allowed to be pulled back about half a foot before catching. Once you release it, it slowly retracts with a tiny winding sound. Some mechanism inside \
 		the doll appears to give the faintest noise, like needle noise from an old record.</p><p>Once the string is retracted, even that sound is gone and you are left in the dark with only the sounds of \
 		the wild to keep you company.</p>",
@@ -180,7 +185,7 @@ var dialogue =
 	{
 		"a":"<p>That voice rejoices in your head while you walk towards the river. What a relief it is just to fall to your knees and bow before the river with cupped hands outstretched.</p> \
 		<p>You slurp down not one, or two, but three good handfuls of cool resplendence. That nagging voice in your head seems pleased, if only just for the moment.</p>",
-		"b":"<p>AHHHHH!</p>",
+		"b":"<p><i>\"Please! Somebody! Help me! I've been kidnapped!\"</i></p><p></p>",
 		"c":"<p>You take one careful step at a time across the bridge. The wood slats give, some more than others, but you are able to make it halfway across the bridge when a faint shape leaps \
 		out at you from your periphery.</p> \
 		<p>It appears to be a box of sorts.</p>",

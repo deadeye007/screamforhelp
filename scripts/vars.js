@@ -1,5 +1,6 @@
 // Development Variables
 let state = {};
+var room = ""
 var currentLocation = "prologue";
 var currentOption = "";
 var previousLocation = "";
@@ -19,8 +20,10 @@ var invInvoice = 0;
 
 // Status Variables
 var screamCount = 0;
-var punchDrank = 0;
+var drankPunch = 0;
 var justListened = 0;
+var breakGlass = 0;
+var lookedForGloves = 0;
 var drinkRiver = 0;
 var ringPulled = 0;
 var closeTacklebox = 0;
