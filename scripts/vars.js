@@ -20,7 +20,7 @@ var invInvoice = 0;
 // Status Variables
 var screamCount = 0;
 var punchDrank = 0;
-var screamMax = 0;
+var justListened = 0;
 var drinkRiver = 0;
 var ringPulled = 0;
 var closeTacklebox = 0;

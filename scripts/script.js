@@ -4,6 +4,7 @@
     Running on SturMotor Version 0.1.1
 */
 
+// TODO: 
 // TODO: Use this function to prevent players from spamming commands.
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -66,22 +67,44 @@ function chooseOption(opt) {
         $('#game-text').append(dialogue[currentLocation].options[opt]);
         }
 
+    // Hide Title/Footer for more immersion. 
+    if(currentLocation !== (currentLocation == "prologue" || currentLocation == "epilogue" || currentLocation == "acknowledgements")) {
+        var sheet = document.styleSheets[0];
+        sheet.addRule("#title-text", "visibility:hidden;", sheet.cssRules.length);
+        sheet.addRule("#footer", "visibility:hidden;", sheet.cssRules.length);
+        console.log(document.styleSheets[0]);
+    }
+
+
     // This is going to need more metrics to work correctly.
     // Automatically appends 'Press Enter to Continue' in the absence of a choice array
     if(currentOption === "") { $('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b></p>"); }
 
 
+    // Prologue (Y/N)
+
     if(currentOption == dialogue.prologue.options["y"] || dialogue.prologue.options["n"]) { roomtraverse("trunk"); }
 
 
+    // Trunk (ABC)
+
     if(currentOption == dialogue.trunk.options["a"]) { roomtraverse("trunk_handle"); }
 
+    if(currentOption == dialogue.trunk.options["b"]) { checkPockets = 1; }
+
+    if(currentOption == dialogue.trunk.options["c"]) { screamCount + 1; sfhcount() }
+
+
+    // Trunk, Handle Pulled (ABC)
 
     if(currentOption == dialogue.trunk_handle.options["a"]) { roomtraverse("trunk_open"); }
 
-
     if(currentOption == (dialogue.trunk_handle.options["b"] || dialogue.trunk_open.options["a"]) && invTireIron == 0) { roomtraverse("tireiron"); }
 
+    if(currentOption == dialogue.trunk_handle.options["c"]) { justListened = 1; }
+
+
+    // Tire Iron
 
     if(currentOption == dialogue.tireiron.options["y"] && invTireIron == 0) {
         invTireIron = 1;
@@ -97,6 +120,11 @@ function chooseOption(opt) {
         console.log("You did not pick up the tire iron.");
         currentLocation = previousLocation;
         }
+
+    // Trunk Open
+    // Option A is an 'or' condition for trunk_handle option B, as they both go to Tire Iron.
+
+    if(currentOption == dialogue.trunk_open.options["b"]) { screamCount + 1; sfhcount() }
 
     if(currentOption == dialogue.trunk_open.options["c"]) { roomtraverse("trunk_out"); }
 
@@ -132,7 +160,7 @@ function chooseOption(opt) {
 
     if(currentOption == dialogue.tripped_up.options["a"]) { roomtraverse("at_bridge"); }
 
-
+    // You will need to fix the assumption that the user is going to pick up the doll first.
     // Creepy Doll Interaction
     if(currentOption == dialogue.tripped_up.options["b"] && investigateDoll == 0) {
         roomtraverse("checkdoll");
@@ -778,13 +806,25 @@ function roomtraverse(room) {
     console.log("Your previousLocation changed to: " + previousLocation);
 }
 
+function sfhcount() {
+    // Pick a random number between 0 and 100.
+    random = Math.floor(Math.random() * 101);
 
-// SFH_Count
-/* THIS IS MERELY A PLACEHOLDER
-   FOR A FEATURE I HOLD NEAR AND
-   DEAR, BUT I JUST HAVEN'T HAD
-   THE TIME TO FLESH IT OUT.
-*/
+    // Console Print for Debugging
+    console.log("Random Number: "+random);
+    console.log("Scream Count: "+screamCount);
+
+    // If you've screamed your last scream...
+    if(random <= sfhcount) {
+        currentLocation = gameover;
+        clear()
+        $('#game-text').append("<p>The silence after the end of your scream is only momentary.</p><p>Immediately following that, your ears are drowned in a deluge of noise as your surroundings melt like a surrealistic \
+            Salvador Dalí painting—and with it... all the light, too.</p><p>All at once, the burdens of the night are lifted, along with all the others.</p><p>You realize you don't realize anymore. You simply don't. You're \
+            simply... <i>not.</i></p>");
+    }
+
+}
+
 
 // Kick off the whole thing with the initial start game function.
 function startgame() {

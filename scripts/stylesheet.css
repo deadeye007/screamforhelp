@@ -1,35 +1,59 @@
 body {
     background-color: black;
-    color:white;
+    color: white;
+    font-family: "Century Gothic";
+    resize: none;
+    overflow: hidden;  
 }
 
-h1 {
-	font-family: "Century Gothic";
-}
-
-div.game-text {
-	background-color: white;
-    font-family: "Times New Roman";
-    font-size: medium;
-    color: black;
-    width: 70%;
-    margin-left: auto; 
+#container {
+    margin-left: auto;
     margin-right: auto;
+    max-width: 80%;
+    max-height: 5%;
+    overflow: auto;
+    position: static;
+    resize: none;
+    height:100%;
+    width: 100%;
+}
+
+#footer {
+    background-color: black;
+    color: whitesmoke;
+    padding: 50px;
+    position:static;
+    resize: none;
+}
+
+#game-text {
+    background-color: white;
+    color: black;
+    font-size: medium;
+    height: 50vh;
+    margin-left: inherit; 
+    margin-right: inherit;
+    max-width: inherit;
+    max-height: inherit;
+    overflow: auto;
+    position: static;
+    resize: none;
+}
+
+#input-text {
+    background-color: white;
+    color: black;
+    margin-left: inherit; 
+    margin-right: inherit;
+    max-width: inherit;
+    max-height: inherit;
+    position: static;
+    resize: none;
 }
 
 input {
-    font-family: "Times New Roman";
-    font-size: medium;
-    color: black;
-    width: 95%;
     border: 0;
-}
-
-div.input-text {
-	background-color: white;
-    font-family: "Times New Roman";
     color: black;
+    font-size: medium;
     width: 70%;
-    margin-left: auto; 
-    margin-right: auto;
 }
