@@ -101,7 +101,7 @@ function chooseOption(opt) {
 
     if(currentOption == dialogue.trunk_handle.options["a"]) { roomtraverse("trunk_open"); }
 
-    if(currentOption == (dialogue.trunk_handle.options["b"] || currentOption == dialogue.trunk_open.options["a"]) && invTireIron == 0) { roomtraverse("tireiron"); }
+    if(currentOption == dialogue.trunk_handle.options["b"] && invTireIron == 0 || currentOption == dialogue.trunk_open.options["a"] && invTireIron == 0) { roomtraverse("tireiron"); }
 
     if(currentOption == dialogue.trunk_handle.options["c"]) { justListened = 1; }
 
@@ -148,8 +148,7 @@ function chooseOption(opt) {
             switch. With reckless abandon, you grab the door handle and throw it open.</p>");
         breakGlass = 1;
         roomtraverse("checkinterior");
-    } else if (currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 0) {
-        roomtraverse("trunk_out");
+    } else if (currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 0) { roomtraverse("trunk_out");
     } else if(currentOption == dialogue.checkvehicle.options["a"] && investigateVehicle == 1) {
         clear()
         $('#game-text').append("<p>The sudden compulsion to break an already broken window has you questioning your sanity ... as if you weren't already.</p>")
@@ -161,14 +160,14 @@ function chooseOption(opt) {
         clear()
         $('#game-text').append("<p>Now that you have broken the window, you are quite certain that you'll be able to get inside to thoroughly examine the vehicle. What you can see already from the shattered opening is a key hanging from the rear-view mirror. The possible \
         applications of such a key astound you.</p>");
-    }
+        }
 
     // Check Interior
     if(currentOption == dialogue.checkinterior.options["b"] && drankPunch == 1) {
         clear()
         $('#game-text').append("<p>The glove box is unlocked. You grab the handle and pull to release. The glove compartment drops open and breaks off the hinges, which sends various documents flying onto the pitch black floorboard.</p><p><i>(Doubt there's anything important. Just papers.)</i></p>");
         lookedForGloves = 1;
-}
+        }
 
     if(currentOption == dialogue.checkinterior.options["c"] && investigateVehicle == 0) {
         investigateVehicle = 1;
@@ -268,7 +267,6 @@ function chooseOption(opt) {
         }
 
     if(currentOption == dialogue.at_bridge.options["b"]) { screamCount = screamCount + 1; sfhcount(); }
-    }
 
     if(currentOption == dialogue.at_bridge.options["c"]) { roomtraverse("on_bridge"); }
 
@@ -448,29 +446,29 @@ function chooseOption(opt) {
             <p>Three bookshelves stand side by side, full of various books of all sizes and colors. You see a few that stand out with titles like \"Loss and Moving On\", \"Coping: The Art of Grief\", and \"The Unadulterated History of Necromancy\". \
             <p>The last book got a second momentary glance from you before your eyes pan to a fascinating fortuneteller machine, likely from the early 1900s.</p> \
             <p>The desk butted up against the two adjacent windows facing the back yard from whence you came probably offered a breathtaking view in the daytime. At night, it merely felt as though someone could be watching you from just \
-            beyond the pane of glass.</p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>"
+            beyond the pane of glass.</p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>";
 
         dialogue.house_kitchen.description = "<p>The kitchen is modest with a washing room that starts at the end of the countertop. The oblong room painted in peach and trimmed in white has what you’d expect any modern kitchen to have: microwave, \
             stove, dishwasher, toaster, and ... a wall phone!</p><p>The wall phone hangs crooked atop the mounting hardware with a long phone cord tail heaped up in a pile below the phone and snaking back up to an outlet on the wall.</p> \
-            <p>A) Go to the study.<br>B) Go to the living room.<br>C) Investigate the wall phone.</p>"
+            <p>A) Go to the study.<br>B) Go to the living room.<br>C) Investigate the wall phone.</p>";
 
         dialogue.house_entryway.description = "<p>The entryway is an utterly boring room with aged floral wallpaper, which is peeling where the glue is losing grip. With the ceiling light drawing your attention, you notice how sloppily the ceiling \
-            has been painted in off-white over aged tar staining from what had probably been years of smoking inside the house.</p><p><i>(Ugh. Disgusting. And the house smells like an ashtray too!)</i></p>"
+            has been painted in off-white over aged tar staining from what had probably been years of smoking inside the house.</p><p><i>(Ugh. Disgusting. And the house smells like an ashtray too!)</i></p>";
 
         dialogue.house_hall.description = "<p>The hall is less boring than the entryway, at least marginally. It at least has a certain level of excitement ingrained into the variety of wood textures. The wooden doorframe going into the north bedroom \
             has a certain <i>je ne sais quoi</i> about it. Around the baseboards, there seems to be a bit of deterioration. Not like termites, though. It feels instead like more of the same—whatever <i>it</i> is.</p>It feels like you stand at the \
-            precipice of various potential outcomes.</p>"
+            precipice of various potential outcomes.</p>";
 
         dialogue.house_northbedroom.description = "<p>The room seems to brighten as you walk into it.</p><p>The layout was otherwise what you’d expect from a master bedroom. The bed was in the center of the room, framed by nightstands on each side.</p> \
             <p>The room was littered with various clothing. This contributed to that faint smell of cologne that wafted into your nostrils, you figure.</p><p>On the opposite side of the room, there are two areas with off-white folding doors. The one farthest \
-            from you is cracked up enough for you to see that it’s a closet holding at least the clothing belonging to a man.</p><p>The other one is entirely shut, but common sense at least suggests it’s a closet.</p>"
+            from you is cracked up enough for you to see that it’s a closet holding at least the clothing belonging to a man.</p><p>The other one is entirely shut, but common sense at least suggests it’s a closet.</p>";
 
         dialogue.house_northbedroom.options["c"] = "<p>At a closer glance, you realize there is a light on behind this door that spills out around the imperfectly hanging doors.</p><p>You grab the knobs and pull open the doors.</p><p><i>GASP!</i> \
             <p>You let loose of the knobs and fall flat on your buttocks while your brain rushes to make sense of what your eyes are looking at.</p><p>The large portrait of a young woman standing in front of a river wall startled you before your mind \
             could process the information that this young woman was only captured in a picture—and not in the closet, like you first feared.</p><p><i>(Is that a...)</i><p>There is a vase atop a homemade wooden platform that is surrounded by various \
             necklaces and jewelry. The rest of the platform had pictures, drawings, and countless other knickknacks from throughout the years.</p><p><i>(Yep... that vase is an urn and this is a ... shrine.)</i></p><p>You gather your wits and stand to \
             your feet. The shrine itself draws you to it in a timeless sort of way. While part of your mind crunches all the possibilities for this shrine’s existence, the more rational part of your mind determines you have better things to spend your \
-            time worrying about.</p>"
+            time worrying about.</p>";
 
         dialogue.house_southbedroom.description = "<p>With the lights on in this room, you see what can be none other than a perfectly preserved child’s room. The why doesn’t matter to you as much as if there’s anything in this room that will be \
             useful to your escape, and likely your survival overall.</p><p>There’s a faint static white noise coming from behind you.</p><p><i>(Was the TV on when I came in?)</i></p><p>A bed with a peach comforter had been set up in the farthest corner \
@@ -479,7 +477,7 @@ function chooseOption(opt) {
             <p><i>(Someone’s coming!)</i></p><p>As ridiculous as the idea seems, you bolt across the room and dig yourself an opening in the pile, only to bury yourself with dolls.</p><p>You have little else to do now but wait.</p><p>You can hear your \
             heartbeat in your ears and your breathing sounds amplified the more you fight to hold it, along with every other sound you could make to alert whatever it is to your position.</p><p>While you lie there almost entirely covered in dolls, you \
             can see the shadowy creature aimlessly saunter in front of the doorway. You aren’t sure if the hallway light is preventing you from seeing more details, or if there simply aren’t any details to be seen. Either way, you and the dolls are \
-            trembling in the corner.</p>"
+            trembling in the corner.</p>";
         }
 
 
@@ -498,7 +496,7 @@ function chooseOption(opt) {
         console.log("playerNorthbedroom: 1");
     } else if(playerSouthbedroom == 1) {
         console.log("playerSouthbedroom: 1");
-    }
+        }
 
 
 // House - Side
@@ -520,7 +518,6 @@ function chooseOption(opt) {
         $('#game-text').append("<p>You realize the second the thought crosses your mind that you've already gotten everything you need from the garage.</p>");
         }
 
-
     if(currentOption == dialogue.house_side.options["c"] && invFlashlight == 0) {
         $('#game-text').append("<p>The shed was just about as rickety as most constructs you’ve run into tonight. It isn’t an overly large building, but it is clearly capable of supporting a large tractor, provided the doors were \
             larger.</p><p>The shed door stood ajar, but there is absolutely no way you can see inside. You turn back, defeated.</p><p><i>If only I had some kind of light...</i></p>");
@@ -535,7 +532,7 @@ function chooseOption(opt) {
     } else if(currentOption == dialogue.house_garage.options["n"]) {
         invFlashlight = 0;
         currentLocation = previousLocation;
-    }
+        }
 
 
 // Front Door/Door Knocker
@@ -807,14 +804,13 @@ function chooseOption(opt) {
     } else if(playerSouthbedroom == 1 && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 0) {
         $('#game-text').append("<p>After some time, the creature turns heel and saunters on.</p><p><i>(Oh my goodness, I... I almost died...)</i></p><p>The creature can no longer be seen and the sound of static \
             retreats to pure silence.</p><p>You are terrified, but your gut is telling you that it is hopefully safe—that you have to do something if you have any hope of getting out alive.</p><p>You leave the \
-            bedroom with no intentions of returning. You also tell yourself that if you survive this, you won’t return to this house.</p>")
+            bedroom with no intentions of returning. You also tell yourself that if you survive this, you won’t return to this house.</p>");
         }
 
 // Epilogue
     if(playerWin == 1 && currentLocation == "epilogue") {
         currentLocation = "acknowledgements";
         }
-
 }
 
 // Room Traversal
