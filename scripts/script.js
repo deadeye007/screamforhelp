@@ -67,7 +67,7 @@ function chooseOption(opt) {
         $('#game-text').append(dialogue[currentLocation].options[opt]);
         }
 
-    // Hide Title/Footer for more immersion. 
+    // Hide Title/Footer for more immersion.
     if(currentLocation !== (currentLocation == "prologue" || currentLocation == "epilogue" || currentLocation == "acknowledgements")) {
         var sheet = document.styleSheets[0];
         sheet.addRule("#title-text", "visibility:hidden;", sheet.cssRules.length);
