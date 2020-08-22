@@ -13,58 +13,58 @@ function sleep(ms) {
 
 // Simple clear screen function for stylization.
 function clear() {
-    $('#game-text').text("");
+    game.textContent = "";
 }
 
 
 // Get Player Input
 function playerInput(choice) {
-            switch(choice) {
-                case "a":
-                    chooseOption("a");
-                    break;
-                case "b":
-                    chooseOption("b");
-                    break;
-                case "c":
-                    chooseOption("c");
-                    break;
-                case "y":
-                    if(currentLocation == "gameover") {
-                        console.log("Refreshing the page.");
-                        location.reload(true);
-                        return false;
-                    } else {
-                    chooseOption("y");
-                    break;
-                        }
-                case "n":
-                    if(currentLocation == "gameover") {
-                        clear()
-                        $('#game-text').append("<p>Thanks for playing my game!</p><p>Feel free to leave me some feedback on it.</p>")
-                        return false;
-                    } else {
-                    chooseOption("n");
-                    break;
-                        }
-                case "":
-                    clear()
-                    $('#game-text').append(dialogue[currentLocation].description);
-                    break;
-                case "help":
-                    alert("HOW TO PLAY:\n\nPlease press A, B, C, Y, or N when prompted.");
-                    break;
-                default:
-                    alert("Invalid input. Please try again.")
-        }
+    switch(choice) {
+        case "a":
+            chooseOption("a");
+            break;
+        case "b":
+            chooseOption("b");
+            break;
+        case "c":
+            chooseOption("c");
+            break;
+        case "y":
+            if(currentLocation == "gameover") {
+                console.log("Refreshing the page.");
+                location.reload(true);
+                return false;
+            } else {
+            chooseOption("y");
+            break;
+                }
+        case "n":
+            if(currentLocation == "gameover") {
+                clear()
+                game.append("<p>Thanks for playing my game!</p><p>Feel free to leave me some feedback on it.</p>")
+                return false;
+            } else {
+            chooseOption("n");
+            break;
+                }
+        case "":
+            clear()
+            game.write(text);
+            break;
+        case "help":
+            alert("HOW TO PLAY:\n\nPlease press A, B, C, Y, or N when prompted.");
+            break;
+        default:
+            alert("Invalid input. Please try again.")
+    }
 }
 
 // Main Story Function
 function chooseOption(opt) {
     if(dialogue[currentLocation].options[opt] !== undefined) {
         currentOption = dialogue[currentLocation].options[opt];
-        clear()
-        $('#game-text').append(dialogue[currentLocation].options[opt]);
+        clear();
+        game.write(dialogue[currentLocation].options[opt]);
         }
 
     // Hide Title/Footer for more immersion.
@@ -77,7 +77,7 @@ function chooseOption(opt) {
 
     // This is going to need more metrics to work correctly.
     // Automatically appends 'Press Enter to Continue' in the absence of a choice array
-    if(currentOption === "") { $('#game-text').append("<p><i><b>'Press Enter to Continue'</i></b></p>"); }
+    if(currentOption === "") { game.append("<p><i><b>'Press Enter to Continue'</i></b></p>"); }
 
 
     // Prologue (Y/N)
@@ -136,7 +136,7 @@ function chooseOption(opt) {
 
     if(currentOption == dialogue.trunk_out.options["b"] && investigateVehicle == 0) { roomtraverse("checkvehicle"); }
 
-    if(currentOption == dialogue.trunk_open.options["c"]) { screamCount = screamCount + 1; sfhcount(); }
+    if(currentOption == dialogue.trunk_out.options["c"]) { screamCount = screamCount + 1; sfhcount(); }
 
 
     // Check Vehicle
@@ -815,16 +815,14 @@ function chooseOption(opt) {
 
 // Room Traversal
 function roomtraverse(room) {
-    if(room == "") {
-        return;
-    } else if(room !== "") {
+    if(room !== "") {
         previousLocation = currentLocation;
         currentLocation = room;
         console.log("Your currentLocation changed to: " + currentLocation);
         console.log("Your previousLocation changed to: " + previousLocation);
+        }
     return;
     }
-}
 
 function sfhcount() {
     // Pick a random number between 0 and 100.
@@ -841,12 +839,11 @@ function sfhcount() {
         $('#game-text').append("<p>The silence after the end of your scream is only momentary.</p><p>Immediately following that, your ears are drowned in a deluge of noise as your surroundings melt like a surrealistic \
             Salvador Dalí painting—and with it... all the light, too.</p><p>All at once, the burdens of the night are lifted, along with all the others.</p><p>You realize you don't realize anymore. You simply don't. You're \
             simply... <i>not.</i></p>");
-        return;
     } else if (random > screamCount) {
         $('#game-text').append("<p>You hear no response from the Ether.</p>");
-        return;
-    }
+        }
 
+    return;
 }
 
 
@@ -866,12 +863,8 @@ $(document).ready(function(){
             choice = $('#user-input').val().toLowerCase();
             $('#user-input').val("");
             playerInput(choice)
-        }
-        else if(key.which === 13) {
-            playerInput("")
-        }
-
-        })
+        } else if(key.which === 13) { playerInput("") }
+    })
 })
 
 startgame()
