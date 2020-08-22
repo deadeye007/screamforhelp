@@ -13,7 +13,7 @@ function sleep(ms) {
 
 // Simple clear screen function for stylization.
 function clear() {
-    game.textContent = "";
+    game.innerHTML = "";
 }
 
 
@@ -49,7 +49,7 @@ function playerInput(choice) {
                 }
         case "":
             clear()
-            game.write(text);
+            game.innerHTML = dialogue[currentLocation].description;
             break;
         case "help":
             alert("HOW TO PLAY:\n\nPlease press A, B, C, Y, or N when prompted.");
@@ -63,8 +63,7 @@ function playerInput(choice) {
 function chooseOption(opt) {
     if(dialogue[currentLocation].options[opt] !== undefined) {
         currentOption = dialogue[currentLocation].options[opt];
-        clear();
-        game.write(dialogue[currentLocation].options[opt]);
+        game.innerHTML = dialogue[currentLocation].options[opt];
         }
 
     // Hide Title/Footer for more immersion.

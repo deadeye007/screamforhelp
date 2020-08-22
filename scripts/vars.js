@@ -1,12 +1,11 @@
 // Development Variables
 let state = {};
-let game = document.getElementById('game-text').innerHTML;
+let game = document.getElementById('game-text');
 var room = ""
 var currentLocation = "prologue";
 var currentOption = "";
 var previousLocation = "";
 var choice = "";
-let text = dialogue[currentLocation].description;
 
 // Inventory Variables
 
