@@ -19,7 +19,7 @@ function clear() {
 
 // Get Player Input
 function playerInput(choice) {
-    switch(choice) {
+    switch(choice.toLowerCase()) {
         case "a":
             chooseOption("a");
             break;
