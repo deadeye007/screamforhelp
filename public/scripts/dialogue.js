@@ -273,7 +273,7 @@ var dialogue =
 },
 
 	"loose_soil": { 
-	description:"<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center in such a way that \
+	description:"<p>Since you realize you're going to need light, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center in such a way that \
 	you can simply step off the porch onto the ground below where the grass has become sparse.</p> \
 	<p>As it turns out, the ground was not as solid as it appeared and your foot makes a heavy indention in the softened soil.</p> \
 	<p>Dig at the disturbed ground? (Y/N): </p>",
@@ -361,8 +361,8 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 	<p>A) Go to the kitchen.<br>B) Go to the hall.<br>C) Investigate the fortuneteller machine.</p>",
 	options:
 	{
-		"a":"<p>You go to the kitchen.</p>",
-		"b":"<p>You go to the hall.</p>",
+		"a":"<p>You go into the kitchen.</p>",
+		"b":"<p>You go into the hall.</p>",
 		"c":"<p>You take a closer look at the fortuneteller machine.</p>",
 		},
 },
@@ -456,18 +456,13 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 	description:"<p>You see what may have been, at one point, a child’s room. Back here in this bedroom, it's silent save for a faint static white noise coming from behind you.</p><p>A bed with a peach comforter had been set up in the \
 	farthest corner of the room from every other room. It probably served as the greatest form of isolation a child could get without going outside.</p><p>In another corner of the bedroom, there is a large pile of identical, very \
 	familiar dolls, all facing you. What, you wonder, would possess a child to have so many identical dolls?</p><p>The sound of an exasperated sigh just outside causes you to spin on your heels. This is followed only by the sound of a \
-	careful footfall on the wooden floor.</p><i>(Someone’s coming!)</i></p><p>As ridiculous as the idea seems, you bolt across the room and dig yourself an opening in the pile, only to bury yourself with dolls.</p><p>You have little else \
-	to do now but wait.</p><p>You can hear your heartbeat in your ears and your breathing sounds amplified the more you fight to hold it, along with every other sound you could make to alert whatever it is to your position.</p><p>While you \
-	lie there almost entirely covered in dolls, you can hear the shadowy creature aimlessly saunter in front of the doorway.</p> \
-	<p>A) Go into the hall.<br>B) Go into the north bedroom.<br>C) Go into the hall.</p>",
+	careful footfall on the wooden floor.</p><i>(Someone’s coming!)</i></p><p> \
+	<p>Type 'hide' to hide from the entity.</p>",
 	options:
 	{
-		"a":"<p>You go into the hall.</p>",
-		"b":"<p>You go into the south bedroom.</p>",
-		"c":"<p>You grab the knobs and pull open the doors.</p><p>You are powerless but to release a scream and let loose of the knobs on the folding doors. This attempt at fight or flight also sends you with enough momentum backwards \
-		that you trip and fall flat on your buttocks while your brain rushes to make sense of what your eyes are looking at in the shaky beam of light you wield.</p><p>The large portrait of a young woman standing in front of a river \
-		wall startled you before your mind could process the information that this young woman was only captured in a picture—and not in the closet, like you first feared.</p><p><i>Is that a...</i><p><i>It’s eerie, is what it is.</i> \
-		<p>You close the closet door and try not to think about it.</p>",
+		"hide":"<p>As ridiculous as the idea seems, you bolt across the room and dig yourself an opening in the pile, only to bury yourself with dolls.</p><p>You have little else to do now but wait.</p><p>You can hear your heartbeat \
+		in your ears and your breathing sounds amplified the more you fight to hold it, along with every other sound you could make to alert whatever it is to your position.</p><p>While you lie there almost entirely covered in dolls, \
+		you can hear the shadowy creature aimlessly saunter in front of the doorway.</p>"
 		},
 },
 
@@ -479,7 +474,12 @@ back yard from whence you came probably offered a breathtaking view in the dayti
 	know how you got here, but I’ll take you down to the station and we’ll get you all situated.\"</p><p>There seemed to be more weighing on his tongue, so you only nod in acknowledgement.</p><p>\"What I really want to know,\" he said \
 	with a fret on his face. \"...is where my wife is.\"</p><p>There is a deafening silence as the two of you just stare at the other. A silence which is only broken by the groaning crescendo coming from the shed. The older man continues looking at you.</p> \
 	The creaks and crackles grow as it shifts to and fro, until the movement catches your eye. You turn in time to watch the shed collapse as though the wood were the earth beneath your feet and this were a landslide.</p><p>\"You didn’t see her, did you?\" \
-	the older man asks again, partially obscured by a cloud of dust from the shed’s rather abrupt collapse.</p><p><i>\"What the f—?\"</i></p><p>\"You get used to it,\" he interrupted. \"C’mon. Let’s get you to the station.\"</p>",	
+	the older man asks again, partially obscured by a cloud of dust from the shed’s rather abrupt collapse.</p><p><i>\"What the f—?\"</i></p><p>\"You get used to it,\" he interrupted. \"C’mon. Let’s get you to the station.\"</p><p>Type \
+	'end' to end Chapter One.</p>",	
+	options:
+	{
+		"end":"<p>Congratulations on reaching the end!</p>",
+		},
 },
 
 	"acknowledgements": {

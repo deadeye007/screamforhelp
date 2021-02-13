@@ -54,6 +54,12 @@ function playerInput(choice) {
         case "help":
             alert("HOW TO PLAY:\n\nPlease press A, B, C, Y, or N when prompted.");
             break;
+        case "hide":
+            chooseOption("hide");
+            break;
+        case "end":
+            chooseOption("end");
+            break;
         default:
             alert("Invalid input. Please try again.")
     }
@@ -168,6 +174,7 @@ function chooseOption(opt) {
 
     if(currentOption == dialogue.checkinterior.options["c"] && investigateVehicle == 0) {
         investigateVehicle = 1;
+        invKey = 1;
         dialogue.trunk_out.options["b"] = "You already investigated the vehicle."
         roomtraverse("trunk_out");
         }
@@ -429,7 +436,7 @@ function chooseOption(opt) {
             pain building just behind your eyes is surely not helping matters either. You think to yourself that something was wrong with the picture, that you needed to take another look ... but it's a war of attrition and you're losing. \
             Your body is unapologetically pulling you around the side of the house.</p><p>Far from the recently unearthed, seemingly otherworldly picture frame.</p>";
         roomtraverse("house_side");
-        }
+        } else if(currentOption == dialogue.loose_soil.options["n"]) { roomtraverse("house_side"); }
 
 
 /*
@@ -708,12 +715,14 @@ function chooseOption(opt) {
         }
 
     // Go into the secretary desk
-    if(currentOption == dialogue.house_livingroom.options["c"] && (investigatePhone == 1 && playerLivingroom == 1)) {
+    if(currentOption == dialogue.house_livingroom.options["c"] && (investigatePhone == 1 && playerLivingroom == 1 && investigateDesk == 0)) {
         playerLivingroom = 1;
         roomtraverse("secretarydesk");
-        }
+        } else if(currentOption == dialogue.house_livingroom.options["c"] && investigateDesk == 1)
+            game.innerHTML = "<p>You have already investigated the secretary desk.</p>";
 
-    // Secretary Desk
+// Secretary Desk
+
     if(currentOption == dialogue.secretarydesk.options["y"] && invInvoice == 0) {
         investigateDesk = 1;
         invInvoice = 1;
@@ -792,7 +801,7 @@ function chooseOption(opt) {
 
 // House Interior - South Bedroom
     // Encounter Logic
-    if(playerSouthbedroom == 1 && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 1) {
+    if(currentOption == dialogue.house_southbedroom.options["hide"] && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 1) {
         game.innerHTML = "<p>You hear the faintest click behind you and your heart stops cold.</p><i>\"I sure would love a hug!\"</i> bleats the voice box of the doll whose ring you pulled earlier.</p> \
             <p>The creature turned heel and walked with newfound purpose to the pile of dolls. A long hand is extended to grab one of the dolls.</p><p>You clinch your eyes shut and hold your breath—every movement, \
             really. The chosen doll happened to be the one covering your face. Extremely unlucky.</p><p>The glances you hazard reveal that there are no facial features, as if the creature itself were encased \
@@ -801,15 +810,15 @@ function chooseOption(opt) {
             and drags your nearing lifeless body out of the bedroom. You succumb to the light before seeing where the creature would’ve taken you.</p>";
         entityEncounter = 1;
         currentLocation = "gameover";
-    } else if(playerSouthbedroom == 1 && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 0) {
+    } else if(currentOption == dialogue.house_southbedroom.options["hide"] && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 0) {
         game.innerHTML = "<p>After some time, the creature turns heel and saunters on.</p><p><i>(Oh my goodness, I... I almost died...)</i></p><p>The creature can no longer be seen and the sound of static \
             retreats to pure silence.</p><p>You are terrified, but your gut is telling you that it is hopefully safe—that you have to do something if you have any hope of getting out alive.</p><p>You leave the \
             bedroom with no intentions of returning. You also tell yourself that if you survive this, you won’t return to this house.</p>";
         }
 
 // Epilogue
-    if(playerWin == 1 && currentLocation == "epilogue") {
-        currentLocation = "acknowledgements";
+    if(currentOption == dialogue.epilogue.options["end"] && playerWin == 1 && currentLocation == "epilogue") {
+        roomtraverse("acknowledgements");
         }
 }
 
