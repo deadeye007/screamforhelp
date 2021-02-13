@@ -1,4 +1,4 @@
-# Scream for Help - BETA Version 1.0.0
+# Scream for Help - BETA Version 1.0.1
 SturMotor 0.1.1
 
 # Work in Progress
@@ -12,7 +12,7 @@ I am anticipating having Chapter One completed this year. The dialogue script ha
 # Where Can I Play?
 The game is accessible via the World Wide Web.
 
-1. Open your favorite browser and navigate to [scream.bagoftricks.app](https://scream.bagoftricks.app).
+1. Open your favorite browser and navigate to [https://scream.bagoftricks.app](https://scream.bagoftricks.app).
 2. Enjoy!
 
 
