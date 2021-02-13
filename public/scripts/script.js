@@ -273,7 +273,11 @@ function chooseOption(opt) {
 
 
     // Investigating the talisman, if you were skeptical
-    if(currentOption == dialogue.on_bridge.options["b"] && (drinkRiver == 0 && lookedForGloves == 1)) { roomtraverse("talisman"); }
+    if(currentOption == dialogue.on_bridge.options["b"] && (drinkRiver == 0 && lookedForGloves == 1)) {
+        roomtraverse("talisman");
+        } else if(currentOption == dialogue.on_bridge.options["b"] && (drinkRiver == 0 || lookedForGloves == 1)) {
+            roomtraverse("lonewolf");
+        }
 
 
     // Do you lean on the railing?
