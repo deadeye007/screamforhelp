@@ -2,9 +2,20 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+
+
+
+## [1.0.2] - 2021-02-27
+### Added
+- White space for better readability.
+
 ### Changed
 - Hid the console commands behind a 'debug' variable, in preparation for Stable.
+- Flexed on the display in CSS in order to aid mobile users.
+
+### Fixed
 - Fixed a few areas where roomtraverse() is missing.
+- Fixed the input not being 100% part of the game-text container.
 
 
 ## [1.0.1] - 2021-02-13

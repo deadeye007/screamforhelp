@@ -118,6 +118,7 @@ function chooseOption(opt) {
         dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
         dialogue.trunk_handle.options["b"] = "You already investigated the trunk.";
         currentLocation = previousLocation;
+
     } else if(currentOption == dialogue.tireiron.options["n"]) {
         invTireIron = 0;
         investigateTrunk = 1;
@@ -153,7 +154,9 @@ function chooseOption(opt) {
             switch. With reckless abandon, you grab the door handle and throw it open.</p>";
         breakGlass = 1;
         roomtraverse("checkinterior");
+
     } else if (currentOption == dialogue.checkvehicle.options["a"] && invTireIron == 0) { roomtraverse("trunk_out");
+
     } else if(currentOption == dialogue.checkvehicle.options["a"] && investigateVehicle == 1) {
         clear()
         game.innerHTML = "<p>The sudden compulsion to break an already broken window has you questioning your sanity ... as if you weren't already.</p>";
@@ -188,8 +191,10 @@ function chooseOption(opt) {
     // Creepy Doll Interaction
     if(currentOption == dialogue.tripped_up.options["b"] && investigateDoll == 0) {
         roomtraverse("checkdoll");
+
     } else if(investigateDoll == 1) {
         dialogue.checkdoll.options["b"] = "You already investigated the doll.";
+
     } else if(investigateCoin == 1) {
         dialogue.checkdoll.options["b"] = "<p>You pick up the doll. With it closer, you can see that one of the eyes is cocked to the \
         side and the other is completely black. While you can't put your finger on it, there is something eerily off.</p><p>In the center of the doll’s back is a ring, which feels as though you could pull it to make her talk.</p>";
@@ -198,6 +203,7 @@ function chooseOption(opt) {
     // Coin Interaction
     if(currentOption == dialogue.tripped_up.options["c"] && investigateCoin == 0) {
         roomtraverse("takecoin");
+
     } else if(investigateCoin == 1) {
         dialogue.tripped_up.options["c"] = "You already investigated the coin.";
         }
@@ -230,6 +236,7 @@ function chooseOption(opt) {
         ringPulled = 1;
         if(debug == 1) { console.log("Ring has been pulled."); }
         roomtraverse("takedoll");
+
     } else if(currentOption == dialogue.pullring.options["n"]) {
         ringPulled = 0;
         if(debug == 1) { console.log("Ring has not been pulled."); }
@@ -244,6 +251,7 @@ function chooseOption(opt) {
         investigateDoll = 1;
         dialogue.tripped_up.options["b"] = "You already investigated the doll.";
         roomtraverse("tripped_up");
+
     } else if(currentOption == dialogue.takedoll.options["n"]) {
         investigateDoll = 1;
         dialogue.tripped_up.options["b"] = "You already investigated the doll.";
@@ -258,6 +266,7 @@ function chooseOption(opt) {
         investigateCoin = 1;
         dialogue.tripped_up.options["c"] = "You already investigated the coin.";
         roomtraverse("tripped_up");
+
     } else if(currentOption == dialogue.takecoin.options["n"]) {
         investigateCoin = 1;
         dialogue.tripped_up.options["c"] = "You already investigated the coin.";
@@ -332,6 +341,7 @@ function chooseOption(opt) {
             the creature to move away from you, seemingly disinterested.</p>";
         wolfHandled = 1;
         roomtraverse("house_bporch");
+
     } else if(currentOption == dialogue.lonewolf.options["a"] && (drinkRiver == 0 && invTalisman == 0)) {
         clear()
         game.innerHTML = "<p>Your fight or flight senses are raging, but you see clarity now. You can scream for help, or maybe just to startle the beast. Either way, you just have to convince him that you aren’t one to be trifled with.</p> \
@@ -351,6 +361,7 @@ function chooseOption(opt) {
             favors you on this night. The creature seems to have not been interested in a hunt.</p>";
         wolfHandled = 1;
         roomtraverse("house_bporch");
+
     } else if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 0 && invTireIron == 1)) {
         clear()
         game.innerHTML = "<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re being followed.</p><p>The creature \
@@ -359,6 +370,7 @@ function chooseOption(opt) {
             doesn’t seem to be interested in pursuing you further.</p>";
         wolfHandled = 1;
         roomtraverse("house_bporch");
+
     } else if(currentOption == dialogue.lonewolf.options["b"] && (drinkRiver == 0 && invTireIron == 0)) {
         // GAME OVER
         clear()
@@ -376,6 +388,7 @@ function chooseOption(opt) {
             enough—it would seem—to make the creature turn and carry on, seemingly disinterested.</p>";
         wolfHandled = 1;
         roomtraverse("house_bporch");
+
     } else if(currentOption == dialogue.lonewolf.options["c"] && (drinkRiver == 1 || invTalisman == 1)) {
         clear()
         game.innerHTML = "<p>Your fight or flight senses are raging, but you see clarity now. One foot after the other, you race towards the light, only occasionally looking back to see if you’re being followed.</p><p>The creature is \
@@ -384,6 +397,7 @@ function chooseOption(opt) {
             night. The creature doesn’t seem to be interested in pursuing you further.</p>";
         wolfHandled = 1;
         roomtraverse("house_bporch");
+
     } else if(currentOption == dialogue.lonewolf.options["c"] && (drinkRiver == 0 && invTireIron == 0)) {
         // GAME OVER
         clear()
@@ -408,6 +422,7 @@ function chooseOption(opt) {
             <p>Only silence bounces back from the dark recesses of the abode.</p><p><i>(I'll never be able to see without light. Maybe I should go check out the shed?)</i></p>";
         investigateBackdoor = 1;
         roomtraverse("loose_soil");
+
     } else if(currentOption == dialogue.house_bporch.options["a"] && (invKey == 0 && invTireIron == 1)) {
         clear()
         game.innerHTML = "<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center in such a way that you can simply \
@@ -415,6 +430,7 @@ function chooseOption(opt) {
             in the softened soil.</p>";
         investigateBackdoor = 1;
         roomtraverse("loose_soil");
+
     } else if(currentOption == dialogue.house_bporch.options["a"] && (invKey == 0 && invTireIron == 0)) {
         clear()
         game.innerHTML = "<p>Since the back door is locked, you start to move towards your left along the porch. The railing, which was so masterfully placed, has since been broken towards the center in such a way that you can \
@@ -438,6 +454,7 @@ function chooseOption(opt) {
             pain building just behind your eyes is surely not helping matters either. You think to yourself that something was wrong with the picture, that you needed to take another look ... but it's a war of attrition and you're losing. \
             Your body is unapologetically pulling you around the side of the house.</p><p>Far from the recently unearthed, seemingly otherworldly picture frame.</p>";
         roomtraverse("house_side");
+
         } else if(currentOption == dialogue.loose_soil.options["n"]) { roomtraverse("house_side"); }
 
 
@@ -493,16 +510,22 @@ function chooseOption(opt) {
 // Room Traversal
     if(playerStudy == 1) {
         if(debug == 1) { console.log("playerStudy: 1"); }
+
     } else if(playerKitchen == 1) {
         if(debug == 1) { console.log("playerKitchen: 1"); }
+
     } else if(playerEntryway == 1) {
         if(debug == 1) { console.log("playerEntryway: 1"); }
+
     } else if(playerLivingroom == 1) {
         if(debug == 1) { console.log("playerLivingroom: 1"); }
+
     } else if(playerHall == 1) {
         if(debug == 1) { console.log("playerHall: 1"); }
+
     } else if(playerNorthbedroom == 1) {
         if(debug == 1) { console.log("playerNorthbedroom: 1"); }
+
     } else if(playerSouthbedroom == 1) {
         if(debug == 1) { console.log("playerSouthbedroom: 1"); }
         }
@@ -522,6 +545,7 @@ function chooseOption(opt) {
 
     if(currentOption == dialogue.house_side.options["b"] && investigateGarage == 0) {
         roomtraverse("house_garage");
+
     } else if(currentOption == dialogue.house_side.options["b"] && (investigateGarage == 1 || invFlashlight == 1)) {
         clear()
         game.innerHTML = "<p>You realize the second the thought crosses your mind that you've already gotten everything you need from the garage.</p>";
@@ -530,6 +554,7 @@ function chooseOption(opt) {
     if(currentOption == dialogue.house_side.options["c"] && invFlashlight == 0) {
         game.innerHTML = "<p>The shed was just about as rickety as most constructs you’ve run into tonight. It isn’t an overly large building, but it is clearly capable of supporting a large tractor, provided the doors were \
             larger.</p><p>The shed door stood ajar, but there is absolutely no way you can see inside. You turn back, defeated.</p><p><i>If only I had some kind of light...</i></p>";
+
     } else if(currentOption == dialogue.house_side.options["c"] && (invFlashlight == 1 && invKey == 0)) {
         roomtraverse("house_shed");
         }
@@ -538,6 +563,7 @@ function chooseOption(opt) {
     if(currentOption == dialogue.house_garage.options["y"] && invFlashlight == 0) {
         invFlashlight = 1;
         currentLocation = previousLocation;
+
     } else if(currentOption == dialogue.house_garage.options["n"]) {
         invFlashlight = 0;
         currentLocation = previousLocation;
@@ -550,6 +576,7 @@ function chooseOption(opt) {
         investigateFrontdoor = 1;
         if(debug == 1) { console.log("You knocked on the door."); }
         roomtraverse("house_side");
+
     } else if(currentOption == dialogue.house_fporch.options["y"] && investigateFrontdoor == 1) {
         clear()
         game.innerHTML = "<p>You've already investigated the door.</p><p>Without some sort of light source, there isn't any point in going inside.";
@@ -583,6 +610,7 @@ function chooseOption(opt) {
         clear()
         game.innerHTML = "<p>You look at the key hanging from the nail and the key hanging around your neck.</p><p>The sudden deluge that is the realization that the key hanging from the nail appears to be the exact same key \
             you found hanging in the rear-view of your vehicular prison violently washes over you.</p><p><i>(This cannot be an accident...)</i></p>";
+
     } else if(currentOption == dialogue.house_shed.options["a"] && (invKey == 0 && invHookLine == 0)) {
         clear()
         game.innerHTML = "<p>You place your left hand on the table to steady yourself while you stand on the tips of your toes and stretch across the worktable towards the hook. The solitary key on its keyring dangles from the \
@@ -593,6 +621,7 @@ function chooseOption(opt) {
             again.</p><p>You turn to relieve your paranoia, but there’s no relief to be found. An androgynous humanoid creature of average height stands over you. Your mind is suddenly full to bursting of a cacophony of noises ... until \
             the creature releases you from the torment of this existence with one swift twist of your neck.</p>";
             currentLocation = "gameover";
+
     } else if(currentOption == dialogue.house_shed.options["a"] && (invKey == 0 && invHookLine == 1)) {
         clear()
         game.innerHTML = "<p>You place your left hand on the table to steady yourself while you stand on the tips of your toes and stretch across the worktable towards the hook. The solitary key on its keyring dangles from the \
@@ -610,6 +639,7 @@ function chooseOption(opt) {
         game.innerHTML = "<p><i>Slosh-ka-slosh-ka-slosh!</i></p><p>You waste no time pouring what’s left in the can into the generator and capping the gas tank. The next obvious step is to grab the pull start and crank; so, you \
             do.</p><p>You don’t panic when the third crank comes and goes because it’s clear it ran dry. But then there’s the fourth crank. And then the fifth...</p><p>But it starts up and lights begin to flicker to life once more. You \
             have escaped the dark ... for now.</p>";
+
     } else if(currentOption == dialogue.house_shed.options["b"] && (invKey == 0 || invHookLine == 0)) {
         game.innerHTML = "<p>Nothing.</p><p>Infuriated, you toss the can aside and scour the shed for some other can. Never in your wildest imagination could you fathom someone leaving a gas can empty when owning a generator.</p> \
             <p>The amount of noise you made in anger was satisfying, at least. Something about making a lot of noise always feels therapeutic in times such as these.</p><p>In times such as these, however, the noise brings unwanted \
@@ -678,6 +708,7 @@ function chooseOption(opt) {
             <p><i>Riiing.<br>Riiing.<br>Riiing.<br>Riii—<br>\"9-1-1. Please hold.\"<br>\"Wait!\" you scream.</i></p><p>The line clicks to eerie silence. You feel tears burning your eyes, but you don’t lose hope. Not yet. Not after everything. \
             If anything, you realize now that you can survive any—</p><p>The line clicks again.<br><i>Dial tone.</i></p><p>You hang up and dial it again.<br><i>Busy.</i></p><p>You slam the handset onto the receiver in anger. Of course you wouldn’t \
             even be able to call for help. That’s how these things always work, isn’t it?</p>";
+
     } else if(currentOption == dialogue.house_kitchen.options["c"] && (investigatePhone == 1 && playerKitchen == 1 && invInvoice == 1)) {
         game.innerHTML = "<p>You pick up the phone and waste no time dialing the numbers you found on the invoice.</p><p><i>Riiiing...<br>Riiiing...</i></p><p>\"Puckett Premier Towing, this is Carla.\"</p><p>\"Carla!\" you nearly scream. \"I need someone to come pick me up. I’m at the house of...\" You look down at the invoice, \
             but your eyes are welling up with tears. You never thought you’d hear another person’s voice again, and here help was so close by now.</p><p>Carla, who’d been typing away in the background, chimed up. \"Oh, honey, I’ve got your address. \
@@ -708,6 +739,7 @@ function chooseOption(opt) {
     if(currentOption == dialogue.house_livingroom.options["c"] && (investigatePhone == 1 && playerLivingroom == 1 && investigateDesk == 0)) {
         playerLivingroom = 1;
         roomtraverse("secretarydesk");
+
         } else if(currentOption == dialogue.house_livingroom.options["c"] && investigateDesk == 1)
             game.innerHTML = "<p>You have already investigated the secretary desk.</p>";
 
@@ -750,6 +782,7 @@ function chooseOption(opt) {
         playerHall = 0;
         playerSouthbedroom = 1;
         roomtraverse("house_southbedroom");
+
         } else if(currentOption == dialogue.house_hall.options["b"] && entityEncounter == 1) {
             clear()
             game.innerHTML = "<p>Between whatever <i>that</i> was and the creepy dolls, you have no interest in going back into that bedroom.</p>";
@@ -800,6 +833,7 @@ function chooseOption(opt) {
             and drags your nearing lifeless body out of the bedroom. You succumb to the light before seeing where the creature would’ve taken you.</p>";
         entityEncounter = 1;
         currentLocation = "gameover";
+
     } else if(currentOption == dialogue.house_southbedroom.options["hide"] && (invFlashlight == 1 && entityEncounter == 0) && ringPulled == 0) {
         game.innerHTML = "<p>After some time, the creature turns heel and saunters on.</p><p><i>(Oh my goodness, I... I almost died...)</i></p><p>The creature can no longer be seen and the sound of static \
             retreats to pure silence.</p><p>You are terrified, but your gut is telling you that it is hopefully safe—that you have to do something if you have any hope of getting out alive.</p><p>You leave the \
@@ -828,8 +862,10 @@ function sfhcount() {
     random = Math.floor(Math.random() * 101);
 
     // Console Print for Debugging
-    console.log("Random Number: "+random);
-    console.log("Scream Count: "+screamCount);
+    if(debug == 1) {
+    console.log("Random Number: " + random);
+    console.log("Scream Count: " + screamCount);
+    }
 
     // If you've screamed your last scream...
     if (random <= screamCount) {
