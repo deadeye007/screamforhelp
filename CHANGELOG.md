@@ -2,6 +2,9 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+### Changed
+- Hid the console commands behind a 'debug' variable, in preparation for Stable.
+- Fixed a few areas where roomtraverse() is missing.
 
 
 ## [1.0.1] - 2021-02-13

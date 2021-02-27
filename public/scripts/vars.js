@@ -3,6 +3,9 @@ let state = {};
 let game = document.getElementById('game-text');
 let input = document.getElementById('user-input');
 
+// Debug
+var debug = 1;
+
 var room = ""
 var currentLocation = "prologue";
 var currentOption = "";

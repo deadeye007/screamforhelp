@@ -31,7 +31,8 @@ function playerInput(choice) {
             break;
         case "y":
             if(currentLocation == "gameover") {
-                console.log("Refreshing the page.");
+                if(debug == 1) { console.log("Refreshing the page."); }
+                
                 location.reload(true);
                 return false;
             } else {
@@ -122,7 +123,8 @@ function chooseOption(opt) {
         investigateTrunk = 1;
         dialogue.trunk_open.options["a"] = "You already investigated the trunk.";
         dialogue.trunk_handle.options["b"] = "You already investigated the trunk.";
-        console.log("You did not pick up the tire iron.");
+        
+        if(debug == 1) { console.log("You did not pick up the tire iron."); }
         currentLocation = previousLocation;
         }
 
@@ -209,7 +211,7 @@ function chooseOption(opt) {
         investigateDoll = 1;
         dialogue.tripped_up.options["b"] = "<p>You chose not to investigate the doll.</p>";
         dialogue.checkdoll.options["a"] = "<p>You chose not to investigate the doll.</p>";
-        console.log("You didn't take the doll.");
+        if(debug == 1) { console.log("You didn't take the doll."); }
         currentLocation = previousLocation;
         }
 
@@ -219,18 +221,18 @@ function chooseOption(opt) {
         investigateDoll = 1;
         dialogue.tripped_up.options["b"] = "You already stowed away the doll.";
         dialogue.checkdoll.options["a"] = "You already stowed away the doll.";
-        console.log("You took the doll.");
+        if(debug == 1) { console.log("You took the doll."); }
         }
 
 
     // Evaluate the options of checkdoll
     if(currentOption == dialogue.pullring.options["y"]) {
         ringPulled = 1;
-        console.log("Ring has been pulled.");
+        if(debug == 1) { console.log("Ring has been pulled."); }
         roomtraverse("takedoll");
     } else if(currentOption == dialogue.pullring.options["n"]) {
         ringPulled = 0;
-        console.log("Ring has not been pulled.");
+        if(debug == 1) { console.log("Ring has not been pulled."); }
         roomtraverse("takedoll");
         }
 
@@ -238,7 +240,7 @@ function chooseOption(opt) {
     // Take the doll, or don't take the doll.
     if(currentOption == dialogue.takedoll.options["y"]) {
         invDoll = 1;
-        console.log("You got the doll.");
+        if(debug == 1) { console.log("You got the doll."); }
         investigateDoll = 1;
         dialogue.tripped_up.options["b"] = "You already investigated the doll.";
         roomtraverse("tripped_up");
@@ -252,7 +254,7 @@ function chooseOption(opt) {
     // Take the coin, or don't take the coin.
     if(currentOption == dialogue.takecoin.options["y"]) {
         invCoin = 1;
-        console.log("You got the coin.");
+        if(debug == 1) { console.log("You got the coin."); }
         investigateCoin = 1;
         dialogue.tripped_up.options["c"] = "You already investigated the coin.";
         roomtraverse("tripped_up");
@@ -266,7 +268,7 @@ function chooseOption(opt) {
     // At Bridge
     if(currentOption == dialogue.at_bridge.options["a"]) {
         drinkRiver = 1;
-        console.log("You drank from the river.");
+        if(debug == 1) { console.log("You drank from the river."); }
         dialogue.at_bridge.options["a"] = "You've already sated your thirst.";
         }
 
@@ -289,7 +291,7 @@ function chooseOption(opt) {
 
     // Do you lean on the railing?
     if(currentOption == dialogue.on_bridge.options["c"]) {
-        console.log("You leaned against the railing.");
+        if(debug == 1) { console.log("You leaned against the railing."); }
         // GAME OVER
         currentLocation = "gameover";
         }
@@ -298,14 +300,14 @@ function chooseOption(opt) {
     // Tacklebox Investigation
     if(currentOption == dialogue.tacklebox.options["a"]) {
         invPlyers = 1;
-        console.log("You got the plyers.");
+        if(debug == 1) { console.log("You got the plyers."); }
         investigatePlyers = 1;
         dialogue.tacklebox.options["a"] = "You already took the plyers.";
         }
 
     if (currentOption == dialogue.tacklebox.options["b"]) {
         invHookLine = 1;
-        console.log("You got the fishing hook and fishing line.");
+        if(debug == 1) { console.log("You got the fishing hook and fishing line."); }
         investigateHookLine = 1
         dialogue.tacklebox.options["b"] = "You already took the fishing line and fishing hook.";
         }
@@ -316,7 +318,7 @@ function chooseOption(opt) {
     // Take the talisman or not?
     if(currentOption == dialogue.talisman.options["y"]) {
         invTalisman = 1;
-        console.log("You got the talisman.");
+        if(debug == 1) { console.log("You got the talisman."); }
         roomtraverse("lonewolf");
         }
 
@@ -490,19 +492,19 @@ function chooseOption(opt) {
 
 // Room Traversal
     if(playerStudy == 1) {
-        console.log("playerStudy: 1");
+        if(debug == 1) { console.log("playerStudy: 1"); }
     } else if(playerKitchen == 1) {
-        console.log("playerKitchen: 1");
+        if(debug == 1) { console.log("playerKitchen: 1"); }
     } else if(playerEntryway == 1) {
-        console.log("playerEntryway: 1");
+        if(debug == 1) { console.log("playerEntryway: 1"); }
     } else if(playerLivingroom == 1) {
-        console.log("playerLivingroom: 1");
+        if(debug == 1) { console.log("playerLivingroom: 1"); }
     } else if(playerHall == 1) {
-        console.log("playerHall: 1");
+        if(debug == 1) { console.log("playerHall: 1"); }
     } else if(playerNorthbedroom == 1) {
-        console.log("playerNorthbedroom: 1");
+        if(debug == 1) { console.log("playerNorthbedroom: 1"); }
     } else if(playerSouthbedroom == 1) {
-        console.log("playerSouthbedroom: 1");
+        if(debug == 1) { console.log("playerSouthbedroom: 1"); }
         }
 
 
@@ -546,7 +548,7 @@ function chooseOption(opt) {
     if(currentOption == dialogue.house_fporch.options["y"] && (lightsOn == 0 && invFlashlight == 0)) {
         doorKnocked = 1;
         investigateFrontdoor = 1;
-        console.log("You knocked on the door.");
+        if(debug == 1) { console.log("You knocked on the door."); }
         roomtraverse("house_side");
     } else if(currentOption == dialogue.house_fporch.options["y"] && investigateFrontdoor == 1) {
         clear()
@@ -556,7 +558,7 @@ function chooseOption(opt) {
     if(currentOption == dialogue.house_fporch.options["n"]) {
         doorKnocked = 0;
         investigateFrontdoor = 1;
-        console.log("You did not knock on the door.");
+        if(debug == 1) { console.log("You did not knock on the door."); }
         roomtraverse("house_side");
         // This may not be the logic you thought it was
         }
@@ -571,7 +573,7 @@ function chooseOption(opt) {
 // Garage
     if(currentOption == dialogue.house_garage.options["y"] && (investigateGarage == 0 && lightsOn == 0)) {
         invFlashlight = 1;
-        console.log("You picked up the flashlight.");
+        if(debug == 1) { console.log("You picked up the flashlight."); }
         investigateGarage = 1;
         }
 
@@ -639,10 +641,7 @@ function chooseOption(opt) {
     // Fortuneteller Machine
     if(currentOption == dialogue.house_study.options["c"] && (lightsOn == 1 && invCoin == 1 && playerStudy == 1 && investigateFortuneteller == 0)) {
         investigateFortuneteller = 1;
-        previousLocation = currentLocation;
-        currentLocation = "house_fortuneteller";
-        console.log("Your currentLocation changed to: " + currentLocation);
-        console.log("Your previousLocation changed to: " + previousLocation);
+        roomtraverse("house_fortuneteller");
         game.innerHTML = "<p>Would you like to use the buffalo nickel to receive your fortune? (Y/N): </p>";
         }
 
@@ -651,32 +650,23 @@ function chooseOption(opt) {
         game.innerHTML = "<p>You fish the coin out of your pocket and push it into the nickel slot with your thumb. The coin makes a series of rolling sounds before clanking and clattering into what sounds like an empty coin tray.</p> \
             <p>Madame Zora’s eyes light up and her animatronic hand raises to move above the crystal ball in a circular motion about three times before the hand lowers back into her lap.</p><p>The sound of paper being moved catches your \
             attention. When you look down, a small business card-size piece of paper is sticking out.</p><p>You take it and flip it over. It reads:</p><p><i><h5 align=\"center\">\"DO NOT FOLLOW THE LIGHT BLINDLY<br>FOR IT MAY BE A TRAIN TUNNEL.\"</h5></i></p>";
-        previousLocation = currentLocation;
-        currentLocation = "house_study";
-        console.log("Your currentLocation changed to: " + currentLocation);
-        console.log("Your previousLocation changed to: " + previousLocation);
+        roomtraverse("house_study");
         }
 
 
 // House Interior - Kitchen
     // Go to the study
     if(currentOption == dialogue.house_kitchen.options["a"]) {
-        previousLocation = currentLocation;
-        currentLocation = "house_study";
+        roomtraverse("house_study");
         playerKitchen = 0;
         playerStudy = 1;
-        console.log("Your currentLocation changed to: " + currentLocation);
-        console.log("Your previousLocation changed to: " + previousLocation);
         }
 
     // Go to the living room
     if(currentOption == dialogue.house_kitchen.options["b"]) {
-        previousLocation = currentLocation;
-        currentLocation = "house_livingroom";
+        roomtraverse("house_livingroom");
         playerKitchen = 0;
         playerLivingroom = 1;
-        console.log("Your currentLocation changed to: " + currentLocation);
-        console.log("Your previousLocation changed to: " + previousLocation);
         }
 
 
