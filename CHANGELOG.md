@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 ## [1.0.2] - 2021-02-27
 ### Added
 - White space for better readability.
+- Added CSS @media parameters for mobile users.
 
 ### Changed
 - Hid the console commands behind a 'debug' variable, in preparation for Stable.
