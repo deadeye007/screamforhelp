@@ -1,6 +1,7 @@
-@media only screen and (max-width: 1080px) {
-    body {
+@media only screen and (max-width: 850px) {
+   body {
       max-height: 80%;
+       font-size: x-small;
       }
     
     h1 {
@@ -21,7 +22,7 @@
 
     #game {
         overflow-y: scroll;
-        max-height: 350px;
+        max-height: 200px;
         font-size: inherit;
     }
     
@@ -29,15 +30,17 @@
         font-size: large;
     }
     
-    #container {
+    container {
         width: auto;
         height: auto;
         font-size: x-large;
         padding: 0px;
     }
     
-    #footer {
+    footer {
         font-size: small;
+        max-height: 1px;
+        padding: 0px;
     }
 
 }
@@ -54,10 +57,11 @@ body {
     max-width: 95%;
 }
 
-#footer {
+footer {
     background-color: black;
     color: whitesmoke;
     padding: 50px;
+    max-height: 50px;
     }
 
 #game {
@@ -70,10 +74,8 @@ body {
     background-color: white;
     color: black;
     font-size: medium;
-    margin-left: 1%; 
-    margin-right: 1%;
-    min-height: 300px;
-    padding: 5px;
+    min-height: 100px;
+    padding: 0px;
     }
 
 #input-text {
