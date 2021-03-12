@@ -21,7 +21,7 @@
 
     #game {
         overflow-y: scroll;
-        max-height: 650px;
+        max-height: 350px;
         font-size: inherit;
     }
     
