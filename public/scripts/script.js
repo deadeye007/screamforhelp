@@ -1,7 +1,7 @@
 /*
     "SCREAM FOR HELP - Chapter 1"
     A 'Choose Your Own Adventure' Game by Andrew Sturm
-    Running on SturMotor Version 0.1.1
+    Running on SturMotor Version 1.0.0
 */
 
 // TODO: 
@@ -14,6 +14,21 @@ function sleep(ms) {
 // Simple clear screen function for stylization.
 function clear() {
     game.innerHTML = "";
+}
+
+function updateChromeVisibility() {
+    const shouldHideChrome = currentLocation !== "prologue" &&
+        currentLocation !== "epilogue" &&
+        currentLocation !== "acknowledgements";
+    const title = document.getElementById("title-text");
+    const footer = document.getElementById("footer");
+
+    if (title) {
+        title.style.visibility = shouldHideChrome ? "hidden" : "visible";
+    }
+    if (footer) {
+        footer.style.visibility = shouldHideChrome ? "hidden" : "visible";
+    }
 }
 
 
@@ -53,7 +68,7 @@ function playerInput(choice) {
             game.innerHTML = dialogue[currentLocation].description;
             break;
         case "help":
-            alert("HOW TO PLAY:\n\nPlease press A, B, C, Y, or N when prompted.");
+            alert("HOW TO PLAY:\n\nPlease press A, B, C, Y, or N when prompted. \n\nIf everything else is grayed out, click 'Continue'.");
             break;
         case "hide":
             chooseOption("hide");
@@ -72,14 +87,6 @@ function chooseOption(opt) {
         currentOption = dialogue[currentLocation].options[opt];
         game.innerHTML = dialogue[currentLocation].options[opt];
         }
-
-    // Hide Title/Footer for more immersion.
-    if(currentLocation !== "prologue" || currentLocation !== "epilogue" || currentLocation !== "acknowledgements") {
-        var sheet = document.styleSheets[0];
-        sheet.addRule("#title-text", "visibility:hidden;", sheet.cssRules.length);
-        sheet.addRule("#footer", "visibility:hidden;", sheet.cssRules.length);
-    }
-
 
     // This is going to need more metrics to work correctly.
     // Automatically appends 'Press Enter to Continue' in the absence of a choice array
@@ -886,19 +893,52 @@ function startgame() {
     // I removed the variables because it's a mess. I'll figure out how I want to do this when I finish the main game.
 
     game.innerHTML = dialogue[currentLocation].description;
+    updateChromeVisibility();
+    updateMobileControls();
+}
+
+function updateMobileControls() {
+    const controls = document.querySelectorAll("#mobile-controls button");
+    const optionSet = dialogue[currentLocation] && dialogue[currentLocation].options ? dialogue[currentLocation].options : {};
+
+    controls.forEach((button) => {
+        const choiceKey = button.dataset.choice;
+        if (choiceKey === "" || choiceKey === "help") {
+            button.disabled = false;
+            return;
+        }
+        if (currentLocation === "gameover" && (choiceKey === "y" || choiceKey === "n")) {
+            button.disabled = false;
+            return;
+        }
+        button.disabled = optionSet[choiceKey] === undefined;
+    });
+}
+
+function submitChoice(choiceValue) {
+    playerInput(choiceValue);
+    updateChromeVisibility();
+    updateMobileControls();
 }
 
 // Get JavaScript Input
-input.addEventListener("keyup", function(event) {
-    // Execute on 'Enter'
-    if (event.keyCode === 13) {
-        // Cancel default action
+input.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
         event.preventDefault();
-        // Trigger element
         choice = input.value;
         input.value = "";
-        playerInput(choice);
+        submitChoice(choice);
     }
+});
+
+document.querySelectorAll("#mobile-controls button").forEach((button) => {
+    button.addEventListener("click", function() {
+        if (button.disabled) {
+            return;
+        }
+        submitChoice(button.dataset.choice);
+        input.focus();
+    });
 });
 
 startgame()
