@@ -1,0 +1,5 @@
+.vscode/c_cpp_properties.json
+.vscode/tasks.json
+source/main.dSYM/Contents/Info.plist
+source/main
+source/main.dSYM/Contents/Resources/DWARF/main

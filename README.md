@@ -1,5 +1,7 @@
 # Scream for Help - BETA Version 1.0.2
+# Scream for Help C++ - Alpha Version 0.0.1
 SturMotor 0.1.1
+SturmMotor C++ 0.0.1
 
 # Work in Progress
 "Scream for Help" is designed to be an episodic text-based Choose Your Own Adventure Game where you play a protaganist desperately trying to make it home.
