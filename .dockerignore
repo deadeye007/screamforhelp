@@ -1,0 +1,7 @@
+.git
+.gitignore
+.vscode
+source
+CHANGELOG.md
+.DS_Store
+**/.DS_Store

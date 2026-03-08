@@ -1,5 +1,7 @@
-# Scream for Help - BETA Version 1.0.2
-SturMotor 0.1.1
+# Scream for Help - BETA Version 2.0.0
+# Scream for Help C++ - Alpha Version 0.0.1
+SturMotor 1.0.0
+SturmMotor C++ 0.0.1
 
 # Work in Progress
 "Scream for Help" is designed to be an episodic text-based Choose Your Own Adventure Game where you play a protaganist desperately trying to make it home.
@@ -10,11 +12,18 @@ I am anticipating having Chapter One completed this year. The dialogue script ha
 
 
 # Where Can I Play?
-The game is accessible via the World Wide Web.
-
-1. Open your favorite browser and navigate to [https://scream.bagoftricks.app](https://scream.bagoftricks.app).
-2. Enjoy!
-
-
+The game is accessible via a Docker container near you!
 
 ## Feedback is always appreciated!
+
+## Run with Docker
+
+1. Build the image:
+   ```bash
+   docker build -t scream-for-help .
+   ```
+2. Run the container:
+   ```bash
+   docker run --rm -p 8080:80 scream-for-help
+   ```
+3. Open `http://localhost:8080`.

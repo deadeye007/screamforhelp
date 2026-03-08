@@ -3,15 +3,18 @@
 <head>
 	<title>Scream for Help - Interactive Fiction</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="/scripts/stylesheet.css"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Spectral:wght@400;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/scripts/stylesheet.css">
 </head>
 
 <body>
 
-	<div id="title-text"><p><h1 align="center">Scream for Help</h1></p>
-		<h5 align="center">Version BETA 1.0.2</h5>
+	<div id="title-text"><h1>Scream for Help</h1>
+		<h5>Version BETA 2.0.0</h5>
 	</div>
 
 
@@ -21,13 +24,25 @@
 			</div>
 
 			<div id="input-text">
-				<input id="user-input" placeholder="Please type your command..."></input>
+				<input id="user-input" placeholder="Type a command or tap a choice..." autocapitalize="off" autocomplete="off" spellcheck="false">
+			</div>
+
+			<div id="mobile-controls" aria-label="Quick choices">
+				<button type="button" data-choice="a">A</button>
+				<button type="button" data-choice="b">B</button>
+				<button type="button" data-choice="c">C</button>
+				<button type="button" data-choice="y">Y</button>
+				<button type="button" data-choice="n">N</button>
+				<button type="button" data-choice="hide">Hide</button>
+				<button type="button" data-choice="end">End</button>
+				<button type="button" data-choice="help">Help</button>
+				<button type="button" data-choice="" class="wide">Continue</button>
 			</div>
 		</div>
 
 
 	<div id="footer">
-		<h6 align="center"><p>© 2021 by Andrew Sturm.</p><p>'Scream for Help' is a work of fiction.<br>Any likeness to actual persons or places is purely coincidental.</p></h6>
+		<h6><p>© 2026 by Andrew Sturm</p><p>'Scream for Help' is a work of fiction.<br>Any likeness to actual persons or places is purely coincidental.</p></h6>
 	</div>
 
 
